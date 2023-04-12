@@ -1,8 +1,8 @@
 {
-  "name": "lost-and-found",
+  "name": "buddy",
   "version": "0.4.0",
-  "description": "Lost and Found",
-  "repository": "https://github.com/dev-academy-challenges/lost-and-found.git",
+  "description": "Buddy",
+  "repository": "https://github.com/dev-academy-challenges/buddy.git",
   "main": "server/index.ts",
   "scripts": {
     "start": "ts-node server",
