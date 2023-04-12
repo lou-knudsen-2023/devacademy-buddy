@@ -187,13 +187,25 @@ How will we survive?
 
 
 ## User Stories 
+- (we have a picture to include here)
 
 ### MVP
-
+- landing page (inc: mission statement, app title, (hard coded success story) footer, navigation)
+- sign up entry point (redirect to using auth). 
+- select either international, local user type.
+- register for the site
+- view confirmation page
+- click to view gallary of other (international / local)
+- filter view by international / local
  
 
 ### Stretch
-
+- additional filters on gallary page e.g. languages?
+- view user profile
+- ability to email selected user
+- email form 
+- cute confirmation that email is sent
+- carosel for success stories viewable on landing page. 
 
 
 
