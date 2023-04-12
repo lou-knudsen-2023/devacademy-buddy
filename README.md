@@ -158,6 +158,28 @@ How will we survive?
 - Personal: Front end or work across stack (flexible) 
 
 
+### What is your MVP? How much work do you think it will take to achieve it?
+
+
+### What tech will you be using? Is there anything you need to research? If you’re using our stack, will you use Redux?
+- React - change to redux as stretch
+- Auth - Sign up for international, sign up for kiwi
+- Express 
+- Knew
+- Material UI 
+
+
+### GitFlow. How will you arrange your work?
+- We will be using reviews 
+- Pushing to development branch 
+
+
+### What might a day look like:
+
+
+### Will you go outside _as a team_?
+- Walks if we need breaks 
+
 ## The Tech 
 
 
