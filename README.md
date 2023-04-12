@@ -11,8 +11,8 @@
 **Scrum master: Estrella**    
 **Vibes watcher: Josh**   
 **Git manager: Jen**    
-**FE Lead:**   
-**BE Lead:** 
+**FE Lead: Lou**   
+**BE Lead: Jen** 
 
 
 ## Teamwork principles
