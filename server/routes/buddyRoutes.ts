@@ -2,6 +2,7 @@ import express from 'express'
 import * as db from '../db/db'
 import { JwtRequest } from '../auth0'
 import checkJwt from '../auth0'
+import { user } from '../../models/Users'
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -64,28 +65,27 @@ router.patch('/:id', (req, res) => {
     profile_img,
   } = req.body
   const data = {
-    user_name,
-    first_name,
-    last_name,
-    email,
-    age,
-    country_origin,
-    city,
-    user_status,
-    prim_language,
-    english_level,
-    sharing_one,
-    sharing_two,
-    sharing_three,
-    description,
-    profile_img,
-  }
+    id: Number(req.params.id),
+    user_name: user_name,
+    first_name: first_name,
+    last_name: last_name,
+    email: email,
+    age: age,
+    country_origin: country_origin,
+    city: city,
+    user_status: user_status,
+    prim_language: prim_language,
+    english_level: english_level,
+    sharing_one: sharing_one,
+    sharing_two: sharing_two,
+    sharing_three: sharing_three,
+    description: description,
+    profile_img: profile_img,
+  } as user
 
-  const id = Number(req.params.id)
-
-  db.editProfileDB(id, data)
+  db.editProfileDB(data)
     .then((post) => {
-      res.json(post[0])
+      res.json(post)
     })
     .catch((err: Error) => {
       res.status(500).send(err.message)
