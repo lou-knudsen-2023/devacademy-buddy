@@ -19,6 +19,7 @@ exports.seed = async function (knex) {
       sharing_three: 'I would like to share my traditional Malaysia cuisine',
       description:
         "Hi I’m Sultan, I'm thrilled to explore Wellington and capture the beauty of its culture through my lens. I'm excited to learn about Maori traditions, indulge in Malaysian cuisine, and meet the welcoming locals. Wellington, here I come with open arms and an adventurous spirit!",
+      profile_img: 'placeholderimage.jpg',
     },
     {
       id: 2,
