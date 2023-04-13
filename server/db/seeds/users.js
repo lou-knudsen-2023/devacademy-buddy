@@ -1,13 +1,7 @@
-const { application } = require('express')
-
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
-  await knex('table_name').del()
-  await knex('table_name').insert([
+  await knex('users').del()
+  await knex('users').insert([
     {
       id: 1,
       user_name: 'Sultanfariz',
@@ -63,23 +57,26 @@ exports.seed = async function (knex) {
       sharing_three: 'Love to make new friends with anyone.',
       description:
         "Hi, I'm Emma from New Zealand! Cooking is my passion and I love meeting new friends from around the world. I can't wait to share my love for food and culture with international visitors and create unforgettable memories together! Let's connect and explore the world through food!",
+      profile_img: 'placeholderimage.jpg',
     },
     {
       id: 4,
-      user_name: 'Emmamaslow',
-      first_name: 'Emma',
-      last_name: 'Maslow',
-      email: 'emma_maslow@gmail.com',
-      age: '35',
+      user_name: 'Jannethbrown',
+      first_name: 'Janet',
+      last_name: 'Brown',
+      email: 'janneth_brown@gmail.com',
+      age: '29',
       country_origin: 'New Zealand',
       city: 'Wellington',
       user_status: 'local',
       prim_language: 'English',
       english_level: 'Fluent',
-      sharing_one: 'I really love foods from different countries',
-      sharing_two: 'Love cooking',
-      sharing_three: 'Love to make new friends with anyone.',
-      description: '',
+      sharing_one: 'Love to share about international fashion',
+      sharing_two: 'Creative fashion',
+      sharing_three: 'Small Trips',
+      description:
+        "I'm Janneth, a fashion designer from New Zealand. I'm absolutely in love with international fashion and enjoy sharing my passion with others who have similar interests. Exploring new places and cultures through small trips is something I truly enjoy. I'm thrilled about the opportunity to meet international people and connect with them to exchange ideas and experiences about fashion and beyond. Let's create amazing memories together and dive into the world of fashion!",
+      profile_img: 'placeholderimage.jpg',
     },
   ])
 }
