@@ -210,6 +210,14 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 
 -------
 
+## Reducers (Client Side)
+| name | purpose |
+| --- | --- |
+
+## Actions (Client Side)
+| type | data | purpose |
+| --- | --- | --- |
+
 ## API (Client - Server)
 
 | Method | Endpoint | Protected | Usage | Response |
@@ -222,7 +230,7 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 
 
 
-### DB (Server Side) -
+## DB (Server Side) 
   There should be one table for MVP.
   
 ### users
