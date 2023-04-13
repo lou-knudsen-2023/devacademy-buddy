@@ -210,6 +210,10 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 
 -------
 
+## Views (Client Side)
+| name | purpose |
+| --- | --- |
+
 ## Reducers (Client Side)
 | name | purpose |
 | --- | --- |
