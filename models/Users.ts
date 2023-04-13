@@ -13,6 +13,7 @@ export interface userData {
   sharing_two: string
   sharing_three: string
   description: string
+  profile_img: string
 }
 
 export interface user extends userData {
