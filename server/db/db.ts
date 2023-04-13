@@ -89,3 +89,12 @@ export function editProfileDB(
       'profile_img',
     ])
 }
+
+export function delProfileDB(id: number, db = connection): Promise<user[]> {
+  return db('users')
+    .where('users.id', id)
+    .del()
+    .then(() => {
+      return db('users').where('users.id', id).del()
+    })
+}
