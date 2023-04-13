@@ -209,6 +209,18 @@ How will we survive?
 
 -------
 
+## API (Client - Server)
+
+| Method | Endpoint | Protected | Usage | Response |
+| --- | --- | --- | --- | --- |
+| Get | /api/v1/buddy | Yes | Get the list of all the users | Array of Objects (object = users) |
+| Get | /api/v1/buddy/:id | Yes | Get single user data by id | A single Object (object = userData by id) |
+| Post | /api/v1/buddy/ | Yes | Save a completed new user data profile| the data that has been saved in db read format |
+| Delete | /api/v1/buddy/:id | Yes | Delete a user data profile| Delete from db by Id |
+| Patch | /api/v1/buddy/:id | Yes | Update a user data profile | Update the User data by Id in db|
+
+
+
 ### DB (Server Side) -
   There should be one table for MVP.
   
