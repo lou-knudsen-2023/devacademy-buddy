@@ -15,6 +15,7 @@ exports.up = function (knex) {
     table.string('sharing_two')
     table.string('sharing_three')
     table.string('description')
+    table.string('profile_img')
   })
 }
 
