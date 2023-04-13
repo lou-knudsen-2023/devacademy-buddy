@@ -223,14 +223,14 @@ How will we survive?
   | age | String | Age of the user as personal detail |
   | country_origin | String | User's country origin as personal detail |
   | city | String | City where the user come from as personal detail |
-  | user_status | String | Whether the user is international or local, It will be two value: International or Local |
-  | prim_language | String | |
-  | english_level | String | |
-  | sharing_one | String | |
-  | sharing_two | String | |
-  | sharing_three | String | |
-  | description | String | |
-  | profile_img | String | |
+  | user_status | String | Whether the user is international or local, It will be two values: International or Local |
+  | prim_language | String | Their primary language speaking everyday|
+  | english_level | String | How good their english leve, It will be three values: no english, some english, and fluent english |
+  | sharing_one | String | User's Interest Both for Local and International |
+  | sharing_two | String | User's Interest Both for Local and International  |
+  | sharing_three | String | User's Interest Both for Local and International |
+  | description | String | User's Short Bio Both for Local and International |
+  | profile_img | String | User's profile picture Both for Local and International |
   
   
 
