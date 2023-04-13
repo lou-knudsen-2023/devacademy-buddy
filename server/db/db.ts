@@ -98,3 +98,7 @@ export function delProfileDB(id: number, db = connection): Promise<user[]> {
       return db('users').where('users.id', id).del()
     })
 }
+
+export function fetchSingleDB(id: number, db = connection): Promise<user[]> {
+  return db('users').select().where('users.id', id).first()
+}
