@@ -188,7 +188,7 @@ Link : https://drive.google.com/drive/folders/1X3dYzl778TrfGkIUWMyfwIr5OY4zvA7c?
 
 
 ### User Stories 
-- (we have a picture to include here)
+Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 
 ### MVP
 - landing page (inc: mission statement, app title, (hard coded success story) footer, navigation)
