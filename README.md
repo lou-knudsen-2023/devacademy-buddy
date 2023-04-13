@@ -207,6 +207,32 @@ How will we survive?
 - cute confirmation that email is sent
 - carosel for success stories viewable on landing page. 
 
+-------
+
+### DB (Server Side) -
+  There should be one table for MVP.
+  
+### users
+  | Column Name | Data Type | Purpose |
+  | --- | --- | --- |
+  | id | Integer | Unique identifier for each international and local users|
+  | user_name | String | user name users when they are done signing up through Auth0|
+  | first_name | String | First Name of the user as personal detail |
+  | last_name | String | Last Name of the user as personal detail  |
+  | email | String | Contact email of the user which will be used for the communication|
+  | age | String | Age of the user as personal detail |
+  | country_origin | String | User's country origin as personal detail |
+  | city | String | City where the user come from as personal detail |
+  | user_status | String | Whether the user is international or local, It will be two value: International or Local |
+  | prim_language | String | |
+  | english_level | String | |
+  | sharing_one | String | |
+  | sharing_two | String | |
+  | sharing_three | String | |
+  | description | String | |
+  | profile_img | String | |
+  
+  
 
 
 
