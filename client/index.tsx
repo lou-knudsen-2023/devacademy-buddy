@@ -9,9 +9,9 @@ import store from './store'
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
-      domain="dev-kelly.au.auth0.com"
-      clientId="JYKKzIVS4KE39p54g5YtIlCUeG28iENh"
-      audience="https://lost-and-found/api"
+      domain="kahu-jennifer.au.auth0.com"
+      clientId="IHfAIogGxDwFfPzCFt8WGt8i3QQl3gPu"
+      audience="https://buddy/api"
       redirectUri={window.location.origin}
       useRefreshTokens={true}
       cacheLocation="localstorage"
