@@ -217,6 +217,8 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 ## Reducers (Client Side)
 | name | purpose |
 | --- | --- |
+| international | Store the array of International users (from db) |
+| local | Store the array of Local users (from db) |
 
 ## Actions (Client Side)
 | type | data | purpose |
