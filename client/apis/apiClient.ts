@@ -26,3 +26,9 @@ export function updateUser(newUser: User, id: number): Promise<User> {
       return res.body
     })
 }
+
+export function getSingleUser(id: number): Promise<User> {
+  return request.get(`/api/v1/buddy/${id}`).then((res) => {
+    return res.body
+  })
+}
