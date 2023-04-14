@@ -1,14 +1,14 @@
-import { user } from '../../models/Users'
+import { User } from '../../models/Users'
 import connection from './connection'
 
-export function fetchAllDB(db = connection): Promise<user[]> {
+export function fetchAllDB(db = connection): Promise<User[]> {
   return db('users').select()
 }
 
 export function createProfileDB(
-  newUser: user,
+  newUser: User,
   db = connection
-): Promise<user[]> {
+): Promise<User[]> {
   return db('users')
     .insert({
       user_name: newUser.user_name,
@@ -47,9 +47,9 @@ export function createProfileDB(
 }
 
 export function editProfileDB(
-  updateUser: user,
+  updateUser: User,
   db = connection
-): Promise<user[]> {
+): Promise<User[]> {
   return db('users')
     .select()
     .where('users.id', updateUser.id)
@@ -90,7 +90,7 @@ export function editProfileDB(
     ])
 }
 
-export function delProfileDB(id: number, db = connection): Promise<user[]> {
+export function delProfileDB(id: number, db = connection): Promise<User[]> {
   return db('users')
     .where('users.id', id)
     .del()
@@ -99,6 +99,6 @@ export function delProfileDB(id: number, db = connection): Promise<user[]> {
     })
 }
 
-export function fetchSingleDB(id: number, db = connection): Promise<user[]> {
+export function fetchSingleDB(id: number, db = connection): Promise<User[]> {
   return db('users').select().where('users.id', id).first()
 }
