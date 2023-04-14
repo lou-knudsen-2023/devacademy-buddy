@@ -223,6 +223,8 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 ## Actions (Client Side)
 | type | data | purpose |
 | --- | --- | --- |
+| GET_LOCAL | users | |
+| ADD_LOCAL| local | |
 
 ## API (Client - Server)
 
