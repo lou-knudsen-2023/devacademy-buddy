@@ -2,7 +2,7 @@ import express from 'express'
 import * as db from '../db/db'
 import { JwtRequest } from '../auth0'
 import checkJwt from '../auth0'
-import { user } from '../../models/Users'
+import { User } from '../../models/Users'
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -81,7 +81,7 @@ router.patch('/:id', (req, res) => {
     sharing_three: sharing_three,
     description: description,
     profile_img: profile_img,
-  } as user
+  } as User
 
   db.editProfileDB(data)
     .then((post) => {
