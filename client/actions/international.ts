@@ -1,63 +1,69 @@
 import { ThunkAction } from '../store'
 import { User } from '../../models/Users'
-import { FUNCTIONS } from '../apis/apiClient'
+import {
+  getAllUsersAPI,
+  deleteUserAPI,
+  addNewUserAPI,
+  updateUserAPI,
+  getSingleUserAPI,
+} from '../apis/apiClient'
 
-export const REQUEST_INTERNATIONAL = 'REQUEST_INTERNATIONAL'
-export const GET_INTERNATIONAL = 'GET_INTERNATIONAL'
-export const ADD_INTERNATIONAL = 'ADD_INTERNATIONAL'
-export const UPDATE_INTERNATIONAL = 'UPDATE_INTERNATIONAL'
-export const DEL_INTERNATIONAL = 'DEL_INTERNATIONAL'
+export const REQUEST_INTUSERS = 'REQUEST_INTUSERS'
+export const GET_INTUSERS = 'GET_INTUSERS'
+export const ADD_INTUSERS = 'ADD_INTUSERS'
+export const UPDATE_INTUSERS = 'UPDATE_INTUSERS'
+export const DEL_INTUSERS = 'DEL_INTUSERS'
 export const SHOW_ERROR = 'SHOW ERROR'
 
 //action types
 export type Action =
-  | { type: typeof REQUEST_INTERNATIONAL; payload: null }
-  | { type: typeof GET_INTERNATIONAL; payload: User }
-  | { type: typeof ADD_INTERNATIONAL; payload: User }
-  | { type: typeof UPDATE_INTERNATIONAL; payload: User }
-  | { type: typeof DEL_INTERNATIONAL; payload: User }
+  | { type: typeof REQUEST_INTUSERS; payload: null }
+  | { type: typeof GET_INTUSERS; payload: User }
+  | { type: typeof ADD_INTUSERS; payload: User }
+  | { type: typeof UPDATE_INTUSERS; payload: User }
+  | { type: typeof DEL_INTUSERS; payload: User }
   | { type: typeof SHOW_ERROR; payload: string }
 
 //action creators
-export function requestInternational(): Action {
+export function requestIntUser(): Action {
   console.log('Action - request international data')
   return {
-    type: REQUEST_INTERNATIONAL,
+    type: REQUEST_INTUSERS,
     payload: null,
   }
 }
 
-export function getInternational(international: User[]): Action {
+export function getIntUser(alldata: User[]): Action {
   console.log('Action - received all international data')
   return {
-    type: GET_INTERNATIONAL,
-    payload: international,
+    type: GET_INTUSERS,
+    payload: alldata,
   }
 }
 
-export function addInternational(addInternational: User): Action {
+export function addIntUser(addInternational: User): Action {
   console.log('Action - adding international', addInternational)
 
   return {
-    type: ADD_INTERNATIONAL,
+    type: ADD_INTUSERS,
     payload: addInternational,
   }
 }
 
-export function updateInternational(id: number): Action {
+export function updateIntUser(id: number): Action {
   console.log('Action - updated international id number..', id)
 
   return {
-    type: UPDATE_INTERNATIONAL,
+    type: UPDATE_INTUSERS,
     payload: id,
   }
 }
 
-export function delInternational(id: number): Action {
+export function delIntUser(id: number): Action {
   console.log('Action - deleted international id number..', id)
 
   return {
-    type: DEL_INTERNATIONAL,
+    type: DEL_INTUSERS,
     payload: id,
   }
 }
@@ -71,14 +77,14 @@ export function showError(errorMessage: string): Action {
 
 //THUNK actions
 
-export function fetchAllInternational(): ThunkAction {
+export function fetchAllIntUsers(): ThunkAction {
   return (dispatch) => {
-    dispatch(requestInternational())
+    dispatch(requestIntUser())
     //Insertapi get all function below
-    return INSERTFETCHALLFUNCTIONFROMAPI()
+    return getAllUsersAPI()
       .then((data) => {
         console.log('THUNK - great job fetching all internationals')
-        dispatch(getInternational(data))
+        dispatch(getIntUser(data))
       })
       .catch((err) => {
         return err.message
@@ -86,10 +92,10 @@ export function fetchAllInternational(): ThunkAction {
   }
 }
 
-export function delOneInternational(id: number): ThunkAction {
+export function delOneIntUser(id: number): ThunkAction {
   return (dispatch) => {
     //Insert api delete function below
-    return APIDELINTERNATIONALFUNCTIONAPI(id)
+    return delIntUser(id)
       .then(() => {
         console.log('THUNK - international deleted:', id)
         dispatch(delInternational(id))
@@ -100,9 +106,9 @@ export function delOneInternational(id: number): ThunkAction {
   }
 }
 
-export function addAnInternational(newData: User): ThunkAction {
+export function addAnIntUser(newData: User): ThunkAction {
   return (dispatch) => {
-    dispatch(addInternational(newData))
+    dispatch(addIntUser(newData))
     //Insertapi get all function below
     return INSERTFETCHALLFUNCTIONFROMAPI()
       .then((data) => {
