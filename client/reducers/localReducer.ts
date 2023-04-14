@@ -1,7 +1,7 @@
-import { Action } from
-import { *interface* } from
+import { Action } from '../actions/local'
+import { User } from '../../common/interface'
 
-const initialState: *LocalInterface*[] = []
+const initialState: User[] = []
 
 function localReducer(state = initialState, action: Action): InternationalInterface[] {
   const { type, payload } = action
