@@ -1,4 +1,4 @@
-export interface userData {
+export interface UserData {
   user_name: string
   first_name: string
   last_name: string
@@ -16,6 +16,6 @@ export interface userData {
   profile_img: string
 }
 
-export interface user extends userData {
+export interface User extends UserData {
   id: number
 }
