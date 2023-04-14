@@ -221,12 +221,25 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 | local | Store the array of Local users (from db) |
 
 ## Actions (Client Side)
+
+### International 
 | type | data | purpose |
 | --- | --- | --- |
-| GET_LOCAL | users[] | |
-| ADD_LOCAL| local user | |
-| GET_ITNL | users[] | |
-| ADD_ITNL| international user | |
+| GET_INTUSERS | users[] | |
+| DEL_INTUSER| international user | |
+| ADD_INTUSER | users | |
+| UPDATE_INTUSER | users | |
+
+### Local 
+| type | data | purpose |
+| --- | --- | --- |
+| GET_LOCALUSERS | users[] | |
+| DEL_LOCALUSER| local user | |
+| ADD_LOCALUSER | users | |
+| UPDATE_LOCALUSER | users | |
+
+
+
 
 ## API (Client - Server)
 
