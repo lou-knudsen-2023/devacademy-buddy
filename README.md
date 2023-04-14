@@ -183,11 +183,12 @@ How will we survive?
 ## The Tech 
 
 
+### Wireframing
+Link : https://drive.google.com/drive/folders/1X3dYzl778TrfGkIUWMyfwIr5OY4zvA7c?usp=share_link
 
 
-
-## User Stories 
-- (we have a picture to include here)
+### User Stories 
+Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 
 ### MVP
 - landing page (inc: mission statement, app title, (hard coded success story) footer, navigation)
@@ -209,6 +210,18 @@ How will we survive?
 
 -------
 
+## Views (Client Side)
+| name | purpose |
+| --- | --- |
+
+## Reducers (Client Side)
+| name | purpose |
+| --- | --- |
+
+## Actions (Client Side)
+| type | data | purpose |
+| --- | --- | --- |
+
 ## API (Client - Server)
 
 | Method | Endpoint | Protected | Usage | Response |
@@ -221,7 +234,7 @@ How will we survive?
 
 
 
-### DB (Server Side) -
+## DB (Server Side) 
   There should be one table for MVP.
   
 ### users
