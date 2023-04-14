@@ -256,6 +256,7 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
   | sharing_three | String | User's Interest Both for Local and International |
   | description | String | User's Short Bio Both for Local and International |
   | profile_img | String | User's profile picture Both for Local and International |
+  | auth_id | String | Validate Users|
   
   
 
