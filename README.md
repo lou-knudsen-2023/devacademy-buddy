@@ -227,16 +227,16 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 | --- | --- | --- |
 | GET_INTUSERS | users[] | |
 | DEL_INTUSER| international user | |
-| ADD_INTUSER | international users | |
-| UPDATE_INTUSER | international users | |
+| ADD_INTUSER | international user | |
+| UPDATE_INTUSER | international user | |
 
 ### Local 
 | type | data | purpose |
 | --- | --- | --- |
 | GET_LOCALUSERS | users[] | |
 | DEL_LOCALUSER| local user | |
-| ADD_LOCALUSER | local users | |
-| UPDATE_LOCALUSER |local users | |
+| ADD_LOCALUSER | local user | |
+| UPDATE_LOCALUSER |local user | |
 
 
 
