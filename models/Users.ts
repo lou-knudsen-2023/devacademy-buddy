@@ -18,4 +18,5 @@ export interface UserData {
 
 export interface User extends UserData {
   id: number
+  auth_id: string
 }
