@@ -5,11 +5,13 @@ import Login from './Login'
 import Home from './Home'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import AllProfiles from './AllProfiles'
+import AddMethodForm from './formTesting'
 
 function App() {
   return (
     <>
       <AllProfiles />
+      <AddMethodForm />
       {/* <div className="container has-text-centered">
         <Header />
         <div>
