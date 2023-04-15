@@ -3,15 +3,19 @@ import { Routes, Route } from 'react-router-dom'
 import Header from './Header'
 import Login from './Login'
 import Home from './Home'
+import SingleProfilePage from './singleTester'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import AllProfiles from './AllProfiles'
 import AddMethodForm from './formTesting'
+import { useAppDispatch, useAppSelector } from '../hooks'
+import { User } from '../../models/Users'
+import { useEffect } from 'react'
+// import { User } from '@auth0/auth0-react'
 
 function App() {
   return (
     <>
       <AllProfiles />
-      <AddMethodForm />
       {/* <div className="container has-text-centered">
         <Header />
         <div>
@@ -26,6 +30,10 @@ function App() {
           </IfAuthenticated>
         </div>
       </div> */}
+      <Routes>
+        {/* <Route path="/" element={<AllProfiles />} /> */}
+        <Route path="/:id" element={<SingleProfilePage />} />
+      </Routes>
     </>
   )
 }

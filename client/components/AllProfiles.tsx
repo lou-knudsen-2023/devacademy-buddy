@@ -1,40 +1,51 @@
 import { useState, useEffect } from 'react'
-import { User } from '../../models/Users'
-import { getAllUsersAPI } from '../apis/apiClient'
 import { setLocalThunk } from '../actions/local'
 import { useAppDispatch, useAppSelector } from '../hooks'
+import { Link } from 'react-router-dom'
 
-export function AllProfiles() {
-  // const [showUsers, setShowUsers] = useState(false)
-  // const dispatch = useAppDispatch()
-  // const data = useAppSelector((globalState) => globalState.subusers)
-
+export default function AllProfiles() {
   const dispatch = useAppDispatch()
   const users = useAppSelector((state) => state.localReducer)
-  console.log(users)
 
-  const allUsers = () => {
+  useEffect(() => {
     dispatch(setLocalThunk())
+  }, [dispatch])
+
+  const [showUsers, setShowUsers] = useState(false)
+
+  const handleViewProfile = () => {
+    setShowUsers(true)
+    window.sessionStorage.setItem('showUsers', 'true')
   }
 
   useEffect(() => {
-    allUsers()
+    const storedShowUsers = window.sessionStorage.getItem('showUsers')
+    if (storedShowUsers) {
+      setShowUsers(storedShowUsers === 'true')
+    }
   }, [])
 
   return (
     <>
       <div className="testingUsers">
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>
-              Name: {user.first_name} Age: {user.age} Country of origin:{' '}
-              {user.country_origin}
-            </li>
-          ))}
-        </ul>
+        {users.map((user) => (
+          <div key={user.id}>
+            {showUsers ? null : (
+              <>
+                <p>
+                  Name: {user.first_name} Age: {user.age} Country of origin:{' '}
+                  {user.country_origin}
+                </p>
+                <div>
+                  <Link to={`/${user.id}`} onClick={handleViewProfile}>
+                    View Profile
+                  </Link>
+                </div>
+              </>
+            )}
+          </div>
+        ))}
       </div>
     </>
   )
 }
-
-export default AllProfiles
