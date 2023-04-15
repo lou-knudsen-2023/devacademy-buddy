@@ -184,7 +184,9 @@ How will we survive?
 
 
 ### Wireframing
-Link : https://www.figma.com/proto/KjxNiK5o2mjUIZ5GEQl4gp/Buddy?page-id=0%3A1&node-id=2-39&viewport=591%2C324%2C0.15&scaling=scale-down&starting-point-node-id=2%3A39
+Link to Live View : https://www.figma.com/proto/KjxNiK5o2mjUIZ5GEQl4gp/Buddy?page-id=0%3A1&node-id=2-39&viewport=591%2C324%2C0.15&scaling=scale-down&starting-point-node-id=2%3A39
+
+Link to the WireFraming Structure: https://www.figma.com/file/KjxNiK5o2mjUIZ5GEQl4gp/Buddy?node-id=0%3A1&t=xO6d3bfAkWkzdWyv-1
 
 
 ### User Stories 
