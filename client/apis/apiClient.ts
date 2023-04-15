@@ -18,7 +18,7 @@ export function addNewUserAPI(newUser: User): Promise<User> {
     })
 }
 
-export function updateUserAPI(newUser: User, id: number): Promise<User> {
+export function updateUserAPI(id: number, newUser: User): Promise<User> {
   return request
     .patch(`/api/v1/buddy${id}`)
     .send(newUser)

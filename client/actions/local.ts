@@ -20,7 +20,7 @@ export type LocalAction =
   | { type: typeof GET_LOCALUSER; payload: User }
   | { type: typeof ADD_LOCALUSER; payload: User }
   | { type: typeof UPDATE_LOCALUSER; payload: User }
-  | { type: typeof DEL_LOCALUSER; payload: User }
+  | { type: typeof DEL_LOCALUSER; payload: number }
   | { type: typeof SHOW_ERROR; payload: string }
 
 export function setLocals(setLocal: User[]): LocalAction {
@@ -51,10 +51,10 @@ export function updateLocal(updateLocal: User): LocalAction {
   }
 }
 
-export function delLocal(delLocal: User): LocalAction {
+export function delLocal(delId: number): LocalAction {
   return {
     type: DEL_LOCALUSER,
-    payload: delLocal,
+    payload: delId,
   }
 }
 
@@ -85,7 +85,10 @@ export function getLocalThunk(id: number): ThunkAction {
   return (dispatch) => {
     return getSingleUserAPI(id)
       .then((user) => {
-        console.log(user, 'Testing to see if all users show up (getLocalThunk)')
+        console.log(
+          user,
+          'Testing to see if single user show up (getLocalThunk)'
+        )
         dispatch(getSingleLocal(user))
       })
       .catch((err) => {
@@ -98,6 +101,7 @@ export function addNewLocalThunk(localUser: User): ThunkAction {
   return (dispatch) => {
     return addNewUserAPI(localUser)
       .then((user) => {
+        console.log(user, 'Testing if can add new user (addNewLocalThunk)')
         dispatch(addLocal(user))
       })
       .catch((err) => {
@@ -106,13 +110,24 @@ export function addNewLocalThunk(localUser: User): ThunkAction {
   }
 }
 
-export function updateLocalThunk(id: number, updateLocal: User): ThunkAction {return ()}
-
-export function delLocalThunk(id: number, localUser: User): ThunkAction {
+export function updateLocalThunk(id: number, local: User): ThunkAction {
   return (dispatch) => {
-    return delUser(id)
+    return updateUserAPI(id, local)
+      .then((method) => {
+        console.log(method, 'Testing if can update user (updateLocalThunk)')
+        dispatch(updateLocal(method))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function delLocalThunk(id: number): ThunkAction {
+  return (dispatch) => {
+    return deleteUserAPI(id)
       .then(() => {
-        dispatch(delLocalAction(id))
+        dispatch(delLocal(id))
       })
       .catch((err) => {
         dispatch(showError(err.message))
