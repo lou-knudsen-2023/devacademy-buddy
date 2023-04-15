@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react'
 import { User } from '../../models/Users'
 import { getAllUsersAPI } from '../apis/apiClient'
 import { setLocalThunk } from '../actions/local'
+import {
+  fetchAllIntUsers,
+  getIntUser,
+  setInternationalThunk,
+} from '../actions/international'
 import { useAppDispatch, useAppSelector } from '../hooks'
 
 export function AllProfiles() {
@@ -10,11 +15,11 @@ export function AllProfiles() {
   // const data = useAppSelector((globalState) => globalState.subusers)
 
   const dispatch = useAppDispatch()
-  const users = useAppSelector((state) => state.localReducer)
+  const users = useAppSelector((state) => state.internationalReducer)
   console.log(users)
 
   const allUsers = () => {
-    dispatch(setLocalThunk())
+    dispatch(setInternationalThunk())
   }
 
   useEffect(() => {

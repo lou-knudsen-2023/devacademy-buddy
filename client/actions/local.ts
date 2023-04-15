@@ -65,15 +65,20 @@ export function showError(errorMessage: string): LocalAction {
   }
 }
 
+//THUNK ACTIONS
+
 export function setLocalThunk(): ThunkAction {
   return (dispatch) => {
     return getAllUsersAPI()
       .then((users) => {
+        const filterLocals = (user: User) =>
+          user.user_status !== 'international'
+        const usersFilteredToLocals = users.filter(filterLocals)
         console.log(
           users,
           'Testing to see if all users show up (setLocalThunk)'
         )
-        dispatch(setLocals(users))
+        dispatch(setLocals(usersFilteredToLocals))
       })
       .catch((err) => {
         dispatch(showError(err.message))
