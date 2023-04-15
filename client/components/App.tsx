@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom'
-
 import Header from './Header'
 import Login from './Login'
 import Home from './Home'
@@ -9,6 +8,7 @@ import AllProfiles from './AllProfiles'
 function App() {
   return (
     <>
+      <div>Hi this page is working</div>
       <AllProfiles />
       {/* <div className="container has-text-centered">
         <Header />

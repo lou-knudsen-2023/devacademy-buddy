@@ -23,15 +23,17 @@ export function AllProfiles() {
 
   return (
     <>
-      <div className="testingUsers">
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>
-              Name: {user.first_name} Age: {user.age} Country of origin:{' '}
-              {user.country_origin}
-            </li>
-          ))}
-        </ul>
+      <div>
+        <div className="testingUsers">
+          <ul>
+            {users.map((user) => (
+              <li key={user.id}>
+                Name: {user.first_name} Age: {user.age} Country of origin:{' '}
+                {user.country_origin}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </>
   )
