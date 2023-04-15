@@ -4,23 +4,27 @@ import Header from './Header'
 import Login from './Login'
 import Home from './Home'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import AllProfiles from './AllProfiles'
 
 function App() {
   return (
-    <div className="container has-text-centered">
-      <Header />
-      <div>
-        <IfNotAuthenticated>
-          <Login />
-        </IfNotAuthenticated>
+    <>
+      <AllProfiles />
+      {/* <div className="container has-text-centered">
+        <Header />
+        <div>
+          <IfNotAuthenticated>
+            <Login />
+          </IfNotAuthenticated>
 
-        <IfAuthenticated>
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </IfAuthenticated>
-      </div>
-    </div>
+          <IfAuthenticated>
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </IfAuthenticated>
+        </div>
+      </div> */}
+    </>
   )
 }
 
