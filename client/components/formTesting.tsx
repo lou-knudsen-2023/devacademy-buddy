@@ -23,9 +23,7 @@ function AddMethodForm() {
     profile_img: '',
   } as User)
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setMethods({ ...userMethod, [name]: value })
   }
@@ -54,19 +52,19 @@ function AddMethodForm() {
   return (
     <div className="form-add">
       <form onSubmit={handleSubmit}>
-        <h1>Share with us a new brewing technique</h1>
-        <label htmlFor="first-name">First Name</label>
+        <h1>Add user</h1>
+        <label htmlFor="first_name">First Name</label>
         <input
-          name="first-name"
+          name="first_name"
           type="text"
           value={userMethod.first_name}
           onChange={handleChange}
           placeholder="First name"
           required
         />
-        <label htmlFor="last-name">Last name </label>
+        <label htmlFor="last_name">Last name </label>
         <input
-          name="last-name"
+          name="last_name"
           type="text"
           value={userMethod.last_name}
           onChange={handleChange}
@@ -74,36 +72,40 @@ function AddMethodForm() {
           required
         />
         <label htmlFor="email">Email</label>
-        <textarea
+        <input
           name="email"
           value={userMethod.email}
+          type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="someone@example.com"
           required
         />
         <label htmlFor="age">Age</label>
-        <textarea
+        <input
           name="age"
           value={userMethod.age}
+          type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="your age"
           required
         />
-        <label htmlFor="country">Country Of Origin</label>
-        <textarea
-          name="country"
+        <label htmlFor="country_origin">Country Of Origin</label>
+        <input
+          name="country_origin"
           value={userMethod.country_origin}
+          type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="country of origin"
           required
         />
         <label htmlFor="city">City</label>
-        <textarea
+        <input
           name="city"
           value={userMethod.city}
+          type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="city"
