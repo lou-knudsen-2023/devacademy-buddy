@@ -102,9 +102,8 @@ export function AllProfiles() {
               spacing={2}
               justifyContent="center"
             >
-              {/* a few button options below if you want to try */}
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
+              <Button variant="contained">View Locals</Button>
+              <Button variant="outlined">View Internationals</Button>
             </Stack>
           </Container>
         </Box>

@@ -1,8 +1,6 @@
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import CameraIcon from '@mui/icons-material/PhotoCamera'
+import { Typography, AppBar, Toolbar } from '../../utils/mui'
+import { CameraIcon } from '../../utils/mui'
+import { createTheme, ThemeProvider } from '../../utils/mui'
 
 const theme = createTheme()
 
