@@ -20,9 +20,26 @@ function App() {
     <>
       <ScopedCssBaseline>
         <Nav />
-        <AllProfiles />
-        {/* <AddMethodForm /> */}
-        {/* <div className="container has-text-centered">
+        <Routes>
+          <Route path="/" element={<AllProfiles />} />
+          <Route path="/:id" element={<SingleProfilePage />} />
+        </Routes>
+        <Footer />
+      </ScopedCssBaseline>
+    </>
+  )
+}
+
+export default App
+
+{
+  /* <AllProfiles /> */
+}
+{
+  /* <AddMethodForm /> */
+}
+{
+  /* <div className="container has-text-centered">
           <Header />
           <div>
             <IfNotAuthenticated>
@@ -35,17 +52,5 @@ function App() {
               </Routes>
             </IfAuthenticated>
           </div>
-        </div> */}
-        <Footer />
-      </ScopedCssBaseline>
-      <Routes>
-       {/* <Route path="/" element={<AllProfiles />} /> */}
-        <Route path="/:id" element={<SingleProfilePage />} />
-      </Routes> 
-    </>
-  )
+        </div> */
 }
-
-
-
-export default App
