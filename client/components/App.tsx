@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Header from './Header'
+import CreateProfileForm from'./CreateProfileForm'
 import Nav from './Nav'
 import Login from './Login'
 import Home from './Home'
@@ -14,6 +15,7 @@ import AllProfiles from './AllProfiles'
 import AddMethodForm from './formTesting'
 // scopedCSSBaseline allows us to apply Material UI to child components only (good for partial integration of material)
 import ScopedCssBaseline from '@mui/material/ScopedCssBaseline'
+
 
 function App() {
   return (
@@ -41,6 +43,7 @@ function App() {
       <Routes>
        {/* <Route path="/" element={<AllProfiles />} /> */}
         <Route path="/:id" element={<SingleProfilePage />} />
+        <Route path="/form" element={<CreateProfileForm/>} />
       </Routes> 
     </>
   )
