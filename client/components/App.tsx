@@ -4,9 +4,6 @@ import Nav from './Nav'
 import Login from './Login'
 import Home from './Home'
 import SingleProfilePage from './singleTester'
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import AllProfiles from './AllProfiles'
-import AddMethodForm from './formTesting'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { User } from '../../models/Users'
 import { useEffect } from 'react'
@@ -41,10 +38,10 @@ function App() {
         </div> */}
         <Footer />
       </ScopedCssBaseline>
-      {/* <Routes>
-        {/* <Route path="/" element={<AllProfiles />} /> */}
+      <Routes>
+       {/* <Route path="/" element={<AllProfiles />} /> */}
         <Route path="/:id" element={<SingleProfilePage />} />
-      </Routes> */}
+      </Routes> 
     </>
   )
 }

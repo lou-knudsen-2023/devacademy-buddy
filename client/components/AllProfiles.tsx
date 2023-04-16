@@ -169,7 +169,10 @@ export function AllProfiles() {
                       p: 2,
                     }}
                   >
-                    <Button size="small">View Profile</Button>
+                    {/* <Button size="small">View Profile</Button> */}
+                    <Link to={`/${user.id}`} onClick={handleViewProfile}>
+                    View Profile
+                    </Link>
                   </CardActions>
                 </Card>
               </Grid>
@@ -191,5 +194,5 @@ export default AllProfiles
   /* <Link to={`/${user.id}`} onClick={handleViewProfile}>
 View Profile
 </Link> */
-  // adoweekend
+
 }
