@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { ChangeEvent, FormEvent, HtmlHTMLAttributes } from 'react'
 import { useState } from 'react'
-import { EditProfileForm } from '../components/EditProfileFrom'
+import EditProfileForm from './EditProfileForm'
 
 interface Props {
   newPropsKey: User
@@ -39,6 +39,7 @@ export default function SingleProfile(props: Props) {
 
   return (
     <>
+
       <div>
         <div>
           <div className="image-container">
@@ -88,7 +89,7 @@ export default function SingleProfile(props: Props) {
             </div>
             
             <div>
-              <p></p>
+
             </div>
 
           </div>

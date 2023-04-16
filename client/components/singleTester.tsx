@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { getLocalThunk } from '../actions/local'
 import { useParams } from 'react-router-dom'
-
+import EditProfileForm from './EditProfileForm'
 export default function SingleProfilePage() {
   const dispatch = useAppDispatch()
   const { id } = useParams()
@@ -33,6 +33,9 @@ export default function SingleProfilePage() {
         <p>{user?.sharing_three}</p>
         <p>{user?.email}</p>
       </div>
+      <EditProfileForm />
+                  <p>hi jen</p>
     </section>
+    
   )
 }
