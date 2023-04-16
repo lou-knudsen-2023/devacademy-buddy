@@ -219,27 +219,30 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 ## Reducers (Client Side)
 | name | purpose |
 | --- | --- |
-| international | Store the array of International users (from db) |
-| local | Store the array of Local users (from db) |
+| InternationalReducer | Store the array of International users (from db) |
+| LocalReducer | Store the array of Local users (from db) |
 
 ## Actions (Client Side)
 
 ### International 
 | type | data | purpose |
 | --- | --- | --- |
-| GET_INTUSERS | users[] | |
-| DEL_INTUSER| international user | |
-| ADD_INTUSER | international user | |
-| UPDATE_INTUSER | international user | |
+| REQUEST_INTUSERS | User[] | |
+| GET_INTUSERS | number | |
+| DEL_INTUSER| number | |
+| ADD_INTUSER | User | |
+| UPDATE_INTUSER | User | |
+| SHOW_ERROR | string | |
 
 ### Local 
 | type | data | purpose |
 | --- | --- | --- |
-| GET_LOCALUSERS | users[] | |
-| DEL_LOCALUSER| local user | |
-| ADD_LOCALUSER | local user | |
-| UPDATE_LOCALUSER |local user | |
-
+| SET_LOCALUSERS | User[]
+| GET_LOCALUSERS | number | |
+| DEL_LOCALUSER| number | |
+| ADD_LOCALUSER | User | |
+| UPDATE_LOCALUSER | User | |
+| SHOW_ERROR | string | | 
 
 
 
