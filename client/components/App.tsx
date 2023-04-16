@@ -16,7 +16,7 @@ function App() {
       <ScopedCssBaseline>
         <Nav />
         <AllProfiles />
-        {/* <AddMethodForm /> */}
+        <AddMethodForm />
         {/* <div className="container has-text-centered">
           <Header />
           <div>
