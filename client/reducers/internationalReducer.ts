@@ -1,4 +1,5 @@
 import { Action } from '../actions/international'
+import { addNewUser } from '../apis/apiClient'
 import { User } from '../../models/Users'
 
 const initialState: User[] = []

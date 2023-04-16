@@ -1,12 +1,9 @@
 import { Action } from '../actions/local'
-import { User } from '../../models/Users'
+import { User, UserData } from '../../models/Users'
 
 const initialState: User[] = []
 
-function localReducer(
-  state = initialState,
-  action: Action
-): InternationalInterface[] {
+function localReducer(state = initialState, action: Action): UserData[] {
   const { type, payload } = action
 
   switch (type) {
