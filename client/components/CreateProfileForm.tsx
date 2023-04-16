@@ -7,6 +7,7 @@ function AddMethodForm() {
   const dispatch = useAppDispatch()
 
   const [userMethod, setMethods] = useState({
+    user_name:'',
     first_name: '',
     last_name: '',
     email: '',
@@ -32,6 +33,7 @@ function AddMethodForm() {
     e.preventDefault()
     dispatch(addNewLocalThunk(userMethod))
     setMethods({
+        user_name:'',
       first_name: '',
       last_name: '',
       email: '',
@@ -53,6 +55,15 @@ function AddMethodForm() {
     <div className="form-add">
       <form onSubmit={handleSubmit}>
         <h1>Add user</h1>
+        <label htmlFor="first_name">User Name</label>
+        <input
+          name="user_name"
+          type="text"
+          value={userMethod.user_name}
+          onChange={handleChange}
+          placeholder="User name"
+          required
+        />
         <label htmlFor="first_name">First Name</label>
         <input
           name="first_name"
@@ -110,10 +121,14 @@ function AddMethodForm() {
           onChange={handleChange}
           placeholder="city"
           required
+
+
+
         />
             <label htmlFor="userStatus">User Status</label>
             <input
                 type="text"
+                name="user_status"
                 id="userStatus"
                 value={userMethod.user_status}
                 onChange={handleChange}
@@ -123,6 +138,7 @@ function AddMethodForm() {
             <input
                 type="text"
                 id="primLanguage"
+                name="prim_language"
                 value={userMethod.prim_language}
                 onChange={handleChange}
             /> 
@@ -131,6 +147,7 @@ function AddMethodForm() {
             <input
                 type="text"
                 id="englishLevel"
+                name="english_level"
                 value={userMethod.english_level}
                 onChange={handleChange}
             /> 
@@ -139,6 +156,7 @@ function AddMethodForm() {
             <input
                 type="text"
                 id="shareOne"
+                name="sharing_one"
                 value={userMethod.sharing_one}
                 onChange={handleChange}
             /> 
@@ -147,6 +165,7 @@ function AddMethodForm() {
             <input
                 type="text"
                 id="shareTwo"
+                name="sharing_two"
                 value={userMethod.sharing_two}
                 onChange={handleChange}
             /> 
@@ -155,13 +174,15 @@ function AddMethodForm() {
             <input
                 type="text"
                 id="shareThree"
+                name="sharing_three"
                 value={userMethod.sharing_three}
                 onChange={handleChange}
             /> 
-            <label htmlFor="shareThree">Description</label>
+            <label htmlFor="description">Description</label>
             <input
                 type="text"
-                id="shareThree"
+                id="description"
+                name="description"
                 value={userMethod.description}
                 onChange={handleChange}
             /> 
@@ -170,6 +191,7 @@ function AddMethodForm() {
             <input
                 type="text"
                 id="sprofileImage"
+                name="profile_img"
                 value={userMethod.profile_img}
                 onChange={handleChange}
             /> 
