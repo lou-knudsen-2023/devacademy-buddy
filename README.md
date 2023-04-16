@@ -227,11 +227,11 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 ### International 
 | type | data | purpose |
 | --- | --- | --- |
-| REQUEST_INTUSERS | User[] | |
-| GET_INTUSERS | number | |
-| DEL_INTUSER| number | |
-| ADD_INTUSER | User | |
-| UPDATE_INTUSER | User | |
+| SET_INTUSERS | User[] | Retrieve all international users from the db and store in redux  |
+| GET_INTUSERS | number | Ret individual international user from the db and store in redux |
+| DEL_INTUSER| number | Delete individual international user from db |
+| ADD_INTUSER | User | Add individual international user to the db  |
+| UPDATE_INTUSER | User | Update individual international |
 | SHOW_ERROR | string | |
 
 ### Local 
