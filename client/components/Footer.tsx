@@ -1,21 +1,6 @@
-import Typography from '@mui/material/Typography'
-// import Container from '@mui/material/Container';
-import Link from '@mui/material/Link'
-import Box from '@mui/material/Box'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://buddy.co.nz/">
-        buddy.co.nz
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
+import { Typography, Box } from '../../utils/mui'
+import { createTheme, ThemeProvider } from '../../utils/mui'
+import Copyright from '../../utils/mui'
 
 const theme = createTheme()
 
@@ -34,7 +19,6 @@ export default function Footer() {
         >
           Ado, Emily, Estrella, Jen, Josh and Lou
         </Typography>
-        {/* copyright function inserted below */}
         <Copyright />
       </Box>
     </ThemeProvider>
