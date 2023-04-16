@@ -113,7 +113,7 @@ Weekend is off, but if people choose to come in that’s fine. Unless MVP not ac
 
 **Ado:** 
 - Stress: Panic, (rushing, not really careful with making decision), stay inside head, fasting (morning will be fine, afternoon head doesn’t work (get headache))
-- What can we do to telp: Not making decision a lot, tell you what to do. 
+- What can we do to help: Not making decision a lot, tell you what to do. 
 
 **Emily:**
 - Stress: Shut down, face goes stone, remove myself (or need to remove myself) need a breather. 
