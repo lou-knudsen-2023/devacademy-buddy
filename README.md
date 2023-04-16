@@ -183,11 +183,12 @@ How will we survive?
 ## The Tech 
 
 
+### Wireframing
+Link : https://drive.google.com/drive/folders/1X3dYzl778TrfGkIUWMyfwIr5OY4zvA7c?usp=share_link
 
 
-
-## User Stories 
-- (we have a picture to include here)
+### User Stories 
+Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 
 ### MVP
 - landing page (inc: mission statement, app title, (hard coded success story) footer, navigation)
@@ -207,6 +208,76 @@ How will we survive?
 - cute confirmation that email is sent
 - carosel for success stories viewable on landing page. 
 
+-------
+
+## Views (Client Side)
+| name | purpose |
+| --- | --- |
+
+## Reducers (Client Side)
+| name | purpose |
+| --- | --- |
+| international | Store the array of International users (from db) |
+| local | Store the array of Local users (from db) |
+
+## Actions (Client Side)
+
+### International 
+| type | data | purpose |
+| --- | --- | --- |
+| GET_INTUSERS | users[] | |
+| DEL_INTUSER| international user | |
+| ADD_INTUSER | international user | |
+| UPDATE_INTUSER | international user | |
+
+### Local 
+| type | data | purpose |
+| --- | --- | --- |
+| GET_LOCALUSERS | users[] | |
+| DEL_LOCALUSER| local user | |
+| ADD_LOCALUSER | local user | |
+| UPDATE_LOCALUSER |local user | |
+
+
+
+
+## API (Client - Server)
+
+| Method | Endpoint | Protected | Usage | Response |
+| --- | --- | --- | --- | --- |
+| Get | /api/v1/buddy | Yes | Get the list of all the users | Array of Objects (object = users) |
+| Get | /api/v1/buddy/:id | Yes | Get single user data by id | A single Object (object = userData by id) |
+| Post | /api/v1/buddy/ | Yes | Save a completed new user data profile| the data that has been saved in db read format |
+| Delete | /api/v1/buddy/:id | Yes | Delete a user data profile| Delete from db by Id |
+| Patch | /api/v1/buddy/:id | Yes | Update a user data profile | Update the User data by Id in db|
+
+
+
+## DB (Server Side) 
+  There should be one table for MVP.
+  
+### users
+  | Column Name | Data Type | Purpose |
+  | --- | --- | --- |
+  | id | Integer | Unique identifier for each international and local users|
+  | user_name | String | user name users when they are done signing up through Auth0|
+  | first_name | String | First Name of the user as personal detail |
+  | last_name | String | Last Name of the user as personal detail  |
+  | email | String | Contact email of the user which will be used for the communication|
+  | age | String | Age of the user as personal detail |
+  | country_origin | String | User's country origin as personal detail |
+  | city | String | City where the user come from as personal detail |
+  | user_status | String | Whether the user is international or local, It will be two values: International or Local |
+  | prim_language | String | Their primary language speaking everyday|
+  | english_level | String | How good their english leve, It will be three values: no english, some english, and fluent english |
+  | sharing_one | String | User's Interest Both for Local and International |
+  | sharing_two | String | User's Interest Both for Local and International  |
+  | sharing_three | String | User's Interest Both for Local and International |
+  | description | String | User's Short Bio Both for Local and International |
+  | profile_img | String | User's profile picture Both for Local and International |
+  | auth_id | String | to validate Users because we are using Auth0|
+  
+  
 
 
 
