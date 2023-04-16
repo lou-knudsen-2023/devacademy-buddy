@@ -21,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AllProfiles />} />
           <Route path="/:id" element={<SingleProfilePage />} />
+          <Route path="/create-profile" element={<CreateProfileForm/>} />
         </Routes>
         <Footer />
       </ScopedCssBaseline>
