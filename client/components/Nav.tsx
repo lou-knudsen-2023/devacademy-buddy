@@ -3,10 +3,15 @@ import Typography from '@mui/material/Typography'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import CameraIcon from '@mui/icons-material/PhotoCamera'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { Link } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const theme = createTheme()
 
 export default function Nav() {
+  const { logout, loginWithRedirect, user } = useAuth0()
+
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="relative">
@@ -14,7 +19,18 @@ export default function Nav() {
           {/* For the code example below: SX stands for shortcut which allows you to use custom variants. mr is margin right */}
           <CameraIcon sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" align="right" noWrap>
-            Buddy Navigation bar
+            Buddy bar
+            <IfAuthenticated>
+              <Link to="/locals">Locals </Link>
+              <Link to="/internationals">Internationals</Link>
+
+              <button onClick={() => logout()}>Logout</button>
+            </IfAuthenticated>
+            <IfNotAuthenticated>
+              <Link to="/locals">Locals </Link>
+              <Link to="/internationals">Internationals</Link>
+              <button onClick={() => loginWithRedirect()}>Login</button>
+            </IfNotAuthenticated>
           </Typography>
         </Toolbar>
       </AppBar>
