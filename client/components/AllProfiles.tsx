@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import { User } from '../../models/Users'
-import { getAllUsersAPI } from '../apis/apiClient'
 import { setLocalThunk } from '../actions/local'
 import { useAppDispatch, useAppSelector } from '../hooks'
+import { Link } from 'react-router-dom'
 
 import { Typography } from '@mui/material'
 import {
@@ -24,14 +23,23 @@ import Button from '@mui/material/Button'
 export function AllProfiles() {
   const dispatch = useAppDispatch()
   const users = useAppSelector((state) => state.localReducer)
-  console.log(users)
 
-  const allUsers = () => {
+  useEffect(() => {
     dispatch(setLocalThunk())
+  }, [dispatch])
+
+  const [showUsers, setShowUsers] = useState(false)
+
+  const handleViewProfile = () => {
+    setShowUsers(true)
+    window.sessionStorage.setItem('showUsers', 'true')
   }
 
   useEffect(() => {
-    allUsers()
+    const storedShowUsers = window.sessionStorage.getItem('showUsers')
+    if (storedShowUsers) {
+      setShowUsers(storedShowUsers === 'true')
+    }
   }, [])
 
   // SCSS CODE BELOW
@@ -179,3 +187,9 @@ export default AllProfiles
 // const [showUsers, setShowUsers] = useState(false)
 // const dispatch = useAppDispatch()
 // const data = useAppSelector((globalState) => globalState.subusers)
+{
+  /* <Link to={`/${user.id}`} onClick={handleViewProfile}>
+View Profile
+</Link> */
+  // adoweekend
+}
