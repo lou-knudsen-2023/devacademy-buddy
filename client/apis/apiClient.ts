@@ -6,7 +6,7 @@ export function getAllUsersAPI(): Promise<User[]> {
 }
 
 export function deleteUserAPI(id: number): Promise<User> {
-  return request.delete(`/api/v1/buddy${id}`).then((res) => res.body)
+  return request.delete(`/api/v1/buddy/${id}`).then((res) => res.body)
 }
 
 export function addNewUserAPI(newUser: User): Promise<User> {
@@ -20,7 +20,7 @@ export function addNewUserAPI(newUser: User): Promise<User> {
 
 export function updateUserAPI(id: number, newUser: User): Promise<User> {
   return request
-    .patch(`/api/v1/buddy${id}`)
+    .patch(`/api/v1/buddy/${id}`)
     .send(newUser)
     .then((res) => {
       return res.body
