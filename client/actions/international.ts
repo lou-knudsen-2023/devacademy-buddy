@@ -8,7 +8,7 @@ import {
   getSingleUserAPI,
 } from '../apis/apiClient'
 
-export const REQUEST_INTUSERS = 'REQUEST_INTUSERS'
+export const SET_INTUSERS = 'SET_INTUSERS'
 export const GET_INTUSERS = 'GET_INTUSERS'
 export const ADD_INTUSERS = 'ADD_INTUSERS'
 export const UPDATE_INTUSERS = 'UPDATE_INTUSERS'
@@ -17,7 +17,7 @@ export const SHOW_ERROR = 'SHOW ERROR'
 
 //action types
 export type InternationalAction =
-  | { type: typeof REQUEST_INTUSERS; payload: User[] }
+  | { type: typeof SET_INTUSERS; payload: User[] }
   | { type: typeof GET_INTUSERS; payload: number }
   | { type: typeof ADD_INTUSERS; payload: User }
   | { type: typeof UPDATE_INTUSERS; payload: User }
@@ -28,7 +28,7 @@ export type InternationalAction =
 export function requestIntUser(requestInt: User[]): InternationalAction {
   console.log('Action - request international data')
   return {
-    type: REQUEST_INTUSERS,
+    type: SET_INTUSERS,
     payload: requestInt,
   }
 }

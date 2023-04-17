@@ -10,7 +10,7 @@ function InternationalReducer(
   const { type, payload } = action
 
   switch (type) {
-    case 'REQUEST_INTUSERS':
+    case 'SET_INTUSERS':
       return payload
     case 'ADD_INTUSERS':
       return [...state, payload]

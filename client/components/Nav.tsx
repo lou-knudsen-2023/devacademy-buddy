@@ -7,6 +7,10 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
+import { Typography, AppBar, Toolbar } from '../../utils/mui'
+import { CameraIcon } from '../../utils/mui'
+import { createTheme, ThemeProvider } from '../../utils/mui'
+import { Link } from 'react-router-dom'
 const theme = createTheme()
 
 export default function Nav() {
@@ -30,9 +34,14 @@ export default function Nav() {
               <Link to="/locals" onClick={() => loginWithRedirect()}>
                 Locals{' '}
               </Link>
-              <Link onClick={() => loginWithRedirect()}>Internationals</Link>
+              <Link to="/internationals" onClick={() => loginWithRedirect()}>
+                Internationals
+              </Link>
               <button onClick={() => loginWithRedirect()}>Login</button>
             </IfNotAuthenticated>
+            <Link to="/" className="">
+              Buddy Navigation bar
+            </Link>
           </Typography>
         </Toolbar>
       </AppBar>
