@@ -52,7 +52,8 @@ function Home() {
               color="text.secondary"
               paragraph
             >
-              "Connecting people from abroad with local Wellingtonians"
+              &quot;Connecting people from abroad with local
+              Wellingtonians&quot;
             </Typography>
           </Container>
         </Box>
@@ -73,7 +74,7 @@ function Home() {
             >
               <IfAuthenticated>
                 <Box>
-                  <Link to="/locals">
+                  <Link to="/allprofiles">
                     <CardActionArea>
                       <CardMedia
                         component="img"
@@ -162,7 +163,7 @@ function Home() {
             >
               <IfAuthenticated>
                 <Box>
-                  <Link to="/international">
+                  <Link to="/allprofiles">
                     <CardActionArea>
                       <CardMedia
                         component="img"
@@ -270,9 +271,9 @@ function Home() {
               Testimonials
             </Typography>
             <Typography variant="h5" align="center" color="body2" paragraph>
-              "I had the best time meeting Reuben. He really helped me feel
+              &quot;I had the best time meeting Reuben. He really helped me feel
               comfortable learning about Wellington and finding the best place
-              to eat. Yum!" - Ado
+              to eat. Yum!&quot; - Ado
             </Typography>
           </Container>
         </Box>
