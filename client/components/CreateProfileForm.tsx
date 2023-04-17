@@ -153,7 +153,7 @@ function CreateProfileForm() {
 
         <label htmlFor="profileImage">Profile Image</label>
         <input
-          type="text"
+          type="file"
           id="sprofileImage"
           value={userMethod.profile_img}
           onChange={handleChange}
