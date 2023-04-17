@@ -113,7 +113,7 @@ Weekend is off, but if people choose to come in that’s fine. Unless MVP not ac
 
 **Ado:** 
 - Stress: Panic, (rushing, not really careful with making decision), stay inside head, fasting (morning will be fine, afternoon head doesn’t work (get headache))
-- What can we do to telp: Not making decision a lot, tell you what to do. 
+- What can we do to help: Not making decision a lot, tell you what to do. 
 
 **Emily:**
 - Stress: Shut down, face goes stone, remove myself (or need to remove myself) need a breather. 
@@ -215,31 +215,41 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 ## Views (Client Side)
 | name | purpose |
 | --- | --- |
+| Home| Welcome registered/unregistered users and display links to other parts of the site |
+| International Form | view for international users to sign up |
+| Local form | View for local users to sign up |
+| Personal details | View for the personal details of the user |
+| All Profiles | View for displaying all the profiles of international/local |
+| Update Form | View for user to update their details about themselves |
+
 
 ## Reducers (Client Side)
 | name | purpose |
 | --- | --- |
-| international | Store the array of International users (from db) |
-| local | Store the array of Local users (from db) |
+| InternationalReducer | Store the array of International users (from db) |
+| LocalReducer | Store the array of Local users (from db) |
 
 ## Actions (Client Side)
 
 ### International 
 | type | data | purpose |
 | --- | --- | --- |
-| GET_INTUSERS | users[] | |
-| DEL_INTUSER| international user | |
-| ADD_INTUSER | international user | |
-| UPDATE_INTUSER | international user | |
+| SET_INTUSERS | User[] | Retrieve all international users from the db and store in redux  |
+| GET_INTUSERS | number | Ret individual international user from the db and store in redux |
+| DEL_INTUSER| number | Delete individual international user from db |
+| ADD_INTUSER | User | Add individual international user to the db  |
+| UPDATE_INTUSER | User | Update individual international |
+| SHOW_ERROR | string | |
 
 ### Local 
 | type | data | purpose |
 | --- | --- | --- |
-| GET_LOCALUSERS | users[] | |
-| DEL_LOCALUSER| local user | |
-| ADD_LOCALUSER | local user | |
-| UPDATE_LOCALUSER |local user | |
-
+| SET_LOCALUSERS | User[]
+| GET_LOCALUSERS | number | |
+| DEL_LOCALUSER| number | |
+| ADD_LOCALUSER | User | |
+| UPDATE_LOCALUSER | User | |
+| SHOW_ERROR | string | | 
 
 
 
