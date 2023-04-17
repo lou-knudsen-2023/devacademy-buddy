@@ -219,7 +219,7 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 | CreateProfileForm | view for international or local users to sign up |
 | Personal details | View for the personal details of the user |
 | All Profiles | View for displaying all the profiles of international/local |
-| Update Form | View for user to update their details about themselves |
+| EditProfileForm | View for user to update their details about themselves |
 
 
 ## Reducers (Client Side)
