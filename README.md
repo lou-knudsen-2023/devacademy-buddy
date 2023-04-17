@@ -215,6 +215,9 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 ## Views (Client Side)
 | name | purpose |
 | --- | --- |
+| Home| Welcome registered/unregistered users and display links to other parts of the site |
+| International form | view for international users to sign up |
+| Local form | view for local users to sign up |
 
 ## Reducers (Client Side)
 | name | purpose |
