@@ -29,7 +29,7 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
   } as User)
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
@@ -102,13 +102,14 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
           placeholder="city"
         />
         <label htmlFor="userStatus">User Status</label>
-        <input
-          type="text"
-          name="user_status"
+        <select
           id="userStatus"
           value={formData?.user_status}
           onChange={handleChange}
-        />
+        >
+          <option value="international">International</option>
+          <option value="local">Local</option>
+        </select>
 
         <label htmlFor="primLanguage">Primary Language</label>
         <input
@@ -120,14 +121,15 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
         />
 
         <label htmlFor="englishLevel">English Level</label>
-        <input
-          type="text"
+        <select
           id="englishLevel"
-          name="english_level"
           value={formData?.english_level}
           onChange={handleChange}
-          // placeholder = {user.english_level}
-        />
+        >
+          <option value="no_english">No English</option>
+          <option value="some_english">Some English</option>
+          <option value="fluent_english">Fluent English</option>
+        </select>
 
         <label htmlFor="shareOne">Quality to Share One</label>
         <input
@@ -165,10 +167,12 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
 
         <label htmlFor="profileImage">Profile Image</label>
         <input
-          type="text"
-          id="sprofileImage"
-          name="profile_img"
-          value={formData?.profile_img}
+          type="file"
+          id="profileImage"
+          name="profileImage"
+          accept="image/*"
+          // value={formData?.profile_img}
+          size={1548576} // maximum size around 1.5 mb
           onChange={handleChange}
         />
         <button type="submit">Submit</button>

@@ -1,14 +1,18 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks'
-import { addNewLocalThunk } from '../actions/local'
+import { addNewLocalThunk, setLocalThunk } from '../actions/local'
 import { User } from '../../models/Users'
+import { useNavigate } from 'react-router-dom'
 
 function CreateProfileForm() {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const [userMethod, setMethods] = useState({} as User)
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target
     setMethods({ ...userMethod, [name]: value })
   }
@@ -16,6 +20,8 @@ function CreateProfileForm() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     dispatch(addNewLocalThunk(userMethod))
+    dispatch(setLocalThunk())
+    navigate('/allprofiles')
   }
 
   return (
@@ -26,6 +32,7 @@ function CreateProfileForm() {
         <label htmlFor="first_name">First Name</label>
         <input
           type="text"
+          name="first_name"
           value={userMethod.first_name}
           onChange={handleChange}
           placeholder="First name"
@@ -34,6 +41,7 @@ function CreateProfileForm() {
         <label htmlFor="last_name">Last name </label>
         <input
           type="text"
+          name="last_name"
           value={userMethod.last_name}
           onChange={handleChange}
           placeholder="Last name"
@@ -42,6 +50,7 @@ function CreateProfileForm() {
         <label htmlFor="user_name">User Name</label>
         <input
           type="text"
+          name="user_name"
           value={userMethod.user_name}
           onChange={handleChange}
           placeholder="User name"
@@ -49,6 +58,7 @@ function CreateProfileForm() {
         />
         <label htmlFor="email">Email</label>
         <input
+          name="email"
           value={userMethod.email}
           type="text"
           className="text-input"
@@ -58,6 +68,7 @@ function CreateProfileForm() {
         />
         <label htmlFor="age">Age</label>
         <input
+          name="age"
           value={userMethod.age}
           type="text"
           className="text-input"
@@ -67,6 +78,7 @@ function CreateProfileForm() {
         />
         <label htmlFor="country_origin">Country Of Origin</label>
         <input
+          name="country_origin"
           value={userMethod.country_origin}
           type="text"
           className="text-input"
@@ -76,6 +88,7 @@ function CreateProfileForm() {
         />
         <label htmlFor="city">City</label>
         <input
+          name="city"
           value={userMethod.city}
           type="text"
           className="text-input"

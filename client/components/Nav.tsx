@@ -45,12 +45,12 @@ export default function Nav() {
 
             <IfNotAuthenticated>
               <Box sx={{ mx: 2 }}>
-                <Link to="/locals" onClick={() => loginWithRedirect()}>
+                <Link to="/" onClick={() => loginWithRedirect()}>
                   Locals
                 </Link>
               </Box>
               <Box sx={{ mx: 2 }}>
-                <Link to="/internationals" onClick={() => loginWithRedirect()}>
+                <Link to="/" onClick={() => loginWithRedirect()}>
                   Internationals
                 </Link>
               </Box>
