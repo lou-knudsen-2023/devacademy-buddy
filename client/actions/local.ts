@@ -37,10 +37,10 @@ export function getSingleLocal(oneLocal: User): LocalAction {
   }
 }
 
-export function addLocal(addLocal: User): LocalAction {
+export function addLocal(Local: User): LocalAction {
   return {
     type: ADD_LOCALUSER,
-    payload: addLocal,
+    payload: Local,
   }
 }
 
@@ -97,7 +97,6 @@ export function addNewLocalThunk(localUser: User): ThunkAction {
   return (dispatch) => {
     return addNewUserAPI(localUser)
       .then((user) => {
-        console.log(user, 'Testing if can add new user (addNewLocalThunk)')
         dispatch(addLocal(user))
       })
       .catch((err) => {
