@@ -9,6 +9,7 @@ import { User } from '../../models/Users'
 import axios from 'axios'
 import EditProfileForm from './EditProfileForm'
 
+
 //profile confirmation page
 //profile image, delete button, edit button, description section,
 // ordered list items for sharing. authenticated option for showing contact number.
@@ -91,8 +92,10 @@ export default function SingleProfile() {
                 </button>
               </IfNotAuthenticated>
             </div>
+       
             <div>
               <button onClick={() => handleClick(id)}>Delete</button>
+              <EditProfileForm initialData={user} id={id} />
             </div>
           </div>
         </div>

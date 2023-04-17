@@ -8,10 +8,13 @@ import { useParams } from 'react-router-dom'
 
 
 interface EditProfileFormProps {
-  initialData: User
+  initialData: User | null
+  id: number
 }
 
-function EditProfileForm({ initialData }: EditProfileFormProps) {
+function EditProfileForm({ initialData, id }: EditProfileFormProps) {
+
+  
   
   const dispatch = useAppDispatch()
   const user = useAppSelector(state => state.localReducer[0])
@@ -19,11 +22,9 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
 
 
 
-  const { id } = useParams<{ id: string }>()
+  // const { id } = useParams<{ id: string }>()
 
-  const [formData, setFormData] = useState<User>({
-    ...initialData
-  })
+  const [formData, setFormData] = useState<User | null >(initialData)
 
 
 
@@ -34,25 +35,28 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    dispatch(updateLocalThunk(Number(id), formData))
+    if (formData){
+      dispatch(updateLocalThunk(Number(id), formData))
+    }
 
-    setFormData({
-      user_name:'',
-      first_name: '',
-      last_name: '',
-      email: '',
-      age: '',
-      country_origin: '',
-      city: '',
-      user_status: '',
-      prim_language: '',
-      english_level: '',
-      sharing_one: '',
-      sharing_two: '',
-      sharing_three: '',
-      description: '',
-      profile_img: '',
-    } as User)
+
+    // setFormData({
+    //   user_name:'',
+    //   first_name: '',
+    //   last_name: '',
+    //   email: '',
+    //   age: '',
+    //   country_origin: '',
+    //   city: '',
+    //   user_status: '',
+    //   prim_language: '',
+    //   english_level: '',
+    //   sharing_one: '',
+    //   sharing_two: '',
+    //   sharing_three: '',
+    //   description: '',
+    //   profile_img: '',
+    // } as User)
   }
 
 
@@ -64,7 +68,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
         <input
           name="user_name"
           type="text"
-          value={formData.user_name}
+          value={formData?.user_name}
           onChange={handleChange}
  
 
@@ -73,7 +77,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
         <input
           name="first_name"
           type="text"
-          value={formData.first_name}
+          value={formData?.first_name}
           onChange={handleChange}
 
 
@@ -82,7 +86,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
         <input
           name="last_name"
           type="text"
-          value={formData.last_name}
+          value={formData?.last_name}
           onChange={handleChange}
 
 
@@ -90,7 +94,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
         <label htmlFor="email">Email</label>
         <input
           name="email"
-          value={formData.email}
+          value={formData?.email}
           type="text"
           className="text-input"
           onChange={handleChange}
@@ -100,7 +104,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
         <label htmlFor="age">Age</label>
         <input
           name="age"
-          value={formData.age}
+          value={formData?.age}
           type="text"
           className="text-input"
           onChange={handleChange}
@@ -110,7 +114,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
         <label htmlFor="country_origin">Country Of Origin</label>
         <input
           name="country_origin"
-          value={formData.country_origin}
+          value={formData?.country_origin}
           type="text"
           className="text-input"
           onChange={handleChange}
@@ -120,7 +124,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
         <label htmlFor="city">City</label>
         <input
           name="city"
-          value={formData.city}
+          value={formData?.city}
           type="text"
           className="text-input"
           onChange={handleChange}
@@ -135,7 +139,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
                 type="text"
                 name="user_status"
                 id="userStatus"
-                value={formData.user_status}
+                value={formData?.user_status}
                 onChange={handleChange}
             /> 
 
@@ -144,7 +148,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
                 type="text"
                 id="primLanguage"
                 name="prim_language"
-                value={formData.prim_language}
+                value={formData?.prim_language}
                 onChange={handleChange}
             /> 
 
@@ -153,9 +157,9 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
                 type="text"
                 id="englishLevel"
                 name="english_level"
-                value={formData.english_level}
+                value={formData?.english_level}
                 onChange={handleChange}
-                placeholder = {user.english_level}
+                // placeholder = {user.english_level}
             /> 
 
             <label htmlFor="shareOne">Quality to Share One</label>
@@ -163,7 +167,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
                 type="text"
                 id="shareOne"
                 name="sharing_one"
-                value={formData.sharing_one}
+                value={formData?.sharing_one}
                 onChange={handleChange}
             /> 
 
@@ -172,7 +176,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
                 type="text"
                 id="shareTwo"
                 name="sharing_two"
-                value={formData.sharing_two}
+                value={formData?.sharing_two}
                 onChange={handleChange}
             /> 
 
@@ -181,7 +185,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
                 type="text"
                 id="shareThree"
                 name="sharing_three"
-                value={formData.sharing_three}
+                value={formData?.sharing_three}
                 onChange={handleChange}
             /> 
             <label htmlFor="description">Description</label>
@@ -189,7 +193,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
                 type="text"
                 id="description"
                 name="description"
-                value={formData.description}
+                value={formData?.description}
                 onChange={handleChange}
             /> 
 
@@ -198,7 +202,7 @@ function EditProfileForm({ initialData }: EditProfileFormProps) {
                 type="text"
                 id="sprofileImage"
                 name="profile_img"
-                value={formData.profile_img}
+                value={formData?.profile_img}
                 onChange={handleChange}
             /> 
         <button type="submit">Submit</button>
