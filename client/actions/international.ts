@@ -1,126 +1,142 @@
-// import { ThunkAction } from '../store'
-// import { User } from '../../models/Users'
-// import {
-//   getAllUsersAPI,
-//   deleteUserAPI,
-//   addNewUserAPI,
-//   updateUserAPI,
-//   getSingleUserAPI,
-// } from '../apis/apiClient'
+import { ThunkAction } from '../store'
+import { User } from '../../models/Users'
+import {
+  getAllUsersAPI,
+  deleteUserAPI,
+  addNewUserAPI,
+  updateUserAPI,
+  getSingleUserAPI,
+} from '../apis/apiClient'
 
-// export const REQUEST_INTUSERS = 'REQUEST_INTUSERS'
-// export const GET_INTUSERS = 'GET_INTUSERS'
-// export const ADD_INTUSERS = 'ADD_INTUSERS'
-// export const UPDATE_INTUSERS = 'UPDATE_INTUSERS'
-// export const DEL_INTUSERS = 'DEL_INTUSERS'
-// export const SHOW_ERROR = 'SHOW ERROR'
+export const SET_INTUSERS = 'SET_INTUSERS'
+export const GET_INTUSERS = 'GET_INTUSERS'
+export const ADD_INTUSERS = 'ADD_INTUSERS'
+export const UPDATE_INTUSERS = 'UPDATE_INTUSERS'
+export const DEL_INTUSERS = 'DEL_INTUSERS'
+export const SHOW_ERROR = 'SHOW ERROR'
 
-// //action types
-// export type InternationlAction =
-//   | { type: typeof REQUEST_INTUSERS; payload: null }
-//   | { type: typeof GET_INTUSERS; payload: User }
-//   | { type: typeof ADD_INTUSERS; payload: User }
-//   | { type: typeof UPDATE_INTUSERS; payload: User }
-//   | { type: typeof DEL_INTUSERS; payload: User }
-//   | { type: typeof SHOW_ERROR; payload: string }
+//action types
+export type InternationalAction =
+  | { type: typeof SET_INTUSERS; payload: User[] }
+  | { type: typeof GET_INTUSERS; payload: number }
+  | { type: typeof ADD_INTUSERS; payload: User }
+  | { type: typeof UPDATE_INTUSERS; payload: User }
+  | { type: typeof DEL_INTUSERS; payload: number }
+  | { type: typeof SHOW_ERROR; payload: string }
 
-// //action creators
-// export function requestIntUser(): Action {
-//   console.log('Action - request international data')
-//   return {
-//     type: REQUEST_INTUSERS,
-//     payload: null,
-//   }
-// }
+//action creators
+export function requestIntUser(requestInt: User[]): InternationalAction {
+  console.log('Action - request international data')
+  return {
+    type: SET_INTUSERS,
+    payload: requestInt,
+  }
+}
 
-// export function getIntUser(alldata: User[]): Action {
-//   console.log('Action - received all international data')
-//   return {
-//     type: GET_INTUSERS,
-//     payload: alldata,
-//   }
-// }
+export function getSingleInt(getInt: number): InternationalAction {
+  console.log('Action - received all international data')
+  return {
+    type: GET_INTUSERS,
+    payload: getInt,
+  }
+}
 
-// export function addIntUser(addInternational: User): Action {
-//   console.log('Action - adding international', addInternational)
+export function addInt(addInt: User): InternationalAction {
+  console.log('Action - adding international', addInt)
 
-//   return {
-//     type: ADD_INTUSERS,
-//     payload: addInternational,
-//   }
-// }
+  return {
+    type: ADD_INTUSERS,
+    payload: addInt,
+  }
+}
 
-// export function updateIntUser(id: number): Action {
-//   console.log('Action - updated international id number..', id)
+export function updateInt(updateInt: User): InternationalAction {
+  return {
+    type: UPDATE_INTUSERS,
+    payload: updateInt,
+  }
+}
 
-//   return {
-//     type: UPDATE_INTUSERS,
-//     payload: id,
-//   }
-// }
+export function delInt(delId: number): InternationalAction {
+  console.log('Action - deleted international id number..', delId)
 
-// export function delIntUser(id: number): Action {
-//   console.log('Action - deleted international id number..', id)
+  return {
+    type: DEL_INTUSERS,
+    payload: delId,
+  }
+}
 
-//   return {
-//     type: DEL_INTUSERS,
-//     payload: id,
-//   }
-// }
-
-// export function showError(errorMessage: string): Action {
-//   return {
-//     type: SHOW_ERROR,
-//     payload: errorMessage,
-//   }
-// }
+export function showError(errorMessage: string): InternationalAction {
+  return {
+    type: SHOW_ERROR,
+    payload: errorMessage,
+  }
+}
 
 // //THUNK actions
 
-// export function fetchAllIntUsers(): ThunkAction {
-//   return (dispatch) => {
-//     dispatch(requestIntUser())
-//     //Insertapi get all function below
-//     return getAllUsersAPI()
-//       .then((data) => {
-//         console.log('THUNK - great job fetching all internationals')
-//         dispatch(getIntUser(data))
-//       })
-//       .catch((err) => {
-//         return err.message
-//       })
-//   }
-// }
+export function fetchAllIntUsers(): ThunkAction {
+  return (dispatch) => {
+    return getAllUsersAPI()
+      .then((users) => {
+        console.log(
+          users,
+          'Testing to see if all users show up (fetchAllIntUsers)'
+        )
+        dispatch(requestIntUser(users))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
 
-// export function delOneIntUser(id: number): ThunkAction {
-//   return (dispatch) => {
-//     //Insert api delete function below
-//     return delIntUser(id)
-//       .then(() => {
-//         console.log('THUNK - international deleted:', id)
-//         dispatch(delInternational(id))
-//       })
-//       .catch((err) => {
-//         return err.message
-//       })
-//   }
-// }
+export function getIntThunk(id: number): ThunkAction {
+  return (dispatch) => {
+    return getSingleUserAPI(id)
+      .then(() => {
+        dispatch(getSingleInt(id))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
 
-// export function addAnIntUser(newData: User): ThunkAction {
-//   return (dispatch) => {
-//     dispatch(addIntUser(newData))
-//     //Insertapi get all function below
-//     return INSERTFETCHALLFUNCTIONFROMAPI()
-//       .then((data) => {
-//         console.log('THUNK - great job fetching all internationals')
-//         dispatch(addInternational(data))
-//       })
-//       .catch((err) => {
-//         return err.message
-//       })
-//   }
-// }
+export function addNewIntThunk(localUser: User): ThunkAction {
+  return (dispatch) => {
+    return addNewUserAPI(localUser)
+      .then((user) => {
+        console.log(user, 'Testing if can add new user (addNewIntThunk)')
+        dispatch(addInt(user))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
 
-// export function updateAnInternational(id: number): ThunkAction {
-//   return console.log('THUNK - you have just updated: ', id)
-// }
+export function updateIntThunk(id: number, local: User): ThunkAction {
+  return (dispatch) => {
+    return updateUserAPI(id, local)
+      .then((method) => {
+        console.log(method, 'Testing if can update user (updateIntThunk)')
+        dispatch(updateInt(method))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function delIntThunk(id: number): ThunkAction {
+  return (dispatch) => {
+    return deleteUserAPI(id)
+      .then(() => {
+        dispatch(delInt(id))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
