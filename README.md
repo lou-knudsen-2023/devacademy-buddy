@@ -235,7 +235,7 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 | type | data | purpose |
 | --- | --- | --- |
 | SET_INTUSERS | User[] | Retrieve all international users from the db and store in redux  |
-| GET_INTUSERS | number | Ret individual international user from the db and store in redux |
+| GET_INTUSERS | User | Ret individual international user from the db and store in redux |
 | DEL_INTUSER| number | Delete individual international user from db |
 | ADD_INTUSER | User | Add individual international user to the db  |
 | UPDATE_INTUSER | User | Update individual international |
@@ -245,7 +245,7 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 | type | data | purpose |
 | --- | --- | --- |
 | SET_LOCALUSERS | User[]
-| GET_LOCALUSERS | number | |
+| GET_LOCALUSERS | User | |
 | DEL_LOCALUSER| number | |
 | ADD_LOCALUSER | User | |
 | UPDATE_LOCALUSER | User | |
