@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Nav from './Nav'
 import Home from './Home'
 import SingleProfilePage from './singleTester'
+import SingleProfile from './SingleProfile'
 import CreateProfileForm from './CreateProfileForm'
 // import AllProfiles from './AllProfiles'
 import Footer from './Footer'
@@ -18,7 +19,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:id" element={<SingleProfilePage />} />
+          <Route path="/:id" element={<SingleProfile />} />
           <Route path="/create-profile" element={<CreateProfileForm />} />
           {/* <Route path='' element={<AllProfiles />} */}
         </Routes>
