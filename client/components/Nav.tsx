@@ -1,10 +1,11 @@
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 
-import { Typography, AppBar, Toolbar } from '../../utils/mui'
+import { Typography, AppBar, Toolbar, Box, Button } from '../../utils/mui'
 import { CameraIcon } from '../../utils/mui'
 import { createTheme, ThemeProvider } from '../../utils/mui'
 import { Link } from 'react-router-dom'
+
 const theme = createTheme()
 
 export default function Nav() {
@@ -13,28 +14,57 @@ export default function Nav() {
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon sx={{ mr: 2 }} />
-          <Typography variant="h6" color="inherit" align="right" noWrap>
-            Buddy bar
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Link to="/">
+            <CameraIcon sx={{ mr: 2 }} />
+          </Link>
+          <Typography
+            variant="h6"
+            color="inherit"
+            align="right"
+            style={{ display: 'flex' }}
+            noWrap
+          >
             <IfAuthenticated>
-              <Link to="/locals">Locals </Link>
-              <Link to="/internationals">Internationals</Link>
-
-              <button onClick={() => logout()}>Logout</button>
+              <Box sx={{ mx: 1 }}>
+                <Link to="/locals">Locals</Link>
+              </Box>
+              <Box sx={{ mx: 2 }}>
+                <Link to="/internationals">Internationals</Link>
+              </Box>
+              <Box sx={{ mx: 2 }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => logout()}
+                >
+                  Logout
+                </Button>
+              </Box>
             </IfAuthenticated>
+
             <IfNotAuthenticated>
-              <Link to="/locals" onClick={() => loginWithRedirect()}>
-                Locals{' '}
-              </Link>
-              <Link to="/internationals" onClick={() => loginWithRedirect()}>
-                Internationals
-              </Link>
-              <button onClick={() => loginWithRedirect()}>Login</button>
+              <Box sx={{ mx: 2 }}>
+                <Link to="/locals" onClick={() => loginWithRedirect()}>
+                  Locals
+                </Link>
+              </Box>
+              <Box sx={{ mx: 2 }}>
+                <Link to="/internationals" onClick={() => loginWithRedirect()}>
+                  Internationals
+                </Link>
+              </Box>
+              <Box sx={{ mx: 2 }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => loginWithRedirect()}
+                >
+                  Login
+                </Button>
+              </Box>
             </IfNotAuthenticated>
-            <Link to="/" className="">
-              Buddy Navigation bar
-            </Link>
+            {/* Buddy Navigation bar */}
           </Typography>
         </Toolbar>
       </AppBar>

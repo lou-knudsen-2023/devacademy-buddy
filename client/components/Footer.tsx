@@ -9,7 +9,7 @@ export default function Footer() {
     <ThemeProvider theme={theme}>
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
-          FOOTER
+          {/* FOOTER */}
         </Typography>
         <Typography
           variant="subtitle1"
