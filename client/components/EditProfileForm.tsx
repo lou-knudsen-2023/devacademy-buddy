@@ -1,129 +1,131 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
-import { useAppDispatch } from '../hooks'
-import { addNewLocalThunk } from '../actions/local'
-import { User } from '../../models/Users'
+import { ChangeEvent, FormEvent, useState, useEffect} from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
+import { updateLocalThunk} from '../actions/local'
+import { User, UserData} from '../../models/Users'
+import { useParams } from 'react-router-dom'
 
-function EditProfileForm() {
+
+
+
+interface EditProfileFormProps {
+  initialData: User
+}
+
+function EditProfileForm({ initialData }: EditProfileFormProps) {
+  
   const dispatch = useAppDispatch()
+  const user = useAppSelector(state => state.localReducer[0])
+  
 
-//   const [userMethod, setMethods] = useState({
-//     user_name:'',
-//     first_name: '',
-//     last_name: '',
-//     email: '',
-//     age: '',
-//     country_origin: '',
-//     city: '',
-//     user_status: '',
-//     prim_language: '',
-//     english_level: '',
-//     sharing_one: '',
-//     sharing_two: '',
-//     sharing_three: '',
-//     description: '',
-//     profile_img: '',
-//   } as User)
 
-const [userMethod, setMethods] = useState({} as User)
+
+  const { id } = useParams<{ id: string }>()
+
+  const [formData, setFormData] = useState<User>({
+    ...initialData
+  })
+
+
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setMethods({ ...userMethod, [name]: value })
+    setFormData({ ...formData, [name]: value })
   }
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    dispatch(addNewLocalThunk(userMethod))
+    dispatch(updateLocalThunk(Number(id), formData))
 
-    // setMethods({
-    //     user_name:'',
-    //   first_name: '',
-    //   last_name: '',
-    //   email: '',
-    //   age: '',
-    //   country_origin: '',
-    //   city: '',
-    //   user_status: '',
-    //   prim_language: '',
-    //   english_level: '',
-    //   sharing_one: '',
-    //   sharing_two: '',
-    //   sharing_three: '',
-    //   description: '',
-    //   profile_img: '',
-    // } as User)
+    setFormData({
+      user_name:'',
+      first_name: '',
+      last_name: '',
+      email: '',
+      age: '',
+      country_origin: '',
+      city: '',
+      user_status: '',
+      prim_language: '',
+      english_level: '',
+      sharing_one: '',
+      sharing_two: '',
+      sharing_three: '',
+      description: '',
+      profile_img: '',
+    } as User)
   }
+
 
   return (
     <div className="form-add">
       <form onSubmit={handleSubmit}>
-        <h1>Add user</h1>
+        <h1>edit user</h1>
         <label htmlFor="first_name">User Name</label>
         <input
           name="user_name"
           type="text"
-          value={userMethod.user_name}
+          value={formData.user_name}
           onChange={handleChange}
-          placeholder="User name"
-          required
+ 
+
         />
         <label htmlFor="first_name">First Name</label>
         <input
           name="first_name"
           type="text"
-          value={userMethod.first_name}
+          value={formData.first_name}
           onChange={handleChange}
-          placeholder="First name"
-          required
+
+
         />
         <label htmlFor="last_name">Last name </label>
         <input
           name="last_name"
           type="text"
-          value={userMethod.last_name}
+          value={formData.last_name}
           onChange={handleChange}
-          placeholder="Last name"
-          required
+
+
         />
         <label htmlFor="email">Email</label>
         <input
           name="email"
-          value={userMethod.email}
+          value={formData.email}
           type="text"
           className="text-input"
           onChange={handleChange}
-          placeholder="someone@example.com"
-          required
+
+
         />
         <label htmlFor="age">Age</label>
         <input
           name="age"
-          value={userMethod.age}
+          value={formData.age}
           type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="your age"
-          required
+
         />
         <label htmlFor="country_origin">Country Of Origin</label>
         <input
           name="country_origin"
-          value={userMethod.country_origin}
+          value={formData.country_origin}
           type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="country of origin"
-          required
+
         />
         <label htmlFor="city">City</label>
         <input
           name="city"
-          value={userMethod.city}
+          value={formData.city}
           type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="city"
-          required
+
 
 
 
@@ -133,7 +135,7 @@ const [userMethod, setMethods] = useState({} as User)
                 type="text"
                 name="user_status"
                 id="userStatus"
-                value={userMethod.user_status}
+                value={formData.user_status}
                 onChange={handleChange}
             /> 
 
@@ -142,7 +144,7 @@ const [userMethod, setMethods] = useState({} as User)
                 type="text"
                 id="primLanguage"
                 name="prim_language"
-                value={userMethod.prim_language}
+                value={formData.prim_language}
                 onChange={handleChange}
             /> 
 
@@ -151,8 +153,9 @@ const [userMethod, setMethods] = useState({} as User)
                 type="text"
                 id="englishLevel"
                 name="english_level"
-                value={userMethod.english_level}
+                value={formData.english_level}
                 onChange={handleChange}
+                placeholder = {user.english_level}
             /> 
 
             <label htmlFor="shareOne">Quality to Share One</label>
@@ -160,7 +163,7 @@ const [userMethod, setMethods] = useState({} as User)
                 type="text"
                 id="shareOne"
                 name="sharing_one"
-                value={userMethod.sharing_one}
+                value={formData.sharing_one}
                 onChange={handleChange}
             /> 
 
@@ -169,7 +172,7 @@ const [userMethod, setMethods] = useState({} as User)
                 type="text"
                 id="shareTwo"
                 name="sharing_two"
-                value={userMethod.sharing_two}
+                value={formData.sharing_two}
                 onChange={handleChange}
             /> 
 
@@ -178,7 +181,7 @@ const [userMethod, setMethods] = useState({} as User)
                 type="text"
                 id="shareThree"
                 name="sharing_three"
-                value={userMethod.sharing_three}
+                value={formData.sharing_three}
                 onChange={handleChange}
             /> 
             <label htmlFor="description">Description</label>
@@ -186,7 +189,7 @@ const [userMethod, setMethods] = useState({} as User)
                 type="text"
                 id="description"
                 name="description"
-                value={userMethod.description}
+                value={formData.description}
                 onChange={handleChange}
             /> 
 
@@ -195,7 +198,7 @@ const [userMethod, setMethods] = useState({} as User)
                 type="text"
                 id="sprofileImage"
                 name="profile_img"
-                value={userMethod.profile_img}
+                value={formData.profile_img}
                 onChange={handleChange}
             /> 
         <button type="submit">Submit</button>
