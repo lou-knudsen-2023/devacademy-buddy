@@ -17,7 +17,7 @@ export const SHOW_ERROR = 'SHOW ERROR'
 
 export type LocalAction =
   | { type: typeof SET_LOCALUSERS; payload: User[] }
-  | { type: typeof GET_LOCALUSER; payload: number }
+  | { type: typeof GET_LOCALUSER; payload: User }
   | { type: typeof ADD_LOCALUSER; payload: User }
   | { type: typeof UPDATE_LOCALUSER; payload: User }
   | { type: typeof DEL_LOCALUSER; payload: number }
@@ -30,10 +30,10 @@ export function setLocals(setLocal: User[]): LocalAction {
   }
 }
 
-export function getSingleLocal(getLocal: number): LocalAction {
+export function getSingleLocal(oneLocal: User): LocalAction {
   return {
     type: GET_LOCALUSER,
-    payload: getLocal,
+    payload: oneLocal,
   }
 }
 
@@ -84,8 +84,8 @@ export function setLocalThunk(): ThunkAction {
 export function getLocalThunk(id: number): ThunkAction {
   return (dispatch) => {
     return getSingleUserAPI(id)
-      .then(() => {
-        dispatch(getSingleLocal(id))
+      .then((one) => {
+        dispatch(getSingleLocal(one))
       })
       .catch((err) => {
         dispatch(showError(err.message))

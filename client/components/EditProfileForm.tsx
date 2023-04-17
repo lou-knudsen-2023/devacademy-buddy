@@ -1,11 +1,7 @@
-import { ChangeEvent, FormEvent, useState, useEffect} from 'react'
-import { useAppDispatch, useAppSelector } from '../hooks'
-import { updateLocalThunk} from '../actions/local'
-import { User, UserData} from '../../models/Users'
-import { useParams } from 'react-router-dom'
-
-
-
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { useAppDispatch } from '../hooks'
+import { updateLocalThunk, setLocalThunk } from '../actions/local'
+import { User } from '../../models/Users'
 
 interface EditProfileFormProps {
   initialData: User | null
@@ -13,52 +9,37 @@ interface EditProfileFormProps {
 }
 
 function EditProfileForm({ initialData, id }: EditProfileFormProps) {
-
-  
-  
   const dispatch = useAppDispatch()
-  const user = useAppSelector(state => state.localReducer[0])
-  
+  const [formData, setFormData] = useState({
+    user_name: initialData?.first_name,
+    first_name: initialData?.first_name,
+    last_name: initialData?.last_name,
+    email: initialData?.email,
+    age: initialData?.age,
+    country_origin: initialData?.country_origin,
+    city: initialData?.city,
+    user_status: initialData?.user_status,
+    prim_language: initialData?.prim_language,
+    english_level: initialData?.english_level,
+    sharing_one: initialData?.sharing_one,
+    sharing_two: initialData?.sharing_two,
+    sharing_three: initialData?.sharing_three,
+    description: initialData?.description,
+    profile_img: initialData?.profile_img,
+  } as User)
 
-
-
-  // const { id } = useParams<{ id: string }>()
-
-  const [formData, setFormData] = useState<User | null >(initialData)
-
-
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
   }
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    if (formData){
-      dispatch(updateLocalThunk(Number(id), formData))
-    }
-
-
-    // setFormData({
-    //   user_name:'',
-    //   first_name: '',
-    //   last_name: '',
-    //   email: '',
-    //   age: '',
-    //   country_origin: '',
-    //   city: '',
-    //   user_status: '',
-    //   prim_language: '',
-    //   english_level: '',
-    //   sharing_one: '',
-    //   sharing_two: '',
-    //   sharing_three: '',
-    //   description: '',
-    //   profile_img: '',
-    // } as User)
+    dispatch(updateLocalThunk(id, formData))
+    dispatch(setLocalThunk())
   }
-
 
   return (
     <div className="form-add">
@@ -70,8 +51,6 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
           type="text"
           value={formData?.user_name}
           onChange={handleChange}
- 
-
         />
         <label htmlFor="first_name">First Name</label>
         <input
@@ -79,8 +58,6 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
           type="text"
           value={formData?.first_name}
           onChange={handleChange}
-
-
         />
         <label htmlFor="last_name">Last name </label>
         <input
@@ -88,8 +65,6 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
           type="text"
           value={formData?.last_name}
           onChange={handleChange}
-
-
         />
         <label htmlFor="email">Email</label>
         <input
@@ -98,8 +73,6 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
           type="text"
           className="text-input"
           onChange={handleChange}
-
-
         />
         <label htmlFor="age">Age</label>
         <input
@@ -109,7 +82,6 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
           className="text-input"
           onChange={handleChange}
           placeholder="your age"
-
         />
         <label htmlFor="country_origin">Country Of Origin</label>
         <input
@@ -119,7 +91,6 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
           className="text-input"
           onChange={handleChange}
           placeholder="country of origin"
-
         />
         <label htmlFor="city">City</label>
         <input
@@ -129,82 +100,77 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
           className="text-input"
           onChange={handleChange}
           placeholder="city"
-
-
-
-
         />
-            <label htmlFor="userStatus">User Status</label>
-            <input
-                type="text"
-                name="user_status"
-                id="userStatus"
-                value={formData?.user_status}
-                onChange={handleChange}
-            /> 
+        <label htmlFor="userStatus">User Status</label>
+        <input
+          type="text"
+          name="user_status"
+          id="userStatus"
+          value={formData?.user_status}
+          onChange={handleChange}
+        />
 
-            <label htmlFor="primLanguage">Primary Language</label>
-            <input
-                type="text"
-                id="primLanguage"
-                name="prim_language"
-                value={formData?.prim_language}
-                onChange={handleChange}
-            /> 
+        <label htmlFor="primLanguage">Primary Language</label>
+        <input
+          type="text"
+          id="primLanguage"
+          name="prim_language"
+          value={formData?.prim_language}
+          onChange={handleChange}
+        />
 
-            <label htmlFor="englishLevel">English Level</label>
-            <input
-                type="text"
-                id="englishLevel"
-                name="english_level"
-                value={formData?.english_level}
-                onChange={handleChange}
-                // placeholder = {user.english_level}
-            /> 
+        <label htmlFor="englishLevel">English Level</label>
+        <input
+          type="text"
+          id="englishLevel"
+          name="english_level"
+          value={formData?.english_level}
+          onChange={handleChange}
+          // placeholder = {user.english_level}
+        />
 
-            <label htmlFor="shareOne">Quality to Share One</label>
-            <input
-                type="text"
-                id="shareOne"
-                name="sharing_one"
-                value={formData?.sharing_one}
-                onChange={handleChange}
-            /> 
+        <label htmlFor="shareOne">Quality to Share One</label>
+        <input
+          type="text"
+          id="shareOne"
+          name="sharing_one"
+          value={formData?.sharing_one}
+          onChange={handleChange}
+        />
 
-            <label htmlFor="shareTwo">Quality to Share Two</label>
-            <input
-                type="text"
-                id="shareTwo"
-                name="sharing_two"
-                value={formData?.sharing_two}
-                onChange={handleChange}
-            /> 
+        <label htmlFor="shareTwo">Quality to Share Two</label>
+        <input
+          type="text"
+          id="shareTwo"
+          name="sharing_two"
+          value={formData?.sharing_two}
+          onChange={handleChange}
+        />
 
-            <label htmlFor="shareThree">Quality to Share Three</label>
-            <input
-                type="text"
-                id="shareThree"
-                name="sharing_three"
-                value={formData?.sharing_three}
-                onChange={handleChange}
-            /> 
-            <label htmlFor="description">Description</label>
-            <input
-                type="text"
-                id="description"
-                name="description"
-                value={formData?.description}
-                onChange={handleChange}
-            /> 
+        <label htmlFor="shareThree">Quality to Share Three</label>
+        <input
+          type="text"
+          id="shareThree"
+          name="sharing_three"
+          value={formData?.sharing_three}
+          onChange={handleChange}
+        />
+        <label htmlFor="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          value={formData?.description}
+          onChange={handleChange}
+        />
 
-            <label htmlFor="profileImage">Profile Image</label>
-            <input
-                type="text"
-                id="sprofileImage"
-                name="profile_img"
-                value={formData?.profile_img}
-                onChange={handleChange}
-            /> 
+        <label htmlFor="profileImage">Profile Image</label>
+        <input
+          type="text"
+          id="sprofileImage"
+          name="profile_img"
+          value={formData?.profile_img}
+          onChange={handleChange}
+        />
         <button type="submit">Submit</button>
       </form>
     </div>
