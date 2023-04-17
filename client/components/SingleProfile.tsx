@@ -7,6 +7,19 @@ import { useParams, useNavigate } from 'react-router-dom'
 import EditProfileForm from './EditProfileForm'
 import { User } from '../../models/Users'
 
+import { createTheme, ThemeProvider } from '../../utils/mui'
+import {
+  Typography,
+  Button,
+  Container,
+  Card,
+  CardContent,
+  CardMedia,
+  CardActions,
+} from '../../utils/mui'
+
+const theme = createTheme()
+
 export default function SingleProfilePage() {
   const { loginWithRedirect } = useAuth0()
   const dispatch = useAppDispatch()
@@ -34,63 +47,102 @@ export default function SingleProfilePage() {
 
   return (
     <>
-      <div>
-        <div>
-          <div className="image-container">
-            <img src={user?.profile_img} alt={user?.user_name} />
-          </div>
+      <ThemeProvider theme={theme}>
+        <Container sx={{ py: 8 }} maxWidth="md">
+          <Card
+            style={{
+              width: '100%',
+              minHeight: 350,
+              margin: 10,
+              padding: 50,
+              position: 'relative',
+            }}
+          >
+            <CardContent>
+              <Typography
+                component="h2"
+                variant="h2"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                {user?.first_name} {user?.last_name}
+              </Typography>
+              <CardMedia
+                component="img"
+                sx={{
+                  pt: '56.25%',
+                }}
+                image={user?.profile_img}
+                alt={user?.user_name}
+              />
+              <Typography
+                component="h5"
+                variant="body1"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                About me: {user?.description}
+              </Typography>
 
-          <div className="main-title">
-            <h2 className="title">
-              {user?.first_name} {user?.last_name}
-            </h2>
-          </div>
+              {/* ORDERED LIST FOR SHARING */}
+              <Typography
+                component="h5"
+                variant="body1"
+                align="center"
+                color="text.primary"
+                gutterBottom
+              >
+                <div>
+                  <ol>
+                    <li>{user?.sharing_one}</li>
+                    <li>{user?.sharing_two}</li>
+                    <li>{user?.sharing_three}</li>
+                  </ol>
+                </div>
+              </Typography>
 
-          <div className="content-container">
-            <IfAuthenticated>
-              {/* authenticated and is own profile options */}
-              {/* <button className="sml-button" onClick={handleEditClick}>Edit</button> */}
-              {/* <div><Link to={`/buddy${id}`}>Edit</Link></div> */}
+              {/* AUTH CONTACT DETAILS */}
+              <Typography>
+                <IfAuthenticated>
+                  You can contact me on: {user?.email}
+                </IfAuthenticated>
 
-              {/* <button className="red-button" onClick={handleDelClick}>Delete</button> */}
-            </IfAuthenticated>
+                <IfNotAuthenticated>
+                  <Button onClick={() => loginWithRedirect()}>
+                    Please log in to view details
+                  </Button>
+                </IfNotAuthenticated>
+              </Typography>
+            </CardContent>
 
-            <div className="content">
-              <p>About me: {user?.description}</p>
-            </div>
-
-            <div className="content">
-              <p>Willing to share: </p>
-              <ol>
-                <li>{user?.sharing_one}</li>
-                <li>{user?.sharing_two}</li>
-                <li>{user?.sharing_three}</li>
-              </ol>
-            </div>
-
-            <div className="content">
-              <IfAuthenticated>
-                <p>You can contact me on: </p>
-                <p>{user?.email}</p>
-              </IfAuthenticated>
-
-              <IfNotAuthenticated>
-                <button className="button" onClick={() => loginWithRedirect()}>
-                  Please log in to view details
-                </button>
-              </IfNotAuthenticated>
-            </div>
-       
-            <div>
-          <button onClick={() => handleClick(userId)}>Delete</button>
-          <button onClick={handleEdit}>{editMode ? 'Close' : 'Edit'}</button>
-          {editMode && <EditProfileForm initialData={user ?? null} id={userId} />}
-          </div>
-          </div>
-        </div>
-      </div>
+            {/* DELETE AND EDIT BUTTON */}
+            <CardActions
+              disableSpacing
+              sx={{
+                alignSelf: 'stretch',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                p: 2,
+              }}
+            >
+              <Button size="small" onClick={() => handleClick(userId)}>
+                Delete
+              </Button>
+              <Button size="small" variant="contained" onClick={handleEdit}>
+                {editMode ? 'Close' : 'Edit'}
+              </Button>
+              {editMode && (
+                <EditProfileForm initialData={user ?? null} id={userId} />
+              )}
+            </CardActions>
+          </Card>
+        </Container>
+      </ThemeProvider>
     </>
   )
 }
 
-// const { loginWithRedirect } = useAuth0()
+// DONE
