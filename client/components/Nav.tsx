@@ -1,10 +1,10 @@
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
+import { Link } from 'react-router-dom'
 
 import { Typography, AppBar, Toolbar, Box, Button } from '../../utils/mui'
 import { CameraIcon } from '../../utils/mui'
 import { createTheme, ThemeProvider } from '../../utils/mui'
-import { Link } from 'react-router-dom'
 
 const theme = createTheme()
 
