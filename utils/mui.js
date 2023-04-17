@@ -1,16 +1,31 @@
 // **Styles**
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import {
+  createTheme,
+  ThemeProvider,
+  responsiveFontSizes,
+} from '@mui/material/styles'
 
 // **Core**
-import Typography from '@mui/material/Typography'
-import AppBar from '@mui/material/AppBar'
-import Link from '@mui/material/Link'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
+import {
+  Typography,
+  AppBar,
+  Toolbar,
+  Link,
+  Box,
+  Stack,
+  Button,
+  Container,
+  Grid,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+} from '@mui/material'
 
 // **Icons**
 import CameraIcon from '@mui/icons-material/PhotoCamera'
 
+// --------------------------//
 // **Functions**
 export default function Copyright() {
   return (
@@ -25,7 +40,24 @@ export default function Copyright() {
   )
 }
 
-// **EXPORTS**
-export { Typography, AppBar, Toolbar, Box, Link }
+// --------------------------//
+// **EXPORTS CORE**
+export {
+  Typography,
+  AppBar,
+  Toolbar,
+  Box,
+  Link,
+  Stack,
+  Button,
+  Container,
+  Grid,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+}
+// **EXPORTS STYLES**
+export { createTheme, ThemeProvider, responsiveFontSizes }
+// **EXPORTS ICONS**
 export { CameraIcon }
-export { createTheme, ThemeProvider }
