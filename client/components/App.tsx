@@ -30,26 +30,3 @@ function App() {
 }
 
 export default App
-
-{
-  /* <AllProfiles /> */
-}
-{
-  /* <AddMethodForm /> */
-}
-{
-  /* <div className="container has-text-centered">
-          <Header />
-          <div>
-            <IfNotAuthenticated>
-              <Login />
-            </IfNotAuthenticated>
-
-            <IfAuthenticated>
-              <Routes>
-                <Route path="/" element={<Home />} />
-              </Routes>
-            </IfAuthenticated>
-          </div>
-        </div> */
-}
