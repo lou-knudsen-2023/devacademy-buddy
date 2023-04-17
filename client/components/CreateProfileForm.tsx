@@ -6,7 +6,7 @@ import { User } from '../../models/Users'
 function CreateProfileForm() {
   const dispatch = useAppDispatch()
 
-const [userMethod, setMethods] = useState({} as User)
+  const [userMethod, setMethods] = useState({} as User)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -37,7 +37,7 @@ const [userMethod, setMethods] = useState({} as User)
           value={userMethod.last_name}
           onChange={handleChange}
           placeholder="Last name"
-        //   required
+          //   required
         />
         <label htmlFor="user_name">User Name</label>
         <input
@@ -54,7 +54,7 @@ const [userMethod, setMethods] = useState({} as User)
           className="text-input"
           onChange={handleChange}
           placeholder="someone@example.com"
-        //   required
+          //   required
         />
         <label htmlFor="age">Age</label>
         <input
@@ -63,7 +63,7 @@ const [userMethod, setMethods] = useState({} as User)
           className="text-input"
           onChange={handleChange}
           placeholder="your age"
-        //   required
+          //   required
         />
         <label htmlFor="country_origin">Country Of Origin</label>
         <input
@@ -72,7 +72,7 @@ const [userMethod, setMethods] = useState({} as User)
           className="text-input"
           onChange={handleChange}
           placeholder="country of origin"
-        //   required
+          //   required
         />
         <label htmlFor="city">City</label>
         <input
@@ -81,74 +81,74 @@ const [userMethod, setMethods] = useState({} as User)
           className="text-input"
           onChange={handleChange}
           placeholder="city"
-        //   required
+          //   required
         />
         <label htmlFor="userStatus">User Status</label>
         <input
-            type="text"
-            id="userStatus"
-            value={userMethod.user_status}
-            onChange={handleChange}
-        /> 
+          type="text"
+          id="userStatus"
+          value={userMethod.user_status}
+          onChange={handleChange}
+        />
 
         <label htmlFor="primLanguage">Primary Language</label>
         <input
-            type="text"
-            id="primLanguage"
-            value={userMethod.prim_language}
-            onChange={handleChange}
-        /> 
+          type="text"
+          id="primLanguage"
+          value={userMethod.prim_language}
+          onChange={handleChange}
+        />
 
         <label htmlFor="englishLevel">English Level</label>
         <input
-            type="text"
-            id="englishLevel"
-            value={userMethod.english_level}
-            onChange={handleChange}
-        /> 
+          type="text"
+          id="englishLevel"
+          value={userMethod.english_level}
+          onChange={handleChange}
+        />
 
         <label htmlFor="shareOne">Quality to Share One</label>
         <input
-            type="text"
-            id="shareOne"
-            value={userMethod.sharing_one}
-            onChange={handleChange}
-        /> 
+          type="text"
+          id="shareOne"
+          value={userMethod.sharing_one}
+          onChange={handleChange}
+        />
 
         <label htmlFor="shareTwo">Quality to Share Two</label>
         <input
-            type="text"
-            id="shareTwo"
-            value={userMethod.sharing_two}
-            onChange={handleChange}
-        /> 
+          type="text"
+          id="shareTwo"
+          value={userMethod.sharing_two}
+          onChange={handleChange}
+        />
 
         <label htmlFor="shareThree">Quality to Share Three</label>
         <input
-            type="text"
-            id="shareThree"
-            value={userMethod.sharing_three}
-            onChange={handleChange}
-        /> 
+          type="text"
+          id="shareThree"
+          value={userMethod.sharing_three}
+          onChange={handleChange}
+        />
         <label htmlFor="description">Description</label>
         <input
-            type="text"
-            id="description"
-            value={userMethod.description}
-            onChange={handleChange}
-        /> 
+          type="text"
+          id="description"
+          value={userMethod.description}
+          onChange={handleChange}
+        />
 
         <label htmlFor="profileImage">Profile Image</label>
         <input
-            type="text"
-            id="sprofileImage"
-            value={userMethod.profile_img}
-            onChange={handleChange}
-        /> 
+          type="file"
+          id="sprofileImage"
+          value={userMethod.profile_img}
+          onChange={handleChange}
+        />
         <button type="submit">Submit</button>
       </form>
     </div>
   )
 }
 
-export default  CreateProfileForm
+export default CreateProfileForm

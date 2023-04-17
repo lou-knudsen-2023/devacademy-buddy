@@ -3,12 +3,7 @@ import Nav from './Nav'
 import Home from './Home'
 import SingleProfile from './SingleProfile'
 import CreateProfileForm from './CreateProfileForm'
-<<<<<<< HEAD
-import { useAppSelector } from '../hooks'
 // import AllProfiles from './AllProfiles'
-=======
-import AllProfiles from './AllProfiles'
->>>>>>> 0d753060e611a9d1c0c0ac0e2bbfc3471a4b6a8c
 import Footer from './Footer'
 // import Header from './Header'
 // import Login from './Login'
