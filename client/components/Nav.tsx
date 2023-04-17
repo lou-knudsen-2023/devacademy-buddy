@@ -9,7 +9,6 @@ export default function Nav() {
     <ThemeProvider theme={theme}>
       <AppBar position="relative">
         <Toolbar>
-          {/* For the code example below: SX stands for shortcut which allows you to use custom variants. mr is margin right */}
           <CameraIcon sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" align="right" noWrap>
             Buddy Navigation bar
