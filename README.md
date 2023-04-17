@@ -216,8 +216,12 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 | name | purpose |
 | --- | --- |
 | Home| Welcome registered/unregistered users and display links to other parts of the site |
-| International form | view for international users to sign up |
-| Local form | view for local users to sign up |
+| International Form | view for international users to sign up |
+| Local form | View for local users to sign up |
+| Personal details | View for the personal details of the user |
+| All Profiles | View for displaying all the profiles of international/local |
+| Update Form | View for user to update their details about themselves |
+
 
 ## Reducers (Client Side)
 | name | purpose |
