@@ -1,4 +1,7 @@
+import { BorderAll } from '@mui/icons-material'
+import { grey } from '@mui/material/colors'
 import { Typography, Box, Button, Stack, Container } from '../../utils/mui'
+import { borders } from '@mui/system'
 import AllProfiles from './AllProfiles'
 
 function Home() {
@@ -27,14 +30,7 @@ function Home() {
             color="text.secondary"
             paragraph
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            cursus ut sapien molestie laoreet. Nam venenatis mauris ac purus
-            viverra, in pulvinar libero ullamcorper. Cras dapibus leo varius
-            efficitur maximus. Donec vehicula lacus eu justo auctor, sit amet
-            fringilla dui rutrum. Vestibulum vestibulum justo quis felis
-            dignissim, venenatis sagittis nulla faucibus. Nam porttitor a justo
-            nec volutpat. Praesent diam leo, fermentum et metus non,
-            pellentesque convallis massa.
+            "Connecting people from abroad with local Wellingtonians"
           </Typography>
           <Stack
             sx={{ pt: 4 }}
@@ -47,7 +43,44 @@ function Home() {
           </Stack>
         </Container>
       </Box>
-      <AllProfiles />
+
+      <Box
+        id="testimonial"
+        sx={{
+          // bgcolor: 'background.paper',
+          pt: 8,
+          pb: 6,
+        }}
+      >
+        <Container
+          maxWidth="sm"
+          sx={{
+            bgcolor: '#FFF8DC',
+            borderColor: 'grey.500',
+            borderRadius: '16px',
+            pt: 8,
+            pb: 6,
+          }}
+        >
+          <Typography
+            component="h1"
+            variant="h1"
+            align="center"
+            color="text.primary"
+            gutterBottom
+          >
+            Buddy
+          </Typography>
+          <Typography
+            variant="h5"
+            align="center"
+            color="text.secondary"
+            paragraph
+          >
+            "Connecting people from abroad with local Wellingtonians"
+          </Typography>
+        </Container>
+      </Box>
     </>
   )
 }
