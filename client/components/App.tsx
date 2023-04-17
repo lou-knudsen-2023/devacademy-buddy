@@ -24,6 +24,7 @@ function App() {
     <>
       <ScopedCssBaseline>
         <Nav />
+        {/* <CreateProfileForm /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<SingleProfile />} />
