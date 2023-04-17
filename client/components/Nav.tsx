@@ -27,8 +27,10 @@ export default function Nav() {
               <button onClick={() => logout()}>Logout</button>
             </IfAuthenticated>
             <IfNotAuthenticated>
-              <Link to="/locals">Locals </Link>
-              <Link to="/internationals">Internationals</Link>
+              <Link to="/locals" onClick={() => loginWithRedirect()}>
+                Locals{' '}
+              </Link>
+              <Link onClick={() => loginWithRedirect()}>Internationals</Link>
               <button onClick={() => loginWithRedirect()}>Login</button>
             </IfNotAuthenticated>
           </Typography>
@@ -37,6 +39,8 @@ export default function Nav() {
     </ThemeProvider>
   )
 }
+
+//
 
 //NOTES FOR ESTRELLA RE: MATERIAL UI
 // ThemeProvider is the main wrapper that allows us to manipulate the standard theme for Material UI. This is on every component as the main wrap around
