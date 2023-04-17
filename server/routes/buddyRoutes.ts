@@ -3,6 +3,7 @@ import * as db from '../db/db'
 import { JwtRequest } from '../auth0'
 import checkJwt from '../auth0'
 import { User } from '../../models/Users'
+
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -63,6 +64,7 @@ router.patch('/:id', (req, res) => {
     sharing_three,
     description,
     profile_img,
+    auth_id,
   } = req.body
   const data = {
     id: Number(req.params.id),
@@ -81,6 +83,7 @@ router.patch('/:id', (req, res) => {
     sharing_three: sharing_three,
     description: description,
     profile_img: profile_img,
+    auth_id: auth_id,
   } as User
 
   db.editProfileDB(data)
