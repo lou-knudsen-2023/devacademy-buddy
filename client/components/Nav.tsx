@@ -10,6 +10,7 @@ const theme = createTheme()
 
 export default function Nav() {
   const { logout, loginWithRedirect, user } = useAuth0()
+const ownProfileId = 
 
   return (
     <ThemeProvider theme={theme}>
@@ -26,6 +27,9 @@ export default function Nav() {
             noWrap
           >
             <IfAuthenticated>
+            <Box sx={{ mx: 1 }}>
+                <Link to="/{ownProfileId">Own Profile</Link>
+              </Box>
               <Box sx={{ mx: 1 }}>
                 <Link to="/allprofiles">Locals</Link>
               </Box>
