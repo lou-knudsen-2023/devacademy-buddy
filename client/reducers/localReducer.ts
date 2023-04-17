@@ -12,7 +12,7 @@ function localReducer(state = initialState, action: LocalAction): User[] {
     case 'ADD_LOCALUSER':
       return [...state, payload]
     case 'GET_LOCALUSER':
-      return state.filter((local) => local.id === payload)
+      return state
     case 'DEL_LOCALUSER':
       return state.filter((local) => local.id !== payload)
     default:

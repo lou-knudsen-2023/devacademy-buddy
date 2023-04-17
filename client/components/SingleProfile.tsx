@@ -1,47 +1,36 @@
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { ChangeEvent } from 'react'
-import { delLocalThunk } from '../actions/local'
-import { useState, useEffect } from 'react'
-import { useAppDispatch } from '../hooks'
-import { User } from '../../models/Users'
-import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
+import { getLocalThunk, delLocalThunk } from '../actions/local'
+import { useParams, useNavigate } from 'react-router-dom'
 import EditProfileForm from './EditProfileForm'
+import { User } from '../../models/Users'
 
-//profile confirmation page
-//profile image, delete button, edit button, description section,
-// ordered list items for sharing. authenticated option for showing contact number.
-//
-export default function SingleProfile() {
+export default function SingleProfilePage() {
   const { loginWithRedirect } = useAuth0()
-  const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const id = Number(useParams().id)
+  const navigate = useNavigate()
 
-  const [user, setUser] = useState<User | null>(null)
-  const [editData, setNewData] = useState()
+  const userId = Number(useParams().id)
+
+  const userData: User[] = useAppSelector((store) => store.localReducer)
+  const user = userData.find((art) => art.id === userId)
 
   useEffect(() => {
-    axios
-      .get(`/api/v1/buddy/${id}`)
-      .then((response) => {
-        setUser(response.data)
-      })
-      .catch((error) => {
-        console.error('Error fetching user data:', error)
-      })
-  }, [dispatch, id])
+    dispatch(getLocalThunk(userId))
+  }, [dispatch, userId])
 
   const handleClick = (id: number) => {
     dispatch(delLocalThunk(id))
     navigate('/')
   }
-  // const handleEditClick = (evt:ChangeEvent<HTMLInputElement>) => {
-  //   evt.preventDefault()
-  //   console.log('profile edit button clicked')
-  //   setNewData({...editData, [evt.target.name]: evt.target.value })
-  // }
+
+  const [editMode, setEditMode] = useState(false)
+
+  const handleEdit = () => {
+    setEditMode(!editMode) // Toggle the value of editMode
+  }
 
   return (
     <>
@@ -91,12 +80,17 @@ export default function SingleProfile() {
                 </button>
               </IfNotAuthenticated>
             </div>
+       
             <div>
-              <button onClick={() => handleClick(id)}>Delete</button>
-            </div>
+          <button onClick={() => handleClick(userId)}>Delete</button>
+          <button onClick={handleEdit}>{editMode ? 'Close' : 'Edit'}</button>
+          {editMode && <EditProfileForm initialData={user ?? null} id={userId} />}
+          </div>
           </div>
         </div>
       </div>
     </>
   )
 }
+
+// const { loginWithRedirect } = useAuth0()
