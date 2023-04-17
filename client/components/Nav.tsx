@@ -11,8 +11,9 @@ export default function Nav() {
         <Toolbar>
           <CameraIcon sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" align="right" noWrap>
-          <Link to="/" className="">Buddy Navigation bar</Link>
-            
+            <Link to="/" className="">
+              Buddy Navigation bar
+            </Link>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -21,6 +22,7 @@ export default function Nav() {
 }
 
 //NOTES FOR ESTRELLA RE: MATERIAL UI
+// addign in something
 // ThemeProvider is the main wrapper that allows us to manipulate the standard theme for Material UI. This is on every component as the main wrap around
 // AppBar is specifically for navigation https://mui.com/material-ui/react-app-bar/
 // ToolBar allows us to insert functionality into the app bar https://mui.com/material-ui/api/toolbar/
