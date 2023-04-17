@@ -1,120 +1,142 @@
 import { ThunkAction } from '../store'
 import { User } from '../../models/Users'
-import { FUNCTIONS } from '../apis/apiClient'
+import {
+  getAllUsersAPI,
+  deleteUserAPI,
+  addNewUserAPI,
+  updateUserAPI,
+  getSingleUserAPI,
+} from '../apis/apiClient'
 
-export const REQUEST_INTERNATIONAL = 'REQUEST_INTERNATIONAL'
-export const GET_INTERNATIONAL = 'GET_INTERNATIONAL'
-export const ADD_INTERNATIONAL = 'ADD_INTERNATIONAL'
-export const UPDATE_INTERNATIONAL = 'UPDATE_INTERNATIONAL'
-export const DEL_INTERNATIONAL = 'DEL_INTERNATIONAL'
+export const SET_INTUSERS = 'SET_INTUSERS'
+export const GET_INTUSERS = 'GET_INTUSERS'
+export const ADD_INTUSERS = 'ADD_INTUSERS'
+export const UPDATE_INTUSERS = 'UPDATE_INTUSERS'
+export const DEL_INTUSERS = 'DEL_INTUSERS'
 export const SHOW_ERROR = 'SHOW ERROR'
 
 //action types
-export type Action =
-  | { type: typeof REQUEST_INTERNATIONAL; payload: null }
-  | { type: typeof GET_INTERNATIONAL; payload: User }
-  | { type: typeof ADD_INTERNATIONAL; payload: User }
-  | { type: typeof UPDATE_INTERNATIONAL; payload: User }
-  | { type: typeof DEL_INTERNATIONAL; payload: User }
+export type InternationalAction =
+  | { type: typeof SET_INTUSERS; payload: User[] }
+  | { type: typeof GET_INTUSERS; payload: number }
+  | { type: typeof ADD_INTUSERS; payload: User }
+  | { type: typeof UPDATE_INTUSERS; payload: User }
+  | { type: typeof DEL_INTUSERS; payload: number }
   | { type: typeof SHOW_ERROR; payload: string }
 
 //action creators
-export function requestInternational(): Action {
+export function requestIntUser(requestInt: User[]): InternationalAction {
   console.log('Action - request international data')
   return {
-    type: REQUEST_INTERNATIONAL,
-    payload: null,
+    type: SET_INTUSERS,
+    payload: requestInt,
   }
 }
 
-export function getInternational(international: User[]): Action {
+export function getSingleInt(getInt: number): InternationalAction {
   console.log('Action - received all international data')
   return {
-    type: GET_INTERNATIONAL,
-    payload: international,
+    type: GET_INTUSERS,
+    payload: getInt,
   }
 }
 
-export function addInternational(addInternational: User): Action {
-  console.log('Action - adding international', addInternational)
+export function addInt(addInt: User): InternationalAction {
+  console.log('Action - adding international', addInt)
 
   return {
-    type: ADD_INTERNATIONAL,
-    payload: addInternational,
+    type: ADD_INTUSERS,
+    payload: addInt,
   }
 }
 
-export function updateInternational(id: number): Action {
-  console.log('Action - updated international id number..', id)
+export function updateInt(updateInt: User): InternationalAction {
+  return {
+    type: UPDATE_INTUSERS,
+    payload: updateInt,
+  }
+}
+
+export function delInt(delId: number): InternationalAction {
+  console.log('Action - deleted international id number..', delId)
 
   return {
-    type: UPDATE_INTERNATIONAL,
-    payload: id,
+    type: DEL_INTUSERS,
+    payload: delId,
   }
 }
 
-export function delInternational(id: number): Action {
-  console.log('Action - deleted international id number..', id)
-
-  return {
-    type: DEL_INTERNATIONAL,
-    payload: id,
-  }
-}
-
-export function showError(errorMessage: string): Action {
+export function showError(errorMessage: string): InternationalAction {
   return {
     type: SHOW_ERROR,
     payload: errorMessage,
   }
 }
 
-//THUNK actions
+// //THUNK actions
 
-export function fetchAllInternational(): ThunkAction {
+export function fetchAllIntUsers(): ThunkAction {
   return (dispatch) => {
-    dispatch(requestInternational())
-    //Insertapi get all function below
-    return INSERTFETCHALLFUNCTIONFROMAPI()
-      .then((data) => {
-        console.log('THUNK - great job fetching all internationals')
-        dispatch(getInternational(data))
+    return getAllUsersAPI()
+      .then((users) => {
+        console.log(
+          users,
+          'Testing to see if all users show up (fetchAllIntUsers)'
+        )
+        dispatch(requestIntUser(users))
       })
       .catch((err) => {
-        return err.message
+        dispatch(showError(err.message))
       })
   }
 }
 
-export function delOneInternational(id: number): ThunkAction {
+export function getIntThunk(id: number): ThunkAction {
   return (dispatch) => {
-    //Insert api delete function below
-    return APIDELINTERNATIONALFUNCTIONAPI(id)
+    return getSingleUserAPI(id)
       .then(() => {
-        console.log('THUNK - international deleted:', id)
-        dispatch(delInternational(id))
+        dispatch(getSingleInt(id))
       })
       .catch((err) => {
-        return err.message
+        dispatch(showError(err.message))
       })
   }
 }
 
-export function addAnInternational(newData: User): ThunkAction {
+export function addNewIntThunk(localUser: User): ThunkAction {
   return (dispatch) => {
-    dispatch(addInternational(newData))
-    //Insertapi get all function below
-    return INSERTFETCHALLFUNCTIONFROMAPI()
-      .then((data) => {
-        console.log('THUNK - great job fetching all internationals')
-        dispatch(addInternational(data))
+    return addNewUserAPI(localUser)
+      .then((user) => {
+        console.log(user, 'Testing if can add new user (addNewIntThunk)')
+        dispatch(addInt(user))
       })
       .catch((err) => {
-        return err.message
+        dispatch(showError(err.message))
       })
   }
 }
 
-export function updateAnInternational(id: number): ThunkAction {
-  return console.log('THUNK - you have just updated: ', id)
+export function updateIntThunk(id: number, local: User): ThunkAction {
+  return (dispatch) => {
+    return updateUserAPI(id, local)
+      .then((method) => {
+        console.log(method, 'Testing if can update user (updateIntThunk)')
+        dispatch(updateInt(method))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function delIntThunk(id: number): ThunkAction {
+  return (dispatch) => {
+    return deleteUserAPI(id)
+      .then(() => {
+        dispatch(delInt(id))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
 }
