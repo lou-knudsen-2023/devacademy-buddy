@@ -1,3 +1,6 @@
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { useAuth0 } from '@auth0/auth0-react'
+
 import { Typography, AppBar, Toolbar } from '../../utils/mui'
 import { CameraIcon } from '../../utils/mui'
 import { createTheme, ThemeProvider } from '../../utils/mui'
@@ -5,12 +8,30 @@ import { Link } from 'react-router-dom'
 const theme = createTheme()
 
 export default function Nav() {
+  const { logout, loginWithRedirect, user } = useAuth0()
+
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="relative">
         <Toolbar>
           <CameraIcon sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" align="right" noWrap>
+            Buddy bar
+            <IfAuthenticated>
+              <Link to="/locals">Locals </Link>
+              <Link to="/internationals">Internationals</Link>
+
+              <button onClick={() => logout()}>Logout</button>
+            </IfAuthenticated>
+            <IfNotAuthenticated>
+              <Link to="/locals" onClick={() => loginWithRedirect()}>
+                Locals{' '}
+              </Link>
+              <Link to="/internationals" onClick={() => loginWithRedirect()}>
+                Internationals
+              </Link>
+              <button onClick={() => loginWithRedirect()}>Login</button>
+            </IfNotAuthenticated>
             <Link to="/" className="">
               Buddy Navigation bar
             </Link>
@@ -20,6 +41,8 @@ export default function Nav() {
     </ThemeProvider>
   )
 }
+
+//
 
 //NOTES FOR ESTRELLA RE: MATERIAL UI
 // addign in something
