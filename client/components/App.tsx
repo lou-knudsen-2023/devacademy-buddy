@@ -31,14 +31,7 @@ function App() {
 
 export default App
 
-{
-  /* <AllProfiles /> */
-}
-{
-  /* <AddMethodForm /> */
-}
-{
-  /* <div className="container has-text-centered">
+/* <div className="container has-text-centered">
           <Header />
           <div>
             <IfNotAuthenticated>
@@ -52,4 +45,3 @@ export default App
             </IfAuthenticated>
           </div>
         </div> */
-}
