@@ -1,7 +1,7 @@
 import { Typography, AppBar, Toolbar } from '../../utils/mui'
 import { CameraIcon } from '../../utils/mui'
 import { createTheme, ThemeProvider } from '../../utils/mui'
-
+import { Link } from 'react-router-dom'
 const theme = createTheme()
 
 export default function Nav() {
@@ -12,7 +12,8 @@ export default function Nav() {
           {/* For the code example below: SX stands for shortcut which allows you to use custom variants. mr is margin right */}
           <CameraIcon sx={{ mr: 2 }} />
           <Typography variant="h6" color="inherit" align="right" noWrap>
-            Buddy Navigation bar
+          <Link to="/" className="">Buddy Navigation bar</Link>
+            
           </Typography>
         </Toolbar>
       </AppBar>
