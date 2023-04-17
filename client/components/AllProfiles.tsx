@@ -170,6 +170,9 @@ export function AllProfiles() {
                     }}
                   >
                     <Button size="small">View Profile</Button>
+                    {/* /* /* <Link to={`/${user.id}`} onClick={handleViewProfile}>
+View Profile
+</Link> */ */}
                   </CardActions>
                 </Card>
               </Grid>
@@ -188,8 +191,6 @@ export default AllProfiles
 // const dispatch = useAppDispatch()
 // const data = useAppSelector((globalState) => globalState.subusers)
 {
-  /* <Link to={`/${user.id}`} onClick={handleViewProfile}>
-View Profile
-</Link> */
+
   // adoweekend
 }
