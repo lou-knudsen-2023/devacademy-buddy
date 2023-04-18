@@ -2,15 +2,13 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks'
 import { addNewLocalThunk, setLocalThunk } from '../actions/local'
 import { User } from '../../models/Users'
+import { useAuth0 } from '@auth0/auth0-react'
+import * as Base64 from 'base64-arraybuffer'
 import { useNavigate } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react' 
 
-
-
-function CreateProfileForm() {
+export default function CreateProfileForm() {
   const { getAccessTokenSilently } = useAuth0()
   const dispatch = useAppDispatch()
-
   const navigate = useNavigate()
 
   const [userMethod, setMethods] = useState({} as User)
@@ -22,18 +20,36 @@ function CreateProfileForm() {
     setMethods({ ...userMethod, [name]: value })
   }
 
+  const updateFile = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0]
+      const reader = new FileReader()
+      reader.readAsArrayBuffer(file)
+      reader.onload = () => {
+        setMethods({
+          ...userMethod,
+          profile_img: Base64.encode(reader.result as ArrayBuffer),
+        })
+      }
+    }
+  }
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    try{
-      const token = await getAccessTokenSilently() 
+    try {
+      const token = await getAccessTokenSilently()
 
-      dispatch(addNewLocalThunk(userMethod, token ))
+      dispatch(addNewLocalThunk(userMethod, token))
       dispatch(setLocalThunk())
-      navigate('/allprofiles')
+      navigate(
+        userMethod.user_status == 'local'
+          ? '/all-profiles/international'
+          : '/all-profiles/local'
+      )
     } catch (error) {
-    console.error(error) 
+      console.error(error)
+    }
   }
-} 
 
   return (
     <div className="form-add">
@@ -133,6 +149,7 @@ function CreateProfileForm() {
           id="englishLevel"
           value={userMethod.english_level}
           onChange={handleChange}
+          required
         >
           <option value="no_english">No English</option>
           <option value="some_english">Some English</option>
@@ -174,17 +191,9 @@ function CreateProfileForm() {
         />
 
         <label htmlFor="profileImage">Profile Image</label>
-        <input
-          type="input"
-          id="profileImage"
-          name="profile_img"
-          value={userMethod.profile_img}
-          onChange={handleChange}
-        />
+        <input type="file" id="profileImage" onChange={updateFile} />
         <button type="submit">Submit</button>
       </form>
     </div>
   )
 }
-
-export default CreateProfileForm

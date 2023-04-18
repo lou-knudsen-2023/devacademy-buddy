@@ -2,9 +2,9 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 
-import { Typography, AppBar, Toolbar, Box, Button } from '../../utils/mui'
-import { CameraIcon } from '../../utils/mui'
-import { appTheme } from '../../utils/mui'
+import { Typography, AppBar, Toolbar, Box, Button } from '../styles/imports'
+import { CameraIcon } from '../styles/imports'
+import { appTheme } from '../styles/theme'
 
 export default function Nav() {
   const { logout, loginWithRedirect, user } = useAuth0()
@@ -25,10 +25,10 @@ const ownProfileId =
         >
           <IfAuthenticated>
             <Box sx={{ mx: 1 }}>
-              <Link to="/allprofiles">Locals</Link>
+              <Link to="/all-profiles/local">Locals</Link>
             </Box>
             <Box sx={{ mx: 2 }}>
-              <Link to="/allprofiles">Internationals</Link>
+              <Link to="/all-profiles/international">Internationals</Link>
             </Box>
             <Box sx={{ mx: 2 }}>
               <Button

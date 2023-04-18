@@ -12,7 +12,7 @@ import { setLocalThunk } from '../actions/local'
 import { useEffect } from 'react'
 
 import { ThemeProvider } from '@emotion/react'
-import { appTheme } from '../../utils/mui'
+import { appTheme } from '../styles/theme'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -30,7 +30,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/:id" element={<SingleProfile />} />
             <Route path="/create-profile" element={<CreateProfileForm />} />
-            <Route path="/allprofiles" element={<AllProfiles />} />
+            <Route path="/all-profiles/local" element={<AllProfiles />} />
+            <Route
+              path="/all-profiles/international"
+              element={<AllProfiles />}
+            />
           </Routes>
           <Footer />
         </ThemeProvider>
