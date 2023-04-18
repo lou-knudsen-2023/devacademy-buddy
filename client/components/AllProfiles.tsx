@@ -29,7 +29,7 @@ export function AllProfiles() {
 
   const [showUsers, setShowUsers] = useState(false)
 
-  const urlPath = useLocation().pathname // pathname could be /all-profiles/local OR /all-profiles/international - cannot be any other pathname
+  const urlPath = useLocation().pathname 
   const isLocal = urlPath.indexOf('local') !== -1
 
   const navigate = useNavigate()
