@@ -12,12 +12,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-} from '../../utils/mui'
-import {
-  createTheme,
-  ThemeProvider,
-  responsiveFontSizes,
-} from '../../utils/mui'
+} from '../styles/imports'
 
 export function AllProfiles() {
   const dispatch = useAppDispatch()
@@ -60,7 +55,6 @@ export function AllProfiles() {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
         <Container sx={{ py: 8 }} maxWidth="md">
           <Button
             onClick={() => {
@@ -137,7 +131,6 @@ export function AllProfiles() {
             ))}
           </Grid>
         </Container>
-      </ThemeProvider>
     </>
   )
 }
