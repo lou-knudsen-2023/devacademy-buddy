@@ -52,6 +52,7 @@ export default function EditProfileFormTest({
       }
     }
   }
+  console.log(formData)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
