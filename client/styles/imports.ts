@@ -16,6 +16,7 @@ import {
   CardContent,
   CardMedia,
   CardActionArea,
+  createTheme,
 } from '@mui/material'
 
 // **Icons**
@@ -38,6 +39,7 @@ export {
   CardContent,
   CardMedia,
   CardActionArea,
+  createTheme,
 }
 // **EXPORTS STYLES**
 export { ThemeProvider, responsiveFontSizes }

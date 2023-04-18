@@ -30,7 +30,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<SingleProfile />} />
           <Route path="/create-profile" element={<CreateProfileForm />} />
-          <Route path="/allprofiles" element={<AllProfiles />} />
+          <Route path="/all-profiles/local" element={<AllProfiles />} />
+          <Route path="/all-profiles/international" element={<AllProfiles />} />
         </Routes>
         <Footer />
       </ThemeProvider>

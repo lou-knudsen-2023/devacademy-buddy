@@ -6,7 +6,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import * as Base64 from 'base64-arraybuffer'
 import { useNavigate } from 'react-router-dom'
 
-export default function CreateProfileFormTest() {
+export default function CreateProfileForm() {
   const { getAccessTokenSilently } = useAuth0()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -38,9 +38,14 @@ export default function CreateProfileFormTest() {
     e.preventDefault()
     try {
       const token = await getAccessTokenSilently()
+
       dispatch(addNewLocalThunk(userMethod, token))
       dispatch(setLocalThunk())
-      navigate('/allprofiles')
+      navigate(
+        userMethod.user_status == 'local'
+          ? '/all-profiles/international'
+          : '/all-profiles/local'
+      )
     } catch (error) {
       console.error(error)
     }
@@ -144,6 +149,7 @@ export default function CreateProfileFormTest() {
           id="englishLevel"
           value={userMethod.english_level}
           onChange={handleChange}
+          required
         >
           <option value="no_english">No English</option>
           <option value="some_english">Some English</option>
