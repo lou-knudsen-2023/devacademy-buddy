@@ -2,13 +2,13 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks'
 import { addNewLocalThunk, setLocalThunk } from '../actions/local'
 import { User } from '../../models/Users'
-import { useNavigate } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
+import * as Base64 from 'base64-arraybuffer'
+import { useNavigate } from 'react-router-dom'
 
-function CreateProfileForm() {
+export default function CreateProfileFormTest() {
   const { getAccessTokenSilently } = useAuth0()
   const dispatch = useAppDispatch()
-
   const navigate = useNavigate()
 
   const [userMethod, setMethods] = useState({} as User)
@@ -18,6 +18,20 @@ function CreateProfileForm() {
   ) => {
     const { name, value } = e.target
     setMethods({ ...userMethod, [name]: value })
+  }
+
+  const updateFile = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0]
+      const reader = new FileReader()
+      reader.readAsArrayBuffer(file)
+      reader.onload = () => {
+        setMethods({
+          ...userMethod,
+          profile_img: Base64.encode(reader.result as ArrayBuffer),
+        })
+      }
+    }
   }
 
   const handleSubmit = async (e: FormEvent) => {
@@ -82,7 +96,7 @@ function CreateProfileForm() {
           className="text-input"
           onChange={handleChange}
           placeholder="your age"
-            required
+          //   required
         />
         <label htmlFor="country_origin">Country Of Origin</label>
         <input
@@ -171,17 +185,9 @@ function CreateProfileForm() {
         />
 
         <label htmlFor="profileImage">Profile Image</label>
-        <input
-          type="input"
-          id="profileImage"
-          name="profile_img"
-          value={userMethod.profile_img}
-          onChange={handleChange}
-        />
+        <input type="file" id="profileImage" onChange={updateFile} />
         <button type="submit">Submit</button>
       </form>
     </div>
   )
 }
-
-export default CreateProfileForm

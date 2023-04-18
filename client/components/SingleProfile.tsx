@@ -17,7 +17,6 @@ import {
   CardMedia,
   CardActions,
 } from '../../utils/mui'
-import EditProfileFormTest from './EditTesting'
 
 // import { useStyles } from '../../utils/mui'
 
@@ -62,7 +61,6 @@ export default function SingleProfilePage() {
           }}
         >
           <CardContent>
-
             <Typography
               component="h2"
               variant="h2"
@@ -90,20 +88,20 @@ export default function SingleProfilePage() {
               gutterBottom
             >
               <div>
-                <ul className='about-list'>
-                  <li>Name: {user?.first_name} {user?.last_name}</li>
+                <ul className="about-list">
+                  <li>
+                    Name: {user?.first_name} {user?.last_name}
+                  </li>
                   <li>User name: {user?.user_name}</li>
                   <li>Age: {user?.age}</li>
-                  <li>Origin: {user?.country_origin}, {user?.city}</li>
+                  <li>
+                    Origin: {user?.country_origin}, {user?.city}
+                  </li>
                   <li>Main language: {user?.prim_language}</li>
                   <li>English level: {user?.english_level}</li>
                 </ul>
               </div>
             </Typography>
-
-
-
-
 
             <Typography
               component="h5"
@@ -124,7 +122,7 @@ export default function SingleProfilePage() {
               gutterBottom
             >
               <div>
-                <ul className='likes-list'>
+                <ul className="likes-list">
                   <li>{user?.sharing_one}</li>
                   <li>{user?.sharing_two}</li>
                   <li>{user?.sharing_three}</li>
@@ -132,8 +130,7 @@ export default function SingleProfilePage() {
                 <p>You can contact me on: {user?.email}</p>
               </div>
             </Typography>
-
-         </CardContent>
+          </CardContent>
 
           {/* DELETE AND EDIT BUTTON */}
           <CardActions
@@ -153,7 +150,7 @@ export default function SingleProfilePage() {
               {editMode ? 'Close' : 'Edit'}
             </Button>
             {editMode && (
-              <EditProfileFormTest initialData={user ?? null} id={userId} />
+              <EditProfileForm initialData={user ?? null} id={userId} />
             )}
           </CardActions>
         </Card>

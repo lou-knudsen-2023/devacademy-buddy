@@ -13,7 +13,6 @@ import { useEffect } from 'react'
 
 import { ThemeProvider } from '@emotion/react'
 import { appTheme } from '../../utils/mui'
-import CreateProfileFormTest from './CreateTesting'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -30,7 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/:id" element={<SingleProfile />} />
-            <Route path="/create-profile" element={<CreateProfileFormTest />} />
+            <Route path="/create-profile" element={<CreateProfileForm />} />
             <Route path="/allprofiles" element={<AllProfiles />} />
           </Routes>
           <Footer />
