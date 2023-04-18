@@ -5,14 +5,14 @@ import SingleProfile from './SingleProfile'
 import CreateProfileForm from './CreateProfileForm'
 import AllProfiles from './AllProfiles'
 import Footer from './Footer'
-// import Header from './Header'
-// import Login from './Login'
-// import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 import ScopedCssBaseline from '@mui/material/ScopedCssBaseline'
 import { useAppDispatch } from '../hooks'
 import { setLocalThunk } from '../actions/local'
 import { useEffect } from 'react'
+
+import { ThemeProvider } from '@emotion/react'
+import { appTheme } from '../../utils/mui'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -23,15 +23,17 @@ function App() {
   return (
     <>
       <ScopedCssBaseline>
-        <Nav />
-        {/* <CreateProfileForm /> */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:id" element={<SingleProfile />} />
-          <Route path="/create-profile" element={<CreateProfileForm />} />
-          <Route path="/allprofiles" element={<AllProfiles />} />
-        </Routes>
-        <Footer />
+        <ThemeProvider theme={appTheme}>
+          <Nav />
+          {/* <CreateProfileForm /> */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/:id" element={<SingleProfile />} />
+            <Route path="/create-profile" element={<CreateProfileForm />} />
+            <Route path="/allprofiles" element={<AllProfiles />} />
+          </Routes>
+          <Footer />
+        </ThemeProvider>
       </ScopedCssBaseline>
     </>
   )
