@@ -20,3 +20,5 @@ export interface User extends UserData {
   id: number
   auth_id: string
 }
+
+export interface Theme {}

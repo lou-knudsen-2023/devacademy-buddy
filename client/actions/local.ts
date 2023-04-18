@@ -93,9 +93,9 @@ export function getLocalThunk(id: number): ThunkAction {
   }
 }
 
-export function addNewLocalThunk(localUser: User): ThunkAction {
+export function addNewLocalThunk(localUser: User, token:string): ThunkAction {
   return (dispatch) => {
-    return addNewUserAPI(localUser)
+    return addNewUserAPI(localUser, token)
       .then((user) => {
         dispatch(addLocal(user))
       })
