@@ -43,6 +43,7 @@ export default function Copyright() {
   )
 }
 
+//styles still not working
 export const useStyles = styled({
   profileCard: {
     width: '100%',
