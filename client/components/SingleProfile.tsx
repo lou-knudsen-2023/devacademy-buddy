@@ -76,7 +76,7 @@ export default function SingleProfilePage() {
               sx={{
                 pt: '56.25%',
               }}
-              image={user?.profile_img}
+              image={`data:image/jpeg;base64,${user?.profile_img}`}
               alt={user?.user_name}
             />
 

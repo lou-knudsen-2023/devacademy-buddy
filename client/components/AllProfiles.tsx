@@ -52,7 +52,7 @@ export function AllProfiles() {
                         // 16:9
                         pt: '56.25%',
                       }}
-                      image={PlaceholderImage}
+                      image={`data:image/jpeg;base64,${user?.profile_img}`}
                       alt="placeholder image"
                     />
                     <CardContent sx={{ flexGrow: 1 }}>
