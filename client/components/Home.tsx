@@ -66,15 +66,16 @@ function Home() {
           <div id="localCard">
             <Card
               style={{
-                maxWidth: 345,
+                maxWidth: 350,
                 minHeight: 350,
                 margin: 10,
+                padding: 10,
                 position: 'relative',
               }}
             >
               <IfAuthenticated>
-                <Box>
-                  <Link to="/allprofiles">
+                <Link to="/allprofiles">
+                  <Box>
                     <CardActionArea>
                       <CardMedia
                         component="img"
@@ -86,7 +87,7 @@ function Home() {
                       <CardContent
                         style={{
                           position: 'absolute',
-                          top: 'auto',
+                          top: 0,
                           right: 0,
                           bottom: 0,
                           left: 0,
@@ -95,23 +96,23 @@ function Home() {
                           flexDirection: 'column',
                           justifyContent: 'center',
                         }}
+                      ></CardContent>
+                      <Typography
+                        variant="h6"
+                        component="h2"
+                        align="center"
+                        style={{ color: 'black', padding: 10 }}
                       >
-                        <Typography
-                          variant="h6"
-                          component="h2"
-                          align="center"
-                          style={{ color: 'black' }}
-                        >
-                          View Locals
-                        </Typography>
-                      </CardContent>
+                        View Locals
+                      </Typography>
                     </CardActionArea>
-                  </Link>
-                </Box>
+                  </Box>
+                </Link>
               </IfAuthenticated>
+
               <IfNotAuthenticated>
-                <Box>
-                  <Link to="/locals" onClick={() => loginWithRedirect()}>
+                <Link to="/locals" onClick={() => loginWithRedirect()}>
+                  <Box>
                     <CardActionArea>
                       <CardMedia
                         component="img"
@@ -123,7 +124,7 @@ function Home() {
                       <CardContent
                         style={{
                           position: 'absolute',
-                          top: 'auto',
+                          top: 0,
                           right: 0,
                           bottom: 0,
                           left: 0,
@@ -132,19 +133,18 @@ function Home() {
                           flexDirection: 'column',
                           justifyContent: 'center',
                         }}
+                      ></CardContent>
+                      <Typography
+                        variant="h6"
+                        component="h2"
+                        align="center"
+                        style={{ color: 'black', padding: 10 }}
                       >
-                        <Typography
-                          variant="h6"
-                          component="h2"
-                          align="center"
-                          style={{ color: 'black' }}
-                        >
-                          View Locals
-                        </Typography>
-                      </CardContent>
+                        View Locals
+                      </Typography>
                     </CardActionArea>
-                  </Link>
-                </Box>
+                  </Box>
+                </Link>
               </IfNotAuthenticated>
             </Card>
           </div>
@@ -155,15 +155,16 @@ function Home() {
           >
             <Card
               style={{
-                maxWidth: 345,
+                maxWidth: 350,
                 minHeight: 350,
                 margin: 10,
+                padding: 10,
                 position: 'relative',
               }}
             >
               <IfAuthenticated>
-                <Box>
-                  <Link to="/allprofiles">
+                <Link to="/allprofiles">
+                  <Box>
                     <CardActionArea>
                       <CardMedia
                         component="img"
@@ -175,7 +176,7 @@ function Home() {
                       <CardContent
                         style={{
                           position: 'absolute',
-                          top: 'auto',
+                          top: 0,
                           right: 0,
                           bottom: 0,
                           left: 0,
@@ -184,26 +185,23 @@ function Home() {
                           flexDirection: 'column',
                           justifyContent: 'center',
                         }}
+                      ></CardContent>
+                      <Typography
+                        variant="h6"
+                        component="h2"
+                        align="center"
+                        style={{ color: 'black', padding: 10 }}
                       >
-                        <Typography
-                          variant="h6"
-                          component="h2"
-                          align="center"
-                          style={{ color: 'black' }}
-                        >
-                          View International
-                        </Typography>
-                      </CardContent>
+                        View International
+                      </Typography>
                     </CardActionArea>
-                  </Link>
-                </Box>
+                  </Box>
+                </Link>
               </IfAuthenticated>
+
               <IfNotAuthenticated>
-                <Box>
-                  <Link
-                    to="/internationals"
-                    onClick={() => loginWithRedirect()}
-                  >
+                <Link to="/internationals" onClick={() => loginWithRedirect()}>
+                  <Box>
                     <CardActionArea>
                       <CardMedia
                         component="img"
@@ -215,7 +213,7 @@ function Home() {
                       <CardContent
                         style={{
                           position: 'absolute',
-                          top: 'auto',
+                          top: 0,
                           right: 0,
                           bottom: 0,
                           left: 0,
@@ -224,19 +222,18 @@ function Home() {
                           flexDirection: 'column',
                           justifyContent: 'center',
                         }}
+                      ></CardContent>
+                      <Typography
+                        variant="h6"
+                        component="h2"
+                        align="center"
+                        style={{ color: 'black', padding: 10 }}
                       >
-                        <Typography
-                          variant="h6"
-                          component="h2"
-                          align="center"
-                          style={{ color: 'black' }}
-                        >
-                          View Internationals
-                        </Typography>
-                      </CardContent>
+                        View Internationals
+                      </Typography>
                     </CardActionArea>
-                  </Link>
-                </Box>
+                  </Box>
+                </Link>
               </IfNotAuthenticated>
             </Card>
           </div>

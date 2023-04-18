@@ -57,30 +57,50 @@ export const useStyles = styled({
 export const appTheme = createTheme({
   palette: {
     primary: {
-      main: '#1C54B2',
-      middle: '#2979FF',
+      dark: '#1C54B2',
+      main: '#2979FF',
       light: '#5393FF',
+      contrastText: '#fefefe',
     },
     secondary: {
-      main: '#B28900',
-      middle: '#FFC400',
+      dark: '#B28900',
+      main: '#FFC400',
       light: '#FFCF32',
+      contrastText: '#212121',
     },
     tertiary: {
       main: '#00695F',
       middle: '#009688',
       light: '#33AB9F',
+      contrastText: '#',
     },
-    bodyColor: {
-      offWhite: '#FCFBF5',
+    background: {
+      default: '#FCFBF5',
     },
   },
   typography: {
+    fontFamily: 'Helvetica',
+    color: 'black',
+    button: {
+      fontSize: '1rem',
+    },
+    subtitle2: {
+      fontSize: 12,
+      fontWeight: 'bold',
+    },
     subtitle1: {
       fontSize: 12,
     },
     body1: {
       fontWeight: 500,
+    },
+  },
+  breakpoints: {
+    values: {
+      mobile: 0,
+      tablet: 640,
+      laptop: 1024,
+      desktop: 1200,
     },
   },
 })
@@ -109,3 +129,63 @@ export {
 export { createTheme, ThemeProvider, responsiveFontSizes }
 // **EXPORTS ICONS**
 export { CameraIcon }
+
+// THEME VARIABLES
+// .palette
+// .typography
+// .spacing
+// .breakpoints
+// .zIndex
+// .transitions
+// .components
+
+// -----EXAMPLE FOR components-----
+// const theme = createTheme({
+//   components: {
+//     MuiAppBar: {
+//       styleOverrides: {
+//         root: {
+//           backgroundColor: '#333',
+//           boxShadow: 'none',
+//         },
+//       },
+//     },
+//   },
+// });
+
+// const theme = createTheme({
+//   components: {
+//     MuiTextField: {
+//       styleOverrides: {
+//         root: {
+//           marginTop: '16px',
+//         },
+//         input: {
+//           fontSize: '1rem',
+//         },
+//         label: {
+//           fontSize: '0.9rem',
+//         },
+//       },
+//     },
+//   },
+// });
+
+// const theme = createTheme({
+//   components: {
+//     MuiButton: {
+//       styleOverrides: {
+//         root: {
+//           fontSize: '1rem',
+//           fontWeight: 'bold',
+//         },
+//         contained: {
+//           boxShadow: 'none',
+//         },
+//         outlined: {
+//           borderWidth: '2px',
+//         },
+//       },
+//     },
+//   },
+// });
