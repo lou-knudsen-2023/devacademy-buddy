@@ -74,7 +74,7 @@ function Home() {
             >
               <IfAuthenticated>
                 <Box>
-                  <Link to="/allprofiles">
+                  <Link to="/all-profiles/local">
                     <CardActionArea>
                       <CardMedia
                         component="img"
@@ -163,7 +163,7 @@ function Home() {
             >
               <IfAuthenticated>
                 <Box>
-                  <Link to="/allprofiles">
+                  <Link to="/all-profiles/international">
                     <CardActionArea>
                       <CardMedia
                         component="img"

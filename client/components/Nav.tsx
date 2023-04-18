@@ -24,10 +24,10 @@ export default function Nav() {
         >
           <IfAuthenticated>
             <Box sx={{ mx: 1 }}>
-              <Link to="/allprofiles">Locals</Link>
+              <Link to="/all-profiles/local">Locals</Link>
             </Box>
             <Box sx={{ mx: 2 }}>
-              <Link to="/allprofiles">Internationals</Link>
+              <Link to="/all-profiles/international">Internationals</Link>
             </Box>
             <Box sx={{ mx: 2 }}>
               <Button
