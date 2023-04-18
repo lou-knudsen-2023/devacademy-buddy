@@ -7,7 +7,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import EditProfileForm from './EditProfileForm'
 import { User } from '../../models/Users'
 
-import { ThemeProvider } from '../../utils/mui'
+import { ThemeProvider } from '../styles/imports'
 import {
   Typography,
   Button,
@@ -16,7 +16,7 @@ import {
   CardContent,
   CardMedia,
   CardActions,
-} from '../../utils/mui'
+} from '../styles/imports'
 
 // import { useStyles } from '../../utils/mui'
 
