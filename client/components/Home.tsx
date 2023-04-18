@@ -62,6 +62,8 @@ function Home() {
             </Link>
           </IfAuthenticated>
 
+          
+
           <IfNotAuthenticated>
             <Link to="/locals" onClick={() => loginWithRedirect()}>
               <Box>
@@ -79,6 +81,11 @@ function Home() {
             </Link>
           </IfNotAuthenticated>
         </StyledCard>
+
+
+
+
+
 
         <StyledCard id="internationalCard">
           <IfAuthenticated>
@@ -102,6 +109,11 @@ function Home() {
             <Link to="/internationals" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
+                <CardMedia
+                    component="img"
+                    image="international-icon.svg"
+                    alt="international image"
+                  />
                   <CardMedia image="international-icon.svg" />
                   <StyledCardLabel variant="h6" align="center">
                     View Internationals
