@@ -37,7 +37,8 @@ function Home() {
             color="text.secondary"
             gutterBottom
           >
-            &quot;Connecting people from abroad with local Wellingtonians&quot;
+            &quot;Connecting people from abroad with local
+            Wellingtonian&apos;s&quot;
           </Typography>
         </Container>
       </StyledBox>
@@ -79,8 +80,6 @@ function Home() {
             )}
           </IfAuthenticated>
 
-          
-
           <IfNotAuthenticated>
             <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
@@ -98,11 +97,6 @@ function Home() {
             </Link>
           </IfNotAuthenticated>
         </StyledCard>
-
-
-
-
-
 
         <StyledCard id="internationalCard">
           <IfAuthenticated>
@@ -143,7 +137,7 @@ function Home() {
             <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
-                <CardMedia
+                  <CardMedia
                     component="img"
                     image="international-icon.svg"
                     alt="international image"
@@ -158,10 +152,6 @@ function Home() {
           </IfNotAuthenticated>
         </StyledCard>
       </StyledContainer>
-
-
-
-      
 
       {/* THE TESTIMONIALS SECTION  */}
       <StyledTestCard id="testimonial" maxWidth="md">
