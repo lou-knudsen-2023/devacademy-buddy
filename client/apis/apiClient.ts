@@ -9,9 +9,10 @@ export function deleteUserAPI(id: number): Promise<User> {
   return request.delete(`/api/v1/buddy/${id}`).then((res) => res.body)
 }
 
-export function addNewUserAPI(newUser: User): Promise<User> {
+export function addNewUserAPI(newUser: User, token:string): Promise<User> {
   return request
     .post('/api/v1/buddy')
+    .set('Authorization', `Bearer ${token}`)
     .send(newUser)
     .then((res) => {
       return res.body
