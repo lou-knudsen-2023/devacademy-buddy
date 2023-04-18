@@ -33,6 +33,16 @@ export default function Nav() {
               <Button
                 variant="contained"
                 color="secondary"
+                component={Link}
+                to="/create-profile"
+              >
+                Create Profile
+              </Button>
+            </Box>
+            <Box sx={{ mx: 2 }}>
+              <Button
+                variant="contained"
+                color="secondary"
                 onClick={() => logout()}
               >
                 Logout
