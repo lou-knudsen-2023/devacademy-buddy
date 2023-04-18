@@ -3,9 +3,7 @@ import { useAppDispatch } from '../hooks'
 import { addNewLocalThunk, setLocalThunk } from '../actions/local'
 import { User } from '../../models/Users'
 import { useNavigate } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react' 
-
-
+import { useAuth0 } from '@auth0/auth0-react'
 
 function CreateProfileForm() {
   const { getAccessTokenSilently } = useAuth0()
@@ -24,16 +22,15 @@ function CreateProfileForm() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    try{
-      const token = await getAccessTokenSilently() 
-
-      dispatch(addNewLocalThunk(userMethod, token ))
+    try {
+      const token = await getAccessTokenSilently()
+      dispatch(addNewLocalThunk(userMethod, token))
       dispatch(setLocalThunk())
       navigate('/allprofiles')
     } catch (error) {
-    console.error(error) 
+      console.error(error)
+    }
   }
-} 
 
   return (
     <div className="form-add">
