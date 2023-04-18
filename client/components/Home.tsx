@@ -22,7 +22,7 @@ import {
 } from '../styles/styles'
 
 function Home() {
-  const { logout, loginWithRedirect, user } = useAuth0()
+  const { loginWithRedirect, user } = useAuth0()
 
   return (
     <>
@@ -46,26 +46,43 @@ function Home() {
       <StyledContainer>
         <StyledCard id="localCard">
           <IfAuthenticated>
-            <Link to="/allprofiles">
-              <Box>
-                <CardActionArea>
-                  <StyledCardMedia
-                    component="img"
-                    image="local-icon.svg"
-                    alt="local image"
-                  />
-                  <StyledCardLabel variant="h6" align="center">
-                    View Locals
-                  </StyledCardLabel>
-                </CardActionArea>
-              </Box>
-            </Link>
+            {user?.sub ? (
+              <Link to="/all-profiles/local">
+                <Box>
+                  <CardActionArea>
+                    <StyledCardMedia
+                      component="img"
+                      image="local-icon.svg"
+                      alt="local image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Locals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+            ) : (
+              <Link to="/create-profile">
+                <Box>
+                  <CardActionArea>
+                    <StyledCardMedia
+                      component="img"
+                      image="local-icon.svg"
+                      alt="local image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Locals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+            )}
           </IfAuthenticated>
 
           
 
           <IfNotAuthenticated>
-            <Link to="/locals" onClick={() => loginWithRedirect()}>
+            <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
                   <StyledCardMedia
@@ -89,24 +106,41 @@ function Home() {
 
         <StyledCard id="internationalCard">
           <IfAuthenticated>
-            <Link to="/allprofiles">
-              <Box>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    image="international-icon.svg"
-                    alt="international image"
-                  />
-                  <StyledCardLabel variant="h6" align="center">
-                    View International
-                  </StyledCardLabel>
-                </CardActionArea>
-              </Box>
-            </Link>
+            {user?.sub ? (
+              <Link to="/all-profiles/international">
+                <Box>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      image="international-icon.svg"
+                      alt="international image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Internationals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+            ) : (
+              <Link to="/create-profile">
+                <Box>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      image="international-icon.svg"
+                      alt="international image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Internationals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+            )}
           </IfAuthenticated>
 
           <IfNotAuthenticated>
-            <Link to="/internationals" onClick={() => loginWithRedirect()}>
+            <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
                 <CardMedia
@@ -124,6 +158,10 @@ function Home() {
           </IfNotAuthenticated>
         </StyledCard>
       </StyledContainer>
+
+
+
+      
 
       {/* THE TESTIMONIALS SECTION  */}
       <StyledTestCard id="testimonial" maxWidth="md">
