@@ -149,10 +149,11 @@ export default function SingleProfilePage() {
               p: 2,
             }}
           >
-            <Button size="small" onClick={() => handleClick(userId)}>
-              Delete
-            </Button>
             <AuthIdMatches id={userProfile?.auth_id}>
+              <Button size="small" onClick={() => handleClick(userId)}>
+                Delete
+              </Button>
+
               <Button size="small" variant="contained" onClick={handleEdit}>
                 {editMode ? 'Close' : 'Edit'}
               </Button>
