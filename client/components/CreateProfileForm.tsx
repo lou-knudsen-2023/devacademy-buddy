@@ -129,7 +129,11 @@ export default function CreateProfileForm() {
           id="userStatus"
           value={userMethod.user_status}
           onChange={handleChange}
+          defaultValue={'DEFAULT'}
         >
+          <option value="DEFAULT" disabled hidden>
+            Pick an option
+          </option>
           <option value="international">International</option>
           <option value="local">Local</option>
         </select>
