@@ -2,13 +2,17 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks'
 import { updateLocalThunk, setLocalThunk } from '../actions/local'
 import { User } from '../../models/Users'
+import * as Base64 from 'base64-arraybuffer'
 
 interface EditProfileFormProps {
   initialData: User | null
   id: number
 }
 
-function EditProfileForm({ initialData, id }: EditProfileFormProps) {
+export default function EditProfileForm({
+  initialData,
+  id,
+}: EditProfileFormProps) {
   const dispatch = useAppDispatch()
   const [formData, setFormData] = useState({
     user_name: initialData?.first_name,
@@ -34,6 +38,21 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
   }
+
+  const updateFile = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0]
+      const reader = new FileReader()
+      reader.readAsArrayBuffer(file)
+      reader.onload = () => {
+        setFormData({
+          ...formData,
+          profile_img: Base64.encode(reader.result as ArrayBuffer),
+        })
+      }
+    }
+  }
+  console.log(formData)
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -169,16 +188,11 @@ function EditProfileForm({ initialData, id }: EditProfileFormProps) {
         <input
           type="file"
           id="profileImage"
-          name="profileImage"
           accept="image/*"
-          // value={formData?.profile_img}
-          size={1548576} // maximum size around 1.5 mb
-          onChange={handleChange}
+          onChange={updateFile}
         />
         <button type="submit">Submit</button>
       </form>
     </div>
   )
 }
-
-export default EditProfileForm
