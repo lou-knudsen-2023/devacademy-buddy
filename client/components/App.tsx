@@ -12,7 +12,7 @@ import { setLocalThunk } from '../actions/local'
 import { useEffect } from 'react'
 
 import { ThemeProvider } from '@emotion/react'
-import { appTheme } from '../../utils/mui'
+import { appTheme } from '../styles/theme'
 
 function App() {
   const dispatch = useAppDispatch()

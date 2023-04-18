@@ -12,7 +12,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-} from '../../utils/mui'
+} from '../styles/imports'
 
 export function AllProfiles() {
   const dispatch = useAppDispatch()
