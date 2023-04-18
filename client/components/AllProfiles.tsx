@@ -16,11 +16,6 @@ import {
   CardContent,
   CardMedia,
 } from '../styles/imports'
-import {
-  createTheme,
-  ThemeProvider,
-  responsiveFontSizes,
-} from '../styles/imports'
 
 export function AllProfiles() {
   const dispatch = useAppDispatch()
@@ -49,22 +44,9 @@ export function AllProfiles() {
     ? users.filter((user) => user.user_status === 'local')
     : users.filter((user) => user.user_status === 'international')
 
-  let theme = createTheme({
-    typography: {
-      subtitle1: {
-        fontSize: 12,
-      },
-      body1: {
-        fontWeight: 500,
-      },
-    },
-  })
-
-  theme = responsiveFontSizes(theme)
-
   return (
     <>
-      <ThemeProvider theme={theme}>
+
         <Container sx={{ py: 8 }} maxWidth="md">
           <Button
             onClick={() => {
@@ -144,7 +126,6 @@ export function AllProfiles() {
             ))}
           </Grid>
         </Container>
-      </ThemeProvider>
     </>
   )
 }
