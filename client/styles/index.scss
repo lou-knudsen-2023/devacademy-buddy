@@ -26,3 +26,12 @@
 // }
 
 
+.bg-img{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url(/server/public/sulthan-auliya-KRtXOMfS4oA-unsplash.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+    margin-top: 8%;
+}
