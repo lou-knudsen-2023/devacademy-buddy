@@ -8,7 +8,6 @@ import { appTheme } from '../styles/theme'
 
 export default function Nav() {
   const { logout, loginWithRedirect, user } = useAuth0()
-const ownProfileId = 
 
   return (
     <AppBar className={appTheme.palette.primary.main} position="relative">
