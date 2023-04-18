@@ -61,6 +61,7 @@ export default function SingleProfilePage() {
           }}
         >
           <CardContent>
+
             <Typography
               component="h2"
               variant="h2"
@@ -70,6 +71,7 @@ export default function SingleProfilePage() {
             >
               {user?.first_name} {user?.last_name}
             </Typography>
+
             <CardMedia
               component="img"
               sx={{
@@ -78,6 +80,30 @@ export default function SingleProfilePage() {
               image={user?.profile_img}
               alt={user?.user_name}
             />
+
+            <Typography
+              component="h5"
+              variant="body1"
+              align="center"
+              color="text.primary"
+              gutterBottom
+            >
+              <div>
+                <ul className='about-list'>
+                  <li>Name: {user?.first_name} {user?.last_name}</li>
+                  <li>User name: {user?.user_name}</li>
+                  <li>Age: {user?.age}</li>
+                  <li>Origin: {user?.country_origin}, {user?.city}</li>
+                  <li>Main language: {user?.prim_language}</li>
+                  <li>English level: {user?.english_level}</li>
+                </ul>
+              </div>
+            </Typography>
+
+
+
+
+
             <Typography
               component="h5"
               variant="body1"
@@ -97,27 +123,16 @@ export default function SingleProfilePage() {
               gutterBottom
             >
               <div>
-                <ol>
+                <ul className='likes-list'>
                   <li>{user?.sharing_one}</li>
                   <li>{user?.sharing_two}</li>
                   <li>{user?.sharing_three}</li>
-                </ol>
+                </ul>
+                <p>You can contact me on: {user?.email}</p>
               </div>
             </Typography>
 
-            {/* AUTH CONTACT DETAILS */}
-            <Typography>
-              <IfAuthenticated>
-                You can contact me on: {user?.email}
-              </IfAuthenticated>
-
-              <IfNotAuthenticated>
-                <Button onClick={() => loginWithRedirect()}>
-                  Please log in to view details
-                </Button>
-              </IfNotAuthenticated>
-            </Typography>
-          </CardContent>
+         </CardContent>
 
           {/* DELETE AND EDIT BUTTON */}
           <CardActions
