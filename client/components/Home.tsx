@@ -80,7 +80,7 @@ function Home() {
                         component="img"
                         height="100%"
                         width="100%"
-                        image="local.png"
+                        image="local-icon.svg"
                         alt="local image"
                       />
                       <CardContent
@@ -117,7 +117,7 @@ function Home() {
                         component="img"
                         height="100%"
                         width="100%"
-                        image="local.png"
+                        image="local-icon.svg"
                         alt="local image"
                       />
                       <CardContent
@@ -169,7 +169,7 @@ function Home() {
                         component="img"
                         height="100%"
                         width="100%"
-                        image="local.png"
+                        image="international-icon.svg"
                         alt="international image"
                       />
                       <CardContent
@@ -209,7 +209,7 @@ function Home() {
                         component="img"
                         height="100%"
                         width="100%"
-                        image="local.png"
+                        image="international-icon.svg"
                         alt="international image"
                       />
                       <CardContent
