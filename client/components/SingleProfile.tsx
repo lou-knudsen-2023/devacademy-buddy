@@ -17,6 +17,7 @@ import {
   CardMedia,
   CardActions,
 } from '../../utils/mui'
+import EditProfileFormTest from './EditTesting'
 
 // import { useStyles } from '../../utils/mui'
 
@@ -137,7 +138,7 @@ export default function SingleProfilePage() {
               {editMode ? 'Close' : 'Edit'}
             </Button>
             {editMode && (
-              <EditProfileForm initialData={user ?? null} id={userId} />
+              <EditProfileFormTest initialData={user ?? null} id={userId} />
             )}
           </CardActions>
         </Card>
