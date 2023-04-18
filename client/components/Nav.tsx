@@ -23,11 +23,11 @@ export default function Nav() {
           noWrap
         >
           <IfAuthenticated>
-            <Box sx={{ mx: 2 }}>
-              <Link to="/allprofiles">Locals</Link>
+            <Box sx={{ mx: 1 }}>
+              <Link to="/all-profiles/local">Locals</Link>
             </Box>
             <Box sx={{ mx: 2 }}>
-              <Link to="/allprofiles">Internationals</Link>
+              <Link to="/all-profiles/international">Internationals</Link>
             </Box>
             <Box sx={{ mx: 2 }}>
               <Button
