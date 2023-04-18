@@ -37,8 +37,7 @@ function Home() {
             color="text.secondary"
             gutterBottom
           >
-            &quot;Connecting people from abroad with local
-            Wellingtonian&apos;s&quot;
+            Connecting people from abroad with local Wellingtonian&apos;s
           </Typography>
         </Container>
       </StyledBox>
