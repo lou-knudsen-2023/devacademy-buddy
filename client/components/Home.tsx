@@ -159,9 +159,9 @@ function Home() {
             Testimonials
           </StyledTestLabel>
           <StyledTestContent variant="h5" align="center" gutterBottom>
-            &quot;I had the best time meeting Reuben. He really helped me feel
+            &quot;I had the best time meeting Lucas. He really helped me feel
             comfortable learning about Wellington and finding the best place to
-            eat. Yum!&quot; - Ado
+            eat. Yum!&quot; - Sarah
           </StyledTestContent>
         </StyledBox>
       </StyledTestCard>
