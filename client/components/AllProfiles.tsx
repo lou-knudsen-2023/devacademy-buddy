@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
 import { setLocalThunk } from '../actions/local'
 import { useAppDispatch, useAppSelector } from '../hooks'
+import { AuthIdMatchesProfile } from './Authenticated'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+
+import { User } from '../../models/Users'
 
 import {
   Typography,
@@ -29,7 +32,7 @@ export function AllProfiles() {
 
   const [showUsers, setShowUsers] = useState(false)
 
-  const urlPath = useLocation().pathname 
+  const urlPath = useLocation().pathname
   const isLocal = urlPath.indexOf('local') !== -1
 
   const navigate = useNavigate()

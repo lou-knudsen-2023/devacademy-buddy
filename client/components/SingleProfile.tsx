@@ -1,10 +1,11 @@
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { AuthIdMatches } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { getLocalThunk, delLocalThunk } from '../actions/local'
 import { useParams, useNavigate } from 'react-router-dom'
 import EditProfileForm from './EditProfileForm'
+
 import { User } from '../../models/Users'
 
 import { ThemeProvider } from '../styles/imports'
@@ -25,10 +26,15 @@ export default function SingleProfilePage() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
+  const { user } = useAuth0()
+  console.log(user, 'testing the auth0 user to see what comes up')
+
   const userId = Number(useParams().id)
 
   const userData: User[] = useAppSelector((store) => store.localReducer)
-  const user = userData.find((art) => art.id === userId)
+  const userProfile = userData.find((person) => person.id === userId)
+
+  const authIdMatches = user?.sub === userProfile?.auth_id
 
   useEffect(() => {
     dispatch(getLocalThunk(userId))
@@ -68,7 +74,7 @@ export default function SingleProfilePage() {
               color="text.primary"
               gutterBottom
             >
-              {user?.first_name} {user?.last_name}
+              {userProfile?.first_name} {userProfile?.last_name}
             </Typography>
 
             <CardMedia
@@ -76,8 +82,8 @@ export default function SingleProfilePage() {
               sx={{
                 pt: '56.25%',
               }}
-              image={`data:image/jpeg;base64,${user?.profile_img}`}
-              alt={user?.user_name}
+              image={`data:image/jpeg;base64,${userProfile?.profile_img}`}
+              alt={userProfile?.user_name}
             />
 
             <Typography
@@ -90,15 +96,15 @@ export default function SingleProfilePage() {
               <div>
                 <ul className="about-list">
                   <li>
-                    Name: {user?.first_name} {user?.last_name}
+                    Name: {userProfile?.first_name} {userProfile?.last_name}
                   </li>
-                  <li>User name: {user?.user_name}</li>
-                  <li>Age: {user?.age}</li>
+                  <li>User name: {userProfile?.user_name}</li>
+                  <li>Age: {userProfile?.age}</li>
                   <li>
-                    Origin: {user?.country_origin}, {user?.city}
+                    Origin: {userProfile?.country_origin}, {userProfile?.city}
                   </li>
-                  <li>Main language: {user?.prim_language}</li>
-                  <li>English level: {user?.english_level}</li>
+                  <li>Main language: {userProfile?.prim_language}</li>
+                  <li>English level: {userProfile?.english_level}</li>
                 </ul>
               </div>
             </Typography>
@@ -110,7 +116,7 @@ export default function SingleProfilePage() {
               color="text.primary"
               gutterBottom
             >
-              About me: {user?.description}
+              About me: {userProfile?.description}
             </Typography>
 
             {/* ORDERED LIST FOR SHARING */}
@@ -123,11 +129,11 @@ export default function SingleProfilePage() {
             >
               <div>
                 <ul className="likes-list">
-                  <li>{user?.sharing_one}</li>
-                  <li>{user?.sharing_two}</li>
-                  <li>{user?.sharing_three}</li>
+                  <li>{userProfile?.sharing_one}</li>
+                  <li>{userProfile?.sharing_two}</li>
+                  <li>{userProfile?.sharing_three}</li>
                 </ul>
-                <p>You can contact me on: {user?.email}</p>
+                <p>You can contact me on: {userProfile?.email}</p>
               </div>
             </Typography>
           </CardContent>
@@ -146,11 +152,14 @@ export default function SingleProfilePage() {
             <Button size="small" onClick={() => handleClick(userId)}>
               Delete
             </Button>
-            <Button size="small" variant="contained" onClick={handleEdit}>
-              {editMode ? 'Close' : 'Edit'}
-            </Button>
+            <AuthIdMatches id={userProfile?.auth_id}>
+              <Button size="small" variant="contained" onClick={handleEdit}>
+                {editMode ? 'Close' : 'Edit'}
+              </Button>
+            </AuthIdMatches>
+
             {editMode && (
-              <EditProfileForm initialData={user ?? null} id={userId} />
+              <EditProfileForm initialData={userProfile ?? null} id={userId} />
             )}
           </CardActions>
         </Card>
