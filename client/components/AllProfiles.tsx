@@ -46,88 +46,89 @@ export function AllProfiles() {
 
   return (
     <>
+      <Container sx={{ py: 8 }} maxWidth="md">
+        <Button
+          onClick={() => {
+            navigate(`/all-profiles/${isLocal ? 'international' : 'local'}`)
+          }}
+        >
+          {isLocal ? 'Show International' : 'Show Local'}
+        </Button>
 
-        <Container sx={{ py: 8 }} maxWidth="md">
-          <Button
-            onClick={() => {
-              navigate(`/all-profiles/${isLocal ? 'international' : 'local'}`)
-            }}
-          >
-            {isLocal ? 'Show International' : 'Show Local'}
-          </Button>
-
-          <Grid container spacing={4}>
-            {filteredUsers.map((user) => (
-              <AuthIdDoesNotMatch key={user.id} id={user?.auth_id}>
-                <Grid item xs={12} sm={6} md={4}>
-                  {showUsers ? null : (
-                    <Card
+        <Grid container spacing={4}>
+          {filteredUsers.map((user) => (
+            <AuthIdDoesNotMatch key={user.id} id={user?.auth_id}>
+              <Grid item xs={12} sm={6} md={4}>
+                {showUsers ? null : (
+                  <Card
+                    sx={{
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
                       sx={{
-                        height: '100%',
+                        // 16:9
+                        pt: '56.25%',
+                      }}
+                      image={`data:image/jpeg;base64,${user?.profile_img}`}
+                      alt="placeholder image"
+                    />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Typography
+                        variant="h5"
+                        color="primary"
+                        align="center"
+                        gutterBottom
+                      >
+                        {user.first_name}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        color="textSecondary"
+                        align="center"
+                        gutterBottom
+                      >
+                        Age: {user.age}
+                      </Typography>
+                      <Typography
+                        variant="subtitle1"
+                        color="secondary"
+                        align="center"
+                        gutterBottom
+                      >
+                        {user.country_origin}
+                      </Typography>
+                    </CardContent>
+                    <CardActions
+                      disableSpacing
+                      sx={{
+                        alignSelf: 'stretch',
                         display: 'flex',
-                        flexDirection: 'column',
+                        justifyContent: 'flex-end',
+                        alignItems: 'flex-start',
+                        p: 2,
                       }}
                     >
-                      <CardMedia
-                        component="img"
-                        sx={{
-                          // 16:9
-                          pt: '56.25%',
-                        }}
-                        image={`data:image/jpeg;base64,${user?.profile_img}`}
-                        alt="placeholder image"
-                      />
-                      <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography
-                          variant="h5"
-                          color="primary"
-                          align="center"
-                          gutterBottom
-                        >
-                          {user.first_name}
-                        </Typography>
-                        <Typography
-                          variant="body1"
-                          color="textSecondary"
-                          align="center"
-                          gutterBottom
-                        >
-                          Age: {user.age}
-                        </Typography>
-                        <Typography
-                          variant="subtitle1"
-                          color="secondary"
-                          align="center"
-                          gutterBottom
-                        >
-                          {user.country_origin}
-                        </Typography>
-                      </CardContent>
-                      <CardActions
-                        disableSpacing
-                        sx={{
-                          alignSelf: 'stretch',
-                          display: 'flex',
-                          justifyContent: 'flex-end',
-                          alignItems: 'flex-start',
-                          p: 2,
-                        }}
-                      >
-                        <Button size="small">
-                          <Link to={`/${user.id}`} onClick={handleViewProfile}>
-                            View Profile
-                          </Link>
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  )}
-                </Grid>
-              </AuthIdDoesNotMatch>
-            ))}
-          </Grid>
-        </Container>
+                      <Button size="small">
+                        <Link to={`/${user.id}`} onClick={handleViewProfile}>
+                          View Profile
+                        </Link>
+                      </Button>
+                    </CardActions>
+                  </Card>
+                )}
+              </Grid>
+            </AuthIdDoesNotMatch>
+          ))}
+        </Grid>
+      </Container>
     </>
   )
 }
 
 export default AllProfiles
+
+// LOU TEST
