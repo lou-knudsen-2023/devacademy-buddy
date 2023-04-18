@@ -20,6 +20,7 @@ import {
   // responsiveFontSizes,
 } from '../../utils/mui'
 
+import StyledHomeCard from '../../utils/mui'
 const theme = createTheme()
 
 function Home() {
@@ -64,15 +65,7 @@ function Home() {
           style={{ display: 'flex', justifyContent: 'center' }}
         >
           <div id="localCard">
-            <Card
-              style={{
-                maxWidth: 350,
-                minHeight: 350,
-                margin: 10,
-                padding: 10,
-                position: 'relative',
-              }}
-            >
+            <Card style={{ StyledHomeCard }}>
               <IfAuthenticated>
                 <Link to="/allprofiles">
                   <Box>

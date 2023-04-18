@@ -44,15 +44,22 @@ export default function Copyright() {
 }
 
 //styles still not working
-export const useStyles = styled({
-  profileCard: {
-    width: '100%',
-    minHeight: 350,
-    margin: 10,
-    padding: 50,
-    position: 'relative',
-  },
-})
+// export const StyledHomeCard = styled(Card)(({ appTheme }) => ({
+//   maxWidth: 350,
+//   minHeight: 350,
+//   margin: 10,
+//   padding: 10,
+//   position: 'relative',
+// }))
+
+// can not access the theme using the option below
+export const StyledHomeCard = {
+  maxWidth: 350,
+  minHeight: 350,
+  margin: 10,
+  padding: 10,
+  position: 'relative',
+}
 
 export const appTheme = createTheme({
   palette: {
@@ -81,6 +88,7 @@ export const appTheme = createTheme({
   typography: {
     fontFamily: 'Helvetica',
     color: 'black',
+    align: 'center',
     button: {
       fontSize: '1rem',
     },
@@ -95,14 +103,14 @@ export const appTheme = createTheme({
       fontWeight: 500,
     },
   },
-  breakpoints: {
-    values: {
-      mobile: 0,
-      tablet: 640,
-      laptop: 1024,
-      desktop: 1200,
-    },
-  },
+  // breakpoints: {
+  //   values: {
+  //     mobile: 0,
+  //     tablet: 640,
+  //     laptop: 1024,
+  //     desktop: 1200,
+  //   },
+  // },
 })
 
 // theme = responsiveFontSizes(theme)
