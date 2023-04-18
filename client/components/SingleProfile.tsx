@@ -17,6 +17,7 @@ import {
   CardMedia,
   CardActions,
 } from '../../utils/mui'
+import EditProfileFormTest from './EditTesting'
 
 // import { useStyles } from '../../utils/mui'
 
@@ -77,7 +78,7 @@ export default function SingleProfilePage() {
               sx={{
                 pt: '56.25%',
               }}
-              image={user?.profile_img}
+              image={`data:image/jpeg;base64,${user?.profile_img}`}
               alt={user?.user_name}
             />
 
@@ -152,7 +153,7 @@ export default function SingleProfilePage() {
               {editMode ? 'Close' : 'Edit'}
             </Button>
             {editMode && (
-              <EditProfileForm initialData={user ?? null} id={userId} />
+              <EditProfileFormTest initialData={user ?? null} id={userId} />
             )}
           </CardActions>
         </Card>

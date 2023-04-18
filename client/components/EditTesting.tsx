@@ -1,114 +1,129 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks'
-import { addNewLocalThunk, setLocalThunk } from '../actions/local'
+import { updateLocalThunk, setLocalThunk } from '../actions/local'
 import { User } from '../../models/Users'
-import { useNavigate } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
+import * as Base64 from 'base64-arraybuffer'
 
-function CreateProfileForm() {
-  const { getAccessTokenSilently } = useAuth0()
+interface EditProfileFormProps {
+  initialData: User | null
+  id: number
+}
+
+export default function EditProfileFormTest({
+  initialData,
+  id,
+}: EditProfileFormProps) {
   const dispatch = useAppDispatch()
-
-  const navigate = useNavigate()
-
-  const [userMethod, setMethods] = useState({} as User)
+  const [formData, setFormData] = useState({
+    user_name: initialData?.first_name,
+    first_name: initialData?.first_name,
+    last_name: initialData?.last_name,
+    email: initialData?.email,
+    age: initialData?.age,
+    country_origin: initialData?.country_origin,
+    city: initialData?.city,
+    user_status: initialData?.user_status,
+    prim_language: initialData?.prim_language,
+    english_level: initialData?.english_level,
+    sharing_one: initialData?.sharing_one,
+    sharing_two: initialData?.sharing_two,
+    sharing_three: initialData?.sharing_three,
+    description: initialData?.description,
+    profile_img: initialData?.profile_img,
+  } as User)
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target
-    setMethods({ ...userMethod, [name]: value })
+    setFormData({ ...formData, [name]: value })
   }
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    try {
-      const token = await getAccessTokenSilently()
-      dispatch(addNewLocalThunk(userMethod, token))
-      dispatch(setLocalThunk())
-      navigate('/allprofiles')
-    } catch (error) {
-      console.error(error)
+  const updateFile = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0]
+      const reader = new FileReader()
+      reader.readAsArrayBuffer(file)
+      reader.onload = () => {
+        setFormData({
+          ...formData,
+          profile_img: Base64.encode(reader.result as ArrayBuffer),
+        })
+      }
     }
+  }
+  console.log(formData)
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    dispatch(updateLocalThunk(id, formData))
+    dispatch(setLocalThunk())
   }
 
   return (
     <div className="form-add">
       <form onSubmit={handleSubmit}>
-        <h1>Add user</h1>
-
+        <h1>edit user</h1>
+        <label htmlFor="first_name">User Name</label>
+        <input
+          name="user_name"
+          type="text"
+          value={formData?.user_name}
+          onChange={handleChange}
+        />
         <label htmlFor="first_name">First Name</label>
         <input
-          type="text"
           name="first_name"
-          value={userMethod.first_name}
+          type="text"
+          value={formData?.first_name}
           onChange={handleChange}
-          placeholder="First name"
-          required
         />
         <label htmlFor="last_name">Last name </label>
         <input
-          type="text"
           name="last_name"
-          value={userMethod.last_name}
-          onChange={handleChange}
-          placeholder="Last name"
-          required
-        />
-        <label htmlFor="user_name">User Name</label>
-        <input
           type="text"
-          name="user_name"
-          value={userMethod.user_name}
+          value={formData?.last_name}
           onChange={handleChange}
-          placeholder="User name"
-          required
         />
         <label htmlFor="email">Email</label>
         <input
           name="email"
-          value={userMethod.email}
+          value={formData?.email}
           type="text"
           className="text-input"
           onChange={handleChange}
-          placeholder="someone@example.com"
-          required
         />
         <label htmlFor="age">Age</label>
         <input
           name="age"
-          value={userMethod.age}
+          value={formData?.age}
           type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="your age"
-            required
         />
         <label htmlFor="country_origin">Country Of Origin</label>
         <input
           name="country_origin"
-          value={userMethod.country_origin}
+          value={formData?.country_origin}
           type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="country of origin"
-          //   required
         />
         <label htmlFor="city">City</label>
         <input
           name="city"
-          value={userMethod.city}
+          value={formData?.city}
           type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="city"
-          //   required
         />
         <label htmlFor="userStatus">User Status</label>
         <select
-          name="user_status"
           id="userStatus"
-          value={userMethod.user_status}
+          value={formData?.user_status}
           onChange={handleChange}
         >
           <option value="international">International</option>
@@ -117,18 +132,17 @@ function CreateProfileForm() {
 
         <label htmlFor="primLanguage">Primary Language</label>
         <input
-          name="prim_language"
           type="text"
           id="primLanguage"
-          value={userMethod.prim_language}
+          name="prim_language"
+          value={formData?.prim_language}
           onChange={handleChange}
         />
 
         <label htmlFor="englishLevel">English Level</label>
         <select
-          name="english_level"
           id="englishLevel"
-          value={userMethod.english_level}
+          value={formData?.english_level}
           onChange={handleChange}
         >
           <option value="no_english">No English</option>
@@ -138,50 +152,47 @@ function CreateProfileForm() {
 
         <label htmlFor="shareOne">Quality to Share One</label>
         <input
-          name="sharing_one"
           type="text"
           id="shareOne"
-          value={userMethod.sharing_one}
+          name="sharing_one"
+          value={formData?.sharing_one}
           onChange={handleChange}
         />
 
         <label htmlFor="shareTwo">Quality to Share Two</label>
         <input
-          name="sharing_two"
           type="text"
           id="shareTwo"
-          value={userMethod.sharing_two}
+          name="sharing_two"
+          value={formData?.sharing_two}
           onChange={handleChange}
         />
 
         <label htmlFor="shareThree">Quality to Share Three</label>
         <input
-          name="sharing_three"
           type="text"
           id="shareThree"
-          value={userMethod.sharing_three}
+          name="sharing_three"
+          value={formData?.sharing_three}
           onChange={handleChange}
         />
         <label htmlFor="description">Description</label>
         <textarea
-          name="description"
           id="description"
-          value={userMethod.description}
+          name="description"
+          value={formData?.description}
           onChange={handleChange}
         />
 
         <label htmlFor="profileImage">Profile Image</label>
         <input
-          type="input"
+          type="file"
           id="profileImage"
-          name="profile_img"
-          value={userMethod.profile_img}
-          onChange={handleChange}
+          accept="image/*"
+          onChange={updateFile}
         />
         <button type="submit">Submit</button>
       </form>
     </div>
   )
 }
-
-export default CreateProfileForm
