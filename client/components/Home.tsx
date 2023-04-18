@@ -153,6 +153,8 @@ function Home() {
       </StyledContainer>
 
       {/* THE TESTIMONIALS SECTION  */}
+      <div className="bg-img-wrapper">
+      <div className='bg-img'>
       <StyledTestCard id="testimonial" maxWidth="md">
         <StyledBox>
           <StyledTestLabel variant="h4" align="center" gutterBottom>
@@ -165,6 +167,8 @@ function Home() {
           </StyledTestContent>
         </StyledBox>
       </StyledTestCard>
+      </div>
+      </div>
     </>
   )
 }

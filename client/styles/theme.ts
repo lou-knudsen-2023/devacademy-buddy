@@ -4,7 +4,7 @@ import {
   // responsiveFontSizes,
 } from '@mui/material/styles'
 
-import { Palette } from '../../models/Users'
+// import { Palette } from '../../models/Users'
 
 export const appTheme = createTheme({
   palette: {

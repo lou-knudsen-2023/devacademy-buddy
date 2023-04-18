@@ -16,11 +16,6 @@ import {
   CardContent,
   CardMedia,
 } from '../styles/imports'
-import {
-  createTheme,
-  ThemeProvider,
-  responsiveFontSizes,
-} from '../styles/imports'
 
 export function AllProfiles() {
   const dispatch = useAppDispatch()
