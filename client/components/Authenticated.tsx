@@ -30,7 +30,7 @@ export function AuthIdMatches(props: AuthCheckProp) {
   return authZeroId === props.id ? <>{props.children}</> : null
 }
 
-export function AuthIdMatchesProfile(props: AuthCheckProp) {
+export function AuthIdDoesNotMatch(props: AuthCheckProp) {
   const { user } = useAuth0()
   const authZeroId = user?.sub
   return !(authZeroId === props.id) ? <>{props.children}</> : null
