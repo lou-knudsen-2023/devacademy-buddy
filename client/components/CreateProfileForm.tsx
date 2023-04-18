@@ -85,7 +85,7 @@ function CreateProfileForm() {
           className="text-input"
           onChange={handleChange}
           placeholder="your age"
-          //   required
+            required
         />
         <label htmlFor="country_origin">Country Of Origin</label>
         <input
