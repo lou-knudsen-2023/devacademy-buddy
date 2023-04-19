@@ -16,13 +16,16 @@ export default function Nav() {
 
   const StyledLink = styled(Link)({
     textDecoration: 'none',
+    color: 'whitesmoke',
   })
 
   return (
     <AppBar className={appTheme.palette.primary.main} position="relative">
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <StyledLink to="/">
-          <Typography variant="h3">Buddy</Typography>
+          <Typography variant="h3" sx={{ fontSize: '2rem' }}>
+            Buddy
+          </Typography>
         </StyledLink>
         <Typography
           variant="h6"
