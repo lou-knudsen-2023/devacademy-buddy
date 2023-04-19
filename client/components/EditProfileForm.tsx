@@ -22,6 +22,8 @@ import {
   StyledFormElements,
 } from '../styles/styles'
 
+import { SelectChangeEvent } from '@mui/material/Select'
+
 interface EditProfileFormProps {
   initialData: User | null
   id: number
@@ -51,7 +53,9 @@ export default function EditProfileForm({
   } as User)
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e:
+      | ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+      | SelectChangeEvent<string>
   ) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
@@ -227,7 +231,6 @@ export default function EditProfileForm({
               <Input
                 type="file"
                 id="profileImage"
-                accept="image/*"
                 onChange={updateFile}
                 sx={{ my: 2 }}
               />
