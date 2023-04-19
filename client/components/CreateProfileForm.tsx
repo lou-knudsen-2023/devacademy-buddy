@@ -23,6 +23,8 @@ import {
   StyledFormElements,
 } from '../styles/styles'
 
+import { SelectChangeEvent } from '@mui/material/Select'
+
 export default function CreateProfileForm() {
   const { getAccessTokenSilently } = useAuth0()
   const dispatch = useAppDispatch()
@@ -31,7 +33,9 @@ export default function CreateProfileForm() {
   const [userMethod, setMethods] = useState({} as User)
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e:
+      | ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+      | SelectChangeEvent<string>
   ) => {
     const { name, value } = e.target
     setMethods({ ...userMethod, [name]: value })
@@ -55,7 +59,7 @@ export default function CreateProfileForm() {
     e.preventDefault()
     try {
       const token = await getAccessTokenSilently()
-
+      console.log(userMethod)
       dispatch(addNewLocalThunk(userMethod, token))
       dispatch(setLocalThunk())
       navigate(
@@ -77,195 +81,183 @@ export default function CreateProfileForm() {
 
         <StyledContainer maxWidth="lg">
           <StyledLargerCard align="center">
-            <FormControl onSubmit={handleSubmit}>
-              <FormLabel htmlFor="first_name" align="left">
-                First Name
-              </FormLabel>
-              <TextField
-                type="text"
-                name="first_name"
-                value={userMethod.first_name}
-                onChange={handleChange}
-                placeholder="First name"
-                sx={{ my: 2 }}
-                required
-              ></TextField>
-              <FormLabel htmlFor="last_name" align="left">
-                Last name{' '}
-              </FormLabel>
-              <TextField
-                type="text"
-                name="last_name"
-                value={userMethod.last_name}
-                onChange={handleChange}
-                placeholder="Last name"
-                sx={{ my: 2 }}
-                required
-              ></TextField>
-              <FormLabel htmlFor="user_name" align="left">
-                User Name
-              </FormLabel>
-              <TextField
-                type="text"
-                name="user_name"
-                value={userMethod.user_name}
-                onChange={handleChange}
-                placeholder="User name"
-                sx={{ my: 2 }}
-                required
-              ></TextField>
-              <FormLabel htmlFor="email" align="left">
-                Email
-              </FormLabel>
-              <TextField
-                name="email"
-                value={userMethod.email}
-                type="text"
-                className="text-input"
-                onChange={handleChange}
-                placeholder="someone@example.com"
-                sx={{ my: 2 }}
-                required
-              ></TextField>
-              <FormLabel htmlFor="age" align="left">
-                Age
-              </FormLabel>
-              <TextField
-                name="age"
-                value={userMethod.age}
-                type="text"
-                className="text-input"
-                onChange={handleChange}
-                sx={{ my: 2 }}
-                placeholder="your age"
-                //   required
-              ></TextField>
+            <form onSubmit={handleSubmit}>
+              <FormControl sx={{ textAlign: 'left' }}>
+                <FormLabel htmlFor="first_name">First Name</FormLabel>
+                <TextField
+                  type="text"
+                  name="first_name"
+                  value={userMethod.first_name}
+                  onChange={handleChange}
+                  placeholder="First name"
+                  sx={{ my: 2 }}
+                  required
+                ></TextField>
+                <FormLabel htmlFor="last_name">Last name </FormLabel>
+                <TextField
+                  type="text"
+                  name="last_name"
+                  value={userMethod.last_name}
+                  onChange={handleChange}
+                  placeholder="Last name"
+                  sx={{ my: 2 }}
+                  required
+                ></TextField>
+                <FormLabel htmlFor="user_name">User Name</FormLabel>
+                <TextField
+                  type="text"
+                  name="user_name"
+                  value={userMethod.user_name}
+                  onChange={handleChange}
+                  placeholder="User name"
+                  sx={{ my: 2 }}
+                  required
+                ></TextField>
+                <FormLabel htmlFor="email">Email</FormLabel>
+                <TextField
+                  name="email"
+                  value={userMethod.email}
+                  type="text"
+                  className="text-input"
+                  onChange={handleChange}
+                  placeholder="someone@example.com"
+                  sx={{ my: 2 }}
+                  required
+                ></TextField>
+                <FormLabel htmlFor="age">Age</FormLabel>
+                <TextField
+                  name="age"
+                  value={userMethod.age}
+                  type="text"
+                  className="text-input"
+                  onChange={handleChange}
+                  sx={{ my: 2 }}
+                  placeholder="your age"
+                  //   required
+                ></TextField>
 
-              <FormLabel htmlFor="country_origin" align="left">
-                Country Of Origin
-              </FormLabel>
-              <TextField
-                name="country_origin"
-                value={userMethod.country_origin}
-                type="text"
-                className="text-input"
-                onChange={handleChange}
-                sx={{ my: 2 }}
-                placeholder="country of origin"
-                //   required
-              ></TextField>
-              <FormLabel htmlFor="city" align="left">
-                City
-              </FormLabel>
-              <TextField
-                name="city"
-                value={userMethod.city}
-                type="text"
-                className="text-input"
-                onChange={handleChange}
-                placeholder="city"
-                sx={{ my: 2 }}
-                //   required
-              ></TextField>
+                <FormLabel htmlFor="country_origin">
+                  Country Of Origin
+                </FormLabel>
+                <TextField
+                  name="country_origin"
+                  value={userMethod.country_origin}
+                  type="text"
+                  className="text-input"
+                  onChange={handleChange}
+                  sx={{ my: 2 }}
+                  placeholder="country of origin"
+                  //   required
+                ></TextField>
+                <FormLabel htmlFor="city">City</FormLabel>
+                <TextField
+                  name="city"
+                  value={userMethod.city}
+                  type="text"
+                  className="text-input"
+                  onChange={handleChange}
+                  placeholder="city"
+                  sx={{ my: 2 }}
+                  //   required
+                ></TextField>
 
-              {/* {LOU DROP DOWN} */}
-              <FormLabel htmlFor="userStatus" align="left">
-                What best describes you?
-              </FormLabel>
-              <Select
-                name="user_status"
-                id="userStatus"
-                value={userMethod.user_status}
-                sx={{ my: 2 }}
-                onChange={handleChange}
-              >
-                <MenuItem value="international">International</MenuItem>
-                <MenuItem value="local">Local</MenuItem>
-              </Select>
+                {/* {LOU DROP DOWN} */}
+                <FormLabel htmlFor="userStatus">
+                  What best describes you?
+                </FormLabel>
+                <Select
+                  name="user_status"
+                  id="userStatus"
+                  value={userMethod.user_status}
+                  sx={{ my: 2 }}
+                  onChange={handleChange}
+                  defaultValue={'DEFAULT'}
+                >
+                  <MenuItem value="DEFAULT" disabled hidden>
+                    Pick an option
+                  </MenuItem>
+                  <MenuItem value="international">International</MenuItem>
+                  <MenuItem value="local">Local</MenuItem>
+                </Select>
 
-              <FormLabel htmlFor="primLanguage" align="left">
-                Primary Language
-              </FormLabel>
-              <TextField
-                name="prim_language"
-                type="text"
-                id="primLanguage"
-                value={userMethod.prim_language}
-                onChange={handleChange}
-                sx={{ my: 2 }}
-              ></TextField>
+                <FormLabel htmlFor="primLanguage">Primary Language</FormLabel>
+                <TextField
+                  name="prim_language"
+                  type="text"
+                  id="primLanguage"
+                  value={userMethod.prim_language}
+                  onChange={handleChange}
+                  sx={{ my: 2 }}
+                ></TextField>
 
-              {/* {LOU DROP DOWN */}
-              <FormLabel htmlFor="englishLevel" align="left">
-                English Level
-              </FormLabel>
-              <Select
-                name="english_level"
-                id="englishLevel"
-                value={userMethod.english_level}
-                onChange={handleChange}
-                sx={{ my: 2 }}
-                required
-              >
-                <MenuItem value="no_english">No English</MenuItem>
-                <MenuItem value="some_english">Some English</MenuItem>
-                <MenuItem value="fluent_english">Fluent English</MenuItem>
-              </Select>
+                {/* {LOU DROP DOWN */}
+                <FormLabel htmlFor="englishLevel">English Level</FormLabel>
+                <Select
+                  name="english_level"
+                  id="englishLevel"
+                  value={userMethod.english_level}
+                  onChange={handleChange}
+                  sx={{ my: 2 }}
+                  defaultValue={'DEFAULT'}
+                  required
+                >
+                  <MenuItem value="DEFAULT" disabled hidden>
+                    Pick an option
+                  </MenuItem>
+                  <MenuItem value="no_english">No English</MenuItem>
+                  <MenuItem value="some_english">Some English</MenuItem>
+                  <MenuItem value="fluent_english">Fluent English</MenuItem>
+                </Select>
 
-              <FormLabel htmlFor="shareOne" align="left">
-                Quality to Share One
-              </FormLabel>
-              <TextField
-                name="sharing_one"
-                type="text"
-                id="shareOne"
-                value={userMethod.sharing_one}
-                onChange={handleChange}
-                sx={{ my: 2 }}
-              ></TextField>
+                <FormLabel htmlFor="shareOne">Quality to Share One</FormLabel>
+                <TextField
+                  name="sharing_one"
+                  type="text"
+                  id="shareOne"
+                  value={userMethod.sharing_one}
+                  onChange={handleChange}
+                  sx={{ my: 2 }}
+                ></TextField>
 
-              <FormLabel htmlFor="shareTwo" align="left">
-                Quality to Share Two
-              </FormLabel>
-              <TextField
-                name="sharing_two"
-                type="text"
-                id="shareTwo"
-                value={userMethod.sharing_two}
-                onChange={handleChange}
-                sx={{ my: 2 }}
-              ></TextField>
+                <FormLabel htmlFor="shareTwo">Quality to Share Two</FormLabel>
+                <TextField
+                  name="sharing_two"
+                  type="text"
+                  id="shareTwo"
+                  value={userMethod.sharing_two}
+                  onChange={handleChange}
+                  sx={{ my: 2 }}
+                ></TextField>
 
-              <FormLabel htmlFor="shareThree" align="left">
-                Quality to Share Three
-              </FormLabel>
-              <TextField
-                name="sharing_three"
-                type="text"
-                id="shareThree"
-                value={userMethod.sharing_three}
-                onChange={handleChange}
-                sx={{ my: 2 }}
-              ></TextField>
-              <FormLabel htmlFor="description" align="left">
-                Description
-              </FormLabel>
-              <TextField
-                name="description"
-                id="description"
-                value={userMethod.description}
-                onChange={handleChange}
-                sx={{ my: 2 }}
-              ></TextField>
+                <FormLabel htmlFor="shareThree">
+                  Quality to Share Three
+                </FormLabel>
+                <TextField
+                  name="sharing_three"
+                  type="text"
+                  id="shareThree"
+                  value={userMethod.sharing_three}
+                  onChange={handleChange}
+                  sx={{ my: 2 }}
+                ></TextField>
+                <FormLabel htmlFor="description">Description</FormLabel>
+                <TextField
+                  name="description"
+                  id="description"
+                  value={userMethod.description}
+                  onChange={handleChange}
+                  sx={{ my: 2 }}
+                ></TextField>
 
-              <FormLabel htmlFor="profileImage" align="left">
-                Choose your profile image
-              </FormLabel>
-              <Input type="file" id="profileImage" onChange={updateFile} />
-              <Button sx={{ my: 2 }} type="submit" variant="contained">
-                Submit
-              </Button>
-            </FormControl>
+                <FormLabel htmlFor="profileImage">
+                  Choose your profile image
+                </FormLabel>
+                <Input type="file" id="profileImage" onChange={updateFile} />
+                <Button sx={{ my: 2 }} type="submit" variant="contained">
+                  Submit
+                </Button>
+              </FormControl>
+            </form>
           </StyledLargerCard>
         </StyledContainer>
       </StyledBox>

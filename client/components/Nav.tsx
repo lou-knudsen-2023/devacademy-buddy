@@ -1,6 +1,7 @@
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
+import { useAppSelector } from '../hooks'
 
 import { Typography, AppBar, Toolbar, Box, Button } from '../styles/imports'
 import { CameraIcon } from '../styles/imports'
@@ -8,6 +9,9 @@ import { appTheme } from '../styles/theme'
 
 export default function Nav() {
   const { logout, loginWithRedirect, user } = useAuth0()
+  const userInBothDB = useAppSelector((redux) =>
+    redux.localReducer.find((person) => person.auth_id === user?.sub)
+  )
 
   return (
     <AppBar className={appTheme.palette.primary.main} position="relative">
@@ -29,16 +33,29 @@ export default function Nav() {
             <Box sx={{ mx: 2 }}>
               <Link to="/all-profiles/international">Internationals</Link>
             </Box>
-            <Box sx={{ mx: 2 }}>
-              <Button
-                variant="contained"
-                color="secondary"
-                component={Link}
-                to="/create-profile"
-              >
-                Create Profile
-              </Button>
-            </Box>
+            {userInBothDB ? (
+              <Box sx={{ mx: 2 }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  component={Link}
+                  to={`/${userInBothDB?.id}`}
+                >
+                  My Profile
+                </Button>
+              </Box>
+            ) : (
+              <Box sx={{ mx: 2 }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  component={Link}
+                  to="/create-profile"
+                >
+                  Create Profile
+                </Button>
+              </Box>
+            )}
             <Box sx={{ mx: 2 }}>
               <Button
                 variant="contained"
