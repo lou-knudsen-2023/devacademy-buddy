@@ -2,6 +2,7 @@ import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../hooks'
+import { styled } from '@mui/material/styles'
 
 import { Typography, AppBar, Toolbar, Box, Button } from '../styles/imports'
 import { CameraIcon } from '../styles/imports'
@@ -13,12 +14,19 @@ export default function Nav() {
     redux.localReducer.find((person) => person.auth_id === user?.sub)
   )
 
+  const StyledLink = styled(Link)({
+    textDecoration: 'none',
+    color: 'whitesmoke',
+  })
+
   return (
     <AppBar className={appTheme.palette.primary.main} position="relative">
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Link to="/">
-          <CameraIcon color="secondary" sx={{ mr: 2 }} />
-        </Link>
+        <StyledLink to="/">
+          <Typography variant="h3" sx={{ fontSize: '2rem' }}>
+            Buddy
+          </Typography>
+        </StyledLink>
         <Typography
           variant="h6"
           color="inherit"
@@ -28,10 +36,12 @@ export default function Nav() {
         >
           <IfAuthenticated>
             <Box sx={{ mx: 1 }}>
-              <Link to="/all-profiles/local">Locals</Link>
+              <StyledLink to="/all-profiles/local">Locals</StyledLink>
             </Box>
             <Box sx={{ mx: 2 }}>
-              <Link to="/all-profiles/international">Internationals</Link>
+              <StyledLink to="/all-profiles/international">
+                Internationals
+              </StyledLink>
             </Box>
             {userInBothDB ? (
               <Box sx={{ mx: 2 }}>
@@ -69,14 +79,14 @@ export default function Nav() {
 
           <IfNotAuthenticated>
             <Box sx={{ mx: 2 }}>
-              <Link to="/" onClick={() => loginWithRedirect()}>
+              <StyledLink to="/" onClick={() => loginWithRedirect()}>
                 Locals
-              </Link>
+              </StyledLink>
             </Box>
             <Box sx={{ mx: 2 }}>
-              <Link to="/" onClick={() => loginWithRedirect()}>
+              <StyledLink to="/" onClick={() => loginWithRedirect()}>
                 Internationals
-              </Link>
+              </StyledLink>
             </Box>
             <Box sx={{ mx: 2 }}>
               <Button

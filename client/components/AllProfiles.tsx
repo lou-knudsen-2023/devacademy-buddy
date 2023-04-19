@@ -67,13 +67,14 @@ export function AllProfiles() {
                       height: '100%',
                       display: 'flex',
                       flexDirection: 'column',
-                      bgcolor: '#424242',
+                      // bgcolor: '#424242',
                     }}
                   >
                     <CardMedia
                       component="img"
                       sx={{
-                        // 16:9
+                        width: '100%',
+                        height: '100%',
                         pt: '6.25%',
                       }}
                       image={`data:image/jpeg;base64,${user?.profile_img}`}
@@ -133,4 +134,3 @@ export function AllProfiles() {
 }
 
 export default AllProfiles
-
