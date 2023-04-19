@@ -10,15 +10,17 @@ export const appTheme = createTheme({
   palette: {
     primary: {
       dark: '#1C54B2',
-      main: '#2979FF',
+      // main: '#2979FF',
+      main: '#f9bc9b',
       light: '#5393FF',
-      contrastText: '#fefefe',
+      contrastText: '#585353',
     },
     secondary: {
       dark: '#B28900',
-      main: '#FFC400',
+      // main: '#FFC400',
+      main: '#ee8460',
       light: '#FFCF32',
-      contrastText: grey[800],
+      contrastText: '#585353',
     },
 
     error: {

@@ -61,7 +61,7 @@ function Home() {
                 <CardActionArea>
                   <StyledCardMedia
                     component="img"
-                    image="4952190_39527.jpg"
+                    image="./images/localnew.jpg"
                     alt="local image"
                   />
                   <StyledCardLabel variant="h6" align="center">
@@ -78,7 +78,7 @@ function Home() {
                 <CardActionArea>
                   <StyledCardMedia
                     component="img"
-                    image="local-icon.svg"
+                    image="./images/localnew.jpg"
                     alt="local image"
                   />
                   <StyledCardLabel variant="h6" align="center">
@@ -97,7 +97,7 @@ function Home() {
                 <CardActionArea>
                   <StyledCardMedia
                     component="img"
-                    image="international-icon.svg"
+                    image="./images/intnew.jpg"
                     alt="international image"
                   />
                   <StyledCardLabel variant="h6" align="center">
@@ -114,7 +114,7 @@ function Home() {
                 <CardActionArea>
                   <StyledCardMedia
                     component="img"
-                    image="international-icon.svg"
+                    image="./images/intnew.jpg"
                     alt="international image"
                   />
                   <StyledCardLabel variant="h6" align="center">
@@ -130,7 +130,11 @@ function Home() {
       {/* THE TESTIMONIALS SECTION  */}
       <div className="bg-img-wrapper">
         <div className="bg-img">
-          <StyledTestCard id="testimonial" maxWidth="md">
+          <StyledTestCard
+            id="testimonial"
+            maxWidth="md"
+            className="testimonial"
+          >
             <StyledBox>
               <StyledTestLabel variant="h4" align="center" gutterBottom>
                 Testimonials
