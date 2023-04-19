@@ -63,6 +63,7 @@ export default function SingleProfilePage() {
           display: 'flex',
           flexWrap: 'wrap',
           position: 'relative',
+          marginTop: '150px',
         }}
         maxWidth="md"
       >

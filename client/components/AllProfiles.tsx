@@ -48,14 +48,14 @@ export function AllProfiles() {
 
   return (
     <>
-      <Container sx={{ py: 8 }} maxWidth="md">
+      <Container sx={{ py: 8, marginTop: '100px' }} maxWidth="md">
         <Button
           variant="outlined"
           onClick={() => {
             navigate(`/all-profiles/${isLocal ? 'international' : 'local'}`)
           }}
           className="button-style"
-          sx={{ marginBottom: '20px', fontSize: '12px !important' }}
+          sx={{ marginBottom: '25px', fontSize: '12px !important' }}
         >
           {isLocal ? 'Show International' : 'Show Local'}
         </Button>

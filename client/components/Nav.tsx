@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../hooks'
 import { styled } from '@mui/material/styles'
+import { useEffect } from 'react'
 
 import { Typography, AppBar, Toolbar, Box, Button } from '../styles/imports'
 import { appTheme } from '../styles/theme'
@@ -18,6 +19,22 @@ export default function Nav() {
     color: 'whitesmoke',
     fontSize: '0.9em',
   })
+
+  function handleScroll() {
+    const customAppBar = document.querySelector('.custom-appbar')
+    if (customAppBar) {
+      if (window.scrollY > 0) {
+        customAppBar.classList.add('scroll')
+      } else {
+        customAppBar.classList.remove('scroll')
+      }
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <AppBar variant="outlined" position="relative" className="custom-appbar">
