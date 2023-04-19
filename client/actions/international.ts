@@ -75,14 +75,11 @@ export function showError(errorMessage: string): InternationalAction {
 
 // //THUNK actions
 
-export function fetchAllIntUsers(): ThunkAction {
+export function setIntThunk(): ThunkAction {
   return (dispatch) => {
     return getAllUsersAPI()
       .then((users) => {
-        console.log(
-          users,
-          'Testing to see if all users show up (fetchAllIntUsers)'
-        )
+        console.log(users, 'Testing to see if all users show up (setIntThunk)')
         dispatch(requestIntUser(users))
       })
       .catch((err) => {

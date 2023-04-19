@@ -18,3 +18,22 @@ export function IfNotAuthenticated(props: Props) {
   const { children } = props
   return !useIsAuthenticated() ? <>{children}</> : null
 }
+
+interface AuthCheckProp {
+  children: React.ReactNode
+  id: string | undefined
+}
+
+export function AuthIdMatches(props: AuthCheckProp) {
+  const { user } = useAuth0()
+  const authZeroId = user?.sub
+  console.log('has auth id' + authZeroId)
+  return authZeroId === props.id ? <>{props.children}</> : null
+}
+
+export function AuthIdDoesNotMatch(props: AuthCheckProp) {
+  const { user } = useAuth0()
+  const authZeroId = user?.sub
+  console.log('doesnt auth id' + authZeroId)
+  return !(authZeroId === props.id) ? <>{props.children}</> : null
+}

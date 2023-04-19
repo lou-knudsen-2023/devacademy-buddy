@@ -1,3 +1,5 @@
+import { PaletteOptions } from '@mui/material'
+
 export interface UserData {
   user_name: string
   first_name: string
@@ -19,4 +21,16 @@ export interface UserData {
 export interface User extends UserData {
   id: number
   auth_id: string
+}
+
+export interface Palette {
+  tertiary: PaletteOptions['primary']
+}
+
+export interface StyledProps {
+  component?: string
+  variant?: string
+  alt?: string
+  textAlign?: string
+  align?: string
 }

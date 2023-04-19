@@ -1,299 +1,203 @@
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { IfAuthenticated, IfNotAuthenticated, AuthIdMatches, AuthIdDoesNotMatch } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
-
+import { useAppSelector, useAppDispatch } from '../hooks'
+import { useParams } from 'react-router-dom'
+import { User } from '../../models/Users'
+import { useEffect, useState } from 'react'
+import { getLocalThunk} from '../actions/local'
 import {
   Typography,
   Box,
-  // Button,
   Container,
-  // Grid,
-  Card,
-  CardContent,
   CardMedia,
   CardActionArea,
-} from '../../utils/mui'
+} from '../styles/imports'
 
 import {
-  createTheme,
-  ThemeProvider,
-  // responsiveFontSizes,
-} from '../../utils/mui'
-
-const theme = createTheme()
+  StyledContainer,
+  StyledCard,
+  StyledCardMedia,
+  StyledCardLabel,
+  StyledTestCard,
+  StyledBox,
+  StyledTestContent,
+  StyledTestLabel,
+} from '../styles/styles'
 
 function Home() {
-  const { logout, loginWithRedirect, user } = useAuth0()
+  const { loginWithRedirect, user } = useAuth0()
+  console.log(user, 'testing the auth0 user to see what comes up')
+  const dispatch = useAppDispatch()
+  const userId = Number(useParams().id)
+
+  const userData: User[] = useAppSelector((store) => store.localReducer)
+  const userProfile = userData.find((person) => person.id === userId)
+
+  useEffect(() => {
+    dispatch(getLocalThunk(userId))
+  }, [dispatch, userId])
+
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Box
-          id="tile-subtitle"
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container maxWidth="lg">
-            <Typography
-              component="h1"
-              variant="h1"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              Buddy
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="text.secondary"
-              paragraph
-            >
-              &quot;Connecting people from abroad with local
-              Wellingtonians&quot;
-            </Typography>
-          </Container>
-        </Box>
-
-        {/* THE TWO CARDS IN THE MIDDLE  */}
-        <div
-          id="cardContainer"
-          style={{ display: 'flex', justifyContent: 'center' }}
-        >
-          <div id="localCard">
-            <Card
-              style={{
-                maxWidth: 345,
-                minHeight: 350,
-                margin: 10,
-                position: 'relative',
-              }}
-            >
-              <IfAuthenticated>
-                <Box>
-                  <Link to="/allprofiles">
-                    <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        height="100%"
-                        width="100%"
-                        image="local-icon.svg"
-                        alt="local image"
-                      />
-                      <CardContent
-                        style={{
-                          position: 'absolute',
-                          top: 'auto',
-                          right: 0,
-                          bottom: 0,
-                          left: 0,
-                          marginTop: 'auto',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <Typography
-                          variant="h6"
-                          component="h2"
-                          align="center"
-                          style={{ color: 'black' }}
-                        >
-                          View Locals
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Link>
-                </Box>
-              </IfAuthenticated>
-              <IfNotAuthenticated>
-                <Box>
-                  <Link to="/locals" onClick={() => loginWithRedirect()}>
-                    <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        height="100%"
-                        width="100%"
-                        image="local-icon.svg"
-                        alt="local image"
-                      />
-                      <CardContent
-                        style={{
-                          position: 'absolute',
-                          top: 'auto',
-                          right: 0,
-                          bottom: 0,
-                          left: 0,
-                          marginTop: 'auto',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <Typography
-                          variant="h6"
-                          component="h2"
-                          align="center"
-                          style={{ color: 'black' }}
-                        >
-                          View Locals
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Link>
-                </Box>
-              </IfNotAuthenticated>
-            </Card>
-          </div>
-
-          <div
-            id="internationalCard"
-            style={{ display: 'flex', justifyContent: 'center' }}
+      <StyledBox id="tile-subtitle">
+        <Container maxWidth="lg">
+          <Typography component="h1" variant="h1" align="center" gutterBottom>
+            Buddy
+          </Typography>
+          <Typography
+            variant="h5"
+            align="center"
+            color="text.secondary"
+            gutterBottom
           >
-            <Card
-              style={{
-                maxWidth: 345,
-                minHeight: 350,
-                margin: 10,
-                position: 'relative',
-              }}
-            >
-              <IfAuthenticated>
-                <Box>
-                  <Link to="/allprofiles">
-                    <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        height="100%"
-                        width="100%"
-                        image="international-icon.svg"
-                        alt="international image"
-                      />
-                      <CardContent
-                        style={{
-                          position: 'absolute',
-                          top: 'auto',
-                          right: 0,
-                          bottom: 0,
-                          left: 0,
-                          marginTop: 'auto',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <Typography
-                          variant="h6"
-                          component="h2"
-                          align="center"
-                          style={{ color: 'black' }}
-                        >
-                          View International
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Link>
-                </Box>
-              </IfAuthenticated>
-              <IfNotAuthenticated>
-                <Box>
-                  <Link
-                    to="/internationals"
-                    onClick={() => loginWithRedirect()}
-                  >
-                    <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        height="100%"
-                        width="100%"
-                        image="international-icon.svg"
-                        alt="international image"
-                      />
-                      <CardContent
-                        style={{
-                          position: 'absolute',
-                          top: 'auto',
-                          right: 0,
-                          bottom: 0,
-                          left: 0,
-                          marginTop: 'auto',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <Typography
-                          variant="h6"
-                          component="h2"
-                          align="center"
-                          style={{ color: 'black' }}
-                        >
-                          View Internationals
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Link>
-                </Box>
-              </IfNotAuthenticated>
-            </Card>
-          </div>
-        </div>
+            Connecting people from abroad with local Wellingtonian&apos;s
+          </Typography>
+        </Container>
+      </StyledBox>
 
-        {/* THE TESTIMONIALS SECTION  */}
-        <Box
-          id="testimonial"
-          sx={{
-            // bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-          }}
-        >
-          <Container
-            maxWidth="sm"
-            sx={{
-              bgcolor: '#FFF8DC',
-              borderColor: 'grey.500',
-              borderRadius: '16px',
-              pt: 8,
-              pb: 6,
-            }}
-          >
-            <Typography
-              component="h3"
-              variant="h4"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              Testimonials
-            </Typography>
-            <Typography variant="h5" align="center" color="body2" paragraph>
-              &quot;I had the best time meeting Reuben. He really helped me feel
-              comfortable learning about Wellington and finding the best place
-              to eat. Yum!&quot; - Ado
-            </Typography>
-          </Container>
-        </Box>
-      </ThemeProvider>
+
+
+      {/* THE TWO CARDS IN THE MIDDLE  */}
+      <StyledContainer>
+
+        <StyledCard id="localCard">
+        <IfNotAuthenticated>
+            <Link to="/" onClick={() => loginWithRedirect()}>
+              <Box>
+                <CardActionArea>
+                  <StyledCardMedia
+                    component="img"
+                    image="local-icon.svg"
+                    alt="local image"
+                  />
+                  <StyledCardLabel variant="h6" align="center">
+                    View Locals
+                  </StyledCardLabel>
+                </CardActionArea>
+              </Box>
+            </Link>
+          </IfNotAuthenticated>
+
+          <IfAuthenticated>
+          {userProfile && (
+             <AuthIdMatches id={userProfile?.auth_id}>
+              <Link to="/create-profile">
+                <Box>
+                  <CardActionArea>
+                    <StyledCardMedia
+                      component="img"
+                      image="local-icon.svg"
+                      alt="local image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Locals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+              </AuthIdMatches>
+              )}
+
+              {!userProfile && (
+              <Link to="/all-profiles/local">
+                <Box>
+                  <CardActionArea>
+                    <StyledCardMedia
+                      component="img"
+                      image="local-icon.svg"
+                      alt="local image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Locals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link> 
+             )}
+              </IfAuthenticated> 
+        </StyledCard>
+
+
+
+        <StyledCard id="internationalCard">
+        <IfNotAuthenticated>
+            <Link to="/" onClick={() => loginWithRedirect()}>
+              <Box>
+                <CardActionArea>
+                  <StyledCardMedia
+                    component="img"
+                    image="international-icon.svg"
+                    alt="international image"
+                  />
+                  <StyledCardLabel variant="h6" align="center">
+                    View Locals
+                  </StyledCardLabel>
+                </CardActionArea>
+              </Box>
+            </Link>
+          </IfNotAuthenticated>
+
+          <IfAuthenticated>
+          {userProfile && (
+             <AuthIdMatches id={userProfile?.auth_id}>
+              <Link to="/create-profile">
+                <Box>
+                  <CardActionArea>
+                    <StyledCardMedia
+                      component="img"
+                      image="international-icon.svg"
+                    alt="international image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Locals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+              </AuthIdMatches>
+          )}
+          {!userProfile && (
+              <Link to="/all-profiles/international">
+                <Box>
+                  <CardActionArea>
+                    <StyledCardMedia
+                      component="img"
+                      image="international-icon.svg"
+                    alt="international image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Locals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link> 
+            )}
+              </IfAuthenticated> 
+        </StyledCard>
+      </StyledContainer>
+      
+
+      {/* THE TESTIMONIALS SECTION  */}
+      <div className="bg-img-wrapper">
+      <div className='bg-img'>
+      <StyledTestCard id="testimonial" maxWidth="md">
+        <StyledBox>
+          <StyledTestLabel variant="h4" align="center" gutterBottom>
+            Testimonials
+          </StyledTestLabel>
+          <StyledTestContent variant="h5" align="center" gutterBottom>
+            &quot;I had the best time meeting Lucas. He really helped me feel
+            comfortable learning about Wellington and finding the best place to
+            eat. Yum!&quot; - Sarah
+          </StyledTestContent>
+        </StyledBox>
+      </StyledTestCard>
+      </div>
+      </div>
     </>
   )
 }
 
 export default Home
-
-{
-  /* <Container maxWidth="lg">
-<Stack
-  sx={{ pt: 4 }}
-  direction="row"
-  spacing={2}
-  justifyContent="center"
->
-  <Button variant="contained">View Locals</Button>
-</Stack>
-</Container>
-</Box> */
-}

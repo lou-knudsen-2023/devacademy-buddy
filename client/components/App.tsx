@@ -6,10 +6,13 @@ import CreateProfileForm from './CreateProfileForm'
 import AllProfiles from './AllProfiles'
 import Footer from './Footer'
 
-import ScopedCssBaseline from '@mui/material/ScopedCssBaseline'
+import CssBaseline from '@mui/material/ScopedCssBaseline'
 import { useAppDispatch } from '../hooks'
 import { setLocalThunk } from '../actions/local'
 import { useEffect } from 'react'
+
+import { ThemeProvider } from '@emotion/react'
+import { appTheme } from '../styles/theme'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -19,17 +22,19 @@ function App() {
 
   return (
     <>
-      <ScopedCssBaseline>
+      <ThemeProvider theme={appTheme}>
+        <CssBaseline />
         <Nav />
         {/* <CreateProfileForm /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<SingleProfile />} />
           <Route path="/create-profile" element={<CreateProfileForm />} />
-          <Route path="/allprofiles" element={<AllProfiles />} />
+          <Route path="/all-profiles/local" element={<AllProfiles />} />
+          <Route path="/all-profiles/international" element={<AllProfiles />} />
         </Routes>
         <Footer />
-      </ScopedCssBaseline>
+      </ThemeProvider>
     </>
   )
 }

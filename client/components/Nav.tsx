@@ -1,74 +1,97 @@
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
+import { useAppSelector } from '../hooks'
 
-import { Typography, AppBar, Toolbar, Box, Button } from '../../utils/mui'
-import { CameraIcon } from '../../utils/mui'
-import { createTheme, ThemeProvider } from '../../utils/mui'
-
-const theme = createTheme()
+import { Typography, AppBar, Toolbar, Box, Button } from '../styles/imports'
+import { CameraIcon } from '../styles/imports'
+import { appTheme } from '../styles/theme'
 
 export default function Nav() {
   const { logout, loginWithRedirect, user } = useAuth0()
+  const userInBothDB = useAppSelector((redux) =>
+    redux.localReducer.find((person) => person.auth_id === user?.sub)
+  )
 
   return (
-    <ThemeProvider theme={theme}>
-      <AppBar position="relative">
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Link to="/">
-            <CameraIcon sx={{ mr: 2 }} />
-          </Link>
-          <Typography
-            variant="h6"
-            color="inherit"
-            align="right"
-            style={{ display: 'flex' }}
-            noWrap
-          >
-            <IfAuthenticated>
-              <Box sx={{ mx: 1 }}>
-                <Link to="/allprofiles">Locals</Link>
-              </Box>
-              <Box sx={{ mx: 2 }}>
-                <Link to="/allprofiles">Internationals</Link>
-              </Box>
+    <AppBar className={appTheme.palette.primary.main} position="relative">
+      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Link to="/">
+          <CameraIcon color="secondary" sx={{ mr: 2 }} />
+        </Link>
+        <Typography
+          variant="h6"
+          color="inherit"
+          align="right"
+          style={{ display: 'flex' }}
+          noWrap
+        >
+          <IfAuthenticated>
+            <Box sx={{ mx: 1 }}>
+              <Link to="/all-profiles/local">Locals</Link>
+            </Box>
+            <Box sx={{ mx: 2 }}>
+              <Link to="/all-profiles/international">Internationals</Link>
+            </Box>
+            {userInBothDB ? (
               <Box sx={{ mx: 2 }}>
                 <Button
                   variant="contained"
                   color="secondary"
-                  onClick={() => logout()}
+                  component={Link}
+                  to={`/${userInBothDB?.id}`}
                 >
-                  Logout
+                  My Profile
                 </Button>
               </Box>
-            </IfAuthenticated>
+            ) : (
+              <Box sx={{ mx: 2 }}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  component={Link}
+                  to="/create-profile"
+                >
+                  Create Profile
+                </Button>
+              </Box>
+            )}
+            <Box sx={{ mx: 2 }}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => logout()}
+              >
+                Logout
+              </Button>
+            </Box>
+          </IfAuthenticated>
 
-            <IfNotAuthenticated>
-              <Box sx={{ mx: 2 }}>
-                <Link to="/" onClick={() => loginWithRedirect()}>
-                  Locals
-                </Link>
-              </Box>
-              <Box sx={{ mx: 2 }}>
-                <Link to="/" onClick={() => loginWithRedirect()}>
-                  Internationals
-                </Link>
-              </Box>
-              <Box sx={{ mx: 2 }}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => loginWithRedirect()}
-                >
-                  Login
-                </Button>
-              </Box>
-            </IfNotAuthenticated>
-            {/* Buddy Navigation bar */}
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </ThemeProvider>
+          <IfNotAuthenticated>
+            <Box sx={{ mx: 2 }}>
+              <Link to="/" onClick={() => loginWithRedirect()}>
+                Locals
+              </Link>
+            </Box>
+            <Box sx={{ mx: 2 }}>
+              <Link to="/" onClick={() => loginWithRedirect()}>
+                Internationals
+              </Link>
+            </Box>
+            <Box sx={{ mx: 2 }}>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => loginWithRedirect()}
+              >
+                Login
+              </Button>
+            </Box>
+          </IfNotAuthenticated>
+          {/* Buddy Navigation bar */}
+        </Typography>
+      </Toolbar>
+    </AppBar>
   )
 }
 

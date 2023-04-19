@@ -27,11 +27,9 @@ router.get('/:id', (req, res) => {
     })
 })
 
-
 ///////////////////////////////
 
 router.post('/', checkJwt, (req: JwtRequest, res) => {
-
   const {
     user_name,
     first_name,
@@ -49,8 +47,6 @@ router.post('/', checkJwt, (req: JwtRequest, res) => {
     description,
     profile_img,
   } = req.body
-
-
 
   const auth0Id = req.auth?.sub
 
@@ -76,24 +72,17 @@ router.post('/', checkJwt, (req: JwtRequest, res) => {
     sharing_three: sharing_three,
     description: description,
     profile_img: profile_img,
-    auth_id: auth0Id
+    auth_id: auth0Id,
   }
 
   db.createProfileDB(data)
     .then((data) => {
-      res.json(data)
+      res.json(data[0]) // no need refresh page anymore
     })
     .catch((err) => {
       res.status(500).send(err.message)
     })
 })
-
-
-
-
-
-
-
 
 router.delete('/:id', (req, res) => {
   db.delProfileDB(+req.params.id)
