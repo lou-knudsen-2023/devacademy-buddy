@@ -61,10 +61,9 @@ export default function SingleProfilePage() {
         sx={{
           py: 1,
           display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          position: 'relative',
         }}
-        maxWidth="sm"
+        maxWidth="lg"
       >
         <Card
           // className={classes.profileCard}
@@ -81,18 +80,19 @@ export default function SingleProfilePage() {
             <CardMedia
               component="img"
               sx={{
-                position: 'relative',
-                top: '0',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
                 borderRadius: '10px',
-                width: '100%',
+                width: '500px',
                 overflow: 'hidden',
               }}
               image={`data:image/jpeg;base64,${userProfile?.profile_img}`}
               alt={userProfile?.user_name}
             />
 
-            <StyledBox sx={{ py: 2, maxWidth: 'xs', margin: 'auto' }}>
-              <StyledContentBox sx={{ py: 3, maxWidth: 'xs', margin: 'auto' }}>
+            <StyledBox sx={{ py: 2, maxWidth: 'md', margin: 'auto' }}>
+              <StyledContentBox sx={{ py: 3, maxWidth: 'md', margin: 'auto' }}>
                 <Typography component="h4" variant="h4" color="text.primary">
                   {userProfile?.first_name} {userProfile?.last_name}
                 </Typography>
