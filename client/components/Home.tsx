@@ -1,7 +1,11 @@
-import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { IfAuthenticated, IfNotAuthenticated, AuthIdMatches, AuthIdDoesNotMatch } from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
-
+import { useAppSelector, useAppDispatch } from '../hooks'
+import { useParams } from 'react-router-dom'
+import { User } from '../../models/Users'
+import { useEffect, useState } from 'react'
+import { getLocalThunk} from '../actions/local'
 import {
   Typography,
   Box,
@@ -23,6 +27,17 @@ import {
 
 function Home() {
   const { loginWithRedirect, user } = useAuth0()
+  console.log(user, 'testing the auth0 user to see what comes up')
+  const dispatch = useAppDispatch()
+  const userId = Number(useParams().id)
+
+  const userData: User[] = useAppSelector((store) => store.localReducer)
+  const userProfile = userData.find((person) => person.id === userId)
+
+  useEffect(() => {
+    dispatch(getLocalThunk(userId))
+  }, [dispatch, userId])
+
 
   return (
     <>
@@ -42,44 +57,13 @@ function Home() {
         </Container>
       </StyledBox>
 
+
+
       {/* THE TWO CARDS IN THE MIDDLE  */}
       <StyledContainer>
-        <StyledCard id="localCard">
-          <IfAuthenticated>
-            {user?.sub ? (
-              <Link to="/all-profiles/local">
-                <Box>
-                  <CardActionArea>
-                    <StyledCardMedia
-                      component="img"
-                      image="local-icon.svg"
-                      alt="local image"
-                    />
-                    <StyledCardLabel variant="h6" align="center">
-                      View Locals
-                    </StyledCardLabel>
-                  </CardActionArea>
-                </Box>
-              </Link>
-            ) : (
-              <Link to="/create-profile">
-                <Box>
-                  <CardActionArea>
-                    <StyledCardMedia
-                      component="img"
-                      image="local-icon.svg"
-                      alt="local image"
-                    />
-                    <StyledCardLabel variant="h6" align="center">
-                      View Locals
-                    </StyledCardLabel>
-                  </CardActionArea>
-                </Box>
-              </Link>
-            )}
-          </IfAuthenticated>
 
-          <IfNotAuthenticated>
+        <StyledCard id="localCard">
+        <IfNotAuthenticated>
             <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
@@ -95,62 +79,102 @@ function Home() {
               </Box>
             </Link>
           </IfNotAuthenticated>
-        </StyledCard>
 
-        <StyledCard id="internationalCard">
           <IfAuthenticated>
-            {user?.sub ? (
-              <Link to="/all-profiles/international">
+             <AuthIdMatches id={userProfile?.auth_id}>
+              <Link to="/all-profiles/local">
                 <Box>
                   <CardActionArea>
-                    <CardMedia
+                    <StyledCardMedia
                       component="img"
-                      image="international-icon.svg"
-                      alt="international image"
+                      image="local-icon.svg"
+                      alt="local image"
                     />
                     <StyledCardLabel variant="h6" align="center">
-                      View Internationals
+                      View Locals
                     </StyledCardLabel>
                   </CardActionArea>
                 </Box>
               </Link>
-            ) : (
+              </AuthIdMatches>
+
+              <AuthIdDoesNotMatch id={userProfile?.auth_id}>
               <Link to="/create-profile">
                 <Box>
                   <CardActionArea>
-                    <CardMedia
+                    <StyledCardMedia
                       component="img"
-                      image="international-icon.svg"
-                      alt="international image"
+                      image="local-icon.svg"
+                      alt="local image"
                     />
                     <StyledCardLabel variant="h6" align="center">
-                      View Internationals
+                      View Locals
                     </StyledCardLabel>
                   </CardActionArea>
                 </Box>
-              </Link>
-            )}
-          </IfAuthenticated>
+              </Link> 
+              </AuthIdDoesNotMatch>
+              </IfAuthenticated> 
+        </StyledCard>
 
-          <IfNotAuthenticated>
+        <StyledCard id="internationalCard">
+        <IfNotAuthenticated>
             <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
-                  <CardMedia
+                  <StyledCardMedia
                     component="img"
                     image="international-icon.svg"
                     alt="international image"
                   />
-                  <CardMedia image="international-icon.svg" />
                   <StyledCardLabel variant="h6" align="center">
-                    View Internationals
+                    View Locals
                   </StyledCardLabel>
                 </CardActionArea>
               </Box>
             </Link>
           </IfNotAuthenticated>
+
+          <IfAuthenticated>
+             <AuthIdMatches id={userProfile?.auth_id}>
+              <Link to="/all-profiles/international">
+                <Box>
+                  <CardActionArea>
+                    <StyledCardMedia
+                      component="img"
+                      image="international-icon.svg"
+                    alt="international image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Locals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+              </AuthIdMatches>
+
+              <AuthIdDoesNotMatch id={userProfile?.auth_id}>
+              <Link to="/create-profile">
+                <Box>
+                  <CardActionArea>
+                    <StyledCardMedia
+                      component="img"
+                      image="international-icon.svg"
+                    alt="international image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Locals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link> 
+              </AuthIdDoesNotMatch>
+              </IfAuthenticated> 
         </StyledCard>
+
+
       </StyledContainer>
+      
 
       {/* THE TESTIMONIALS SECTION  */}
       <div className="bg-img-wrapper">
