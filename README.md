@@ -113,7 +113,7 @@ Weekend is off, but if people choose to come in that’s fine. Unless MVP not ac
 
 **Ado:** 
 - Stress: Panic, (rushing, not really careful with making decision), stay inside head, fasting (morning will be fine, afternoon head doesn’t work (get headache))
-- What can we do to telp: Not making decision a lot, tell you what to do. 
+- What can we do to help: Not making decision a lot, tell you what to do. 
 
 **Emily:**
 - Stress: Shut down, face goes stone, remove myself (or need to remove myself) need a breather. 
@@ -184,7 +184,9 @@ How will we survive?
 
 
 ### Wireframing
-Link : https://drive.google.com/drive/folders/1X3dYzl778TrfGkIUWMyfwIr5OY4zvA7c?usp=share_link
+Link to Live View : https://www.figma.com/proto/KjxNiK5o2mjUIZ5GEQl4gp/Buddy?page-id=0%3A1&node-id=2-39&viewport=591%2C324%2C0.15&scaling=scale-down&starting-point-node-id=2%3A39
+
+Link to the WireFraming Structure: https://www.figma.com/file/KjxNiK5o2mjUIZ5GEQl4gp/Buddy?node-id=0%3A1&t=xO6d3bfAkWkzdWyv-1
 
 
 ### User Stories 
@@ -213,31 +215,40 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
 ## Views (Client Side)
 | name | purpose |
 | --- | --- |
+| Home| Welcome registered/unregistered users and display links to other parts of the site |
+| CreateProfileForm | view for international or local users to sign up |
+| Personal details | View for the personal details of the user |
+| All Profiles | View for displaying all the profiles of international/local |
+| EditProfileForm | View for user to update their details about themselves |
+
 
 ## Reducers (Client Side)
 | name | purpose |
 | --- | --- |
-| international | Store the array of International users (from db) |
-| local | Store the array of Local users (from db) |
+| InternationalReducer | Store the array of International users (from db) |
+| LocalReducer | Store the array of Local users (from db) |
 
 ## Actions (Client Side)
 
 ### International 
 | type | data | purpose |
 | --- | --- | --- |
-| GET_INTUSERS | users[] | |
-| DEL_INTUSER| international user | |
-| ADD_INTUSER | international user | |
-| UPDATE_INTUSER | international user | |
+| SET_INTUSERS | User[] | Retrieve all international and local users from the db and store in redux |
+| GET_INTUSERS | User | Ret individual international user from the db and store in redux |
+| DEL_INTUSER| number | Delete individual international user from db |
+| ADD_INTUSER | User | Add individual international user to the db  |
+| UPDATE_INTUSER | User | Update individual international |
+| SHOW_ERROR | string | |
 
 ### Local 
 | type | data | purpose |
 | --- | --- | --- |
-| GET_LOCALUSERS | users[] | |
-| DEL_LOCALUSER| local user | |
-| ADD_LOCALUSER | local user | |
-| UPDATE_LOCALUSER |local user | |
-
+| SET_LOCALUSERS | User[] | Retrieve all international and local users from the db and store in redux |
+| GET_LOCALUSERS | User | Retrieve individual international or local users user from the db and store in redux |
+| DEL_LOCALUSER| number | Delete individual international or local user from db |
+| ADD_LOCALUSER | User | Add individual international or local user to the db |
+| UPDATE_LOCALUSER | User | Update individual international or local user to db  |
+| SHOW_ERROR | string | -- | 
 
 
 
@@ -280,7 +291,8 @@ Link : https://miro.com/app/board/o9J_ktbE4yk=/?share_link_id=713979444829
   
 
 
-
+### unsplash image collection
+https://unsplash.com/collections/-QfwWYXM4UQ/buddy
 
 
 
