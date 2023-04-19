@@ -7,3 +7,12 @@
 
 // Update Bulma's global variables
 $family-sans-serif: "Lato", sans-serif;
+
+ul {
+  list-style: none;
+}
+
+ul li:before {
+  content: "\2665 020";
+  color: #e0333c;
+}
