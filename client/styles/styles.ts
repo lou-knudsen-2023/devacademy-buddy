@@ -14,8 +14,13 @@ import { container } from 'webpack'
 
 //REUSEABLE
 export const StyledBox = styled(Box)<StyledProps>(() => ({
-  margin: '50px',
-  padding: '20px',
+  margin: '10px',
+  padding: '10px',
+}))
+
+export const StyledContentBox = styled(Box)<StyledProps>(() => ({
+  maxWidth: 550,
+  position: 'relative',
 }))
 
 //REUSEABLE CARDS
