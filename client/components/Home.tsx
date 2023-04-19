@@ -1,11 +1,16 @@
-import { IfAuthenticated, IfNotAuthenticated, AuthIdMatches, AuthIdDoesNotMatch } from './Authenticated'
+import {
+  IfAuthenticated,
+  IfNotAuthenticated,
+  AuthIdMatches,
+  AuthIdDoesNotMatch,
+} from './Authenticated'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { useAppSelector, useAppDispatch } from '../hooks'
 import { useParams } from 'react-router-dom'
 import { User } from '../../models/Users'
 import { useEffect, useState } from 'react'
-import { getLocalThunk} from '../actions/local'
+import { getLocalThunk } from '../actions/local'
 import {
   Typography,
   Box,
@@ -34,32 +39,29 @@ function Home() {
     <>
       <StyledBox id="tile-subtitle">
         <Container maxWidth="lg">
-          <Typography component="h1" variant="h1" align="center" gutterBottom>
-            Buddy
-          </Typography>
           <Typography
             variant="h5"
             align="center"
             color="text.secondary"
             gutterBottom
           >
+            <br></br>
+            <br></br>
             Connecting people from abroad with local Wellingtonian&apos;s
           </Typography>
         </Container>
       </StyledBox>
 
-
-
       {/* THE TWO CARDS IN THE MIDDLE  */}
       <StyledContainer>
         <StyledCard id="localCard">
-        <IfNotAuthenticated>
+          <IfNotAuthenticated>
             <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
                   <StyledCardMedia
                     component="img"
-                    image="local-icon.svg"
+                    image="4952190_39527.jpg"
                     alt="local image"
                   />
                   <StyledCardLabel variant="h6" align="center">
@@ -71,7 +73,7 @@ function Home() {
           </IfNotAuthenticated>
 
           <IfAuthenticated>
-              <Link to = {userProfile? "/all-profiles/local" : "/create-profile"}>              
+            <Link to={userProfile ? '/all-profiles/local' : '/create-profile'}>
               <Box>
                 <CardActionArea>
                   <StyledCardMedia
@@ -85,13 +87,11 @@ function Home() {
                 </CardActionArea>
               </Box>
             </Link>
-            </IfAuthenticated> 
-      </StyledCard>
+          </IfAuthenticated>
+        </StyledCard>
 
-
-
-      <StyledCard id="internationalCard">
-        <IfNotAuthenticated>
+        <StyledCard id="internationalCard">
+          <IfNotAuthenticated>
             <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
@@ -109,7 +109,7 @@ function Home() {
           </IfNotAuthenticated>
 
           <IfAuthenticated>
-              <Link to = {userProfile? "/all-profiles/local" : "/create-profile"}>              
+            <Link to={userProfile ? '/all-profiles/local' : '/create-profile'}>
               <Box>
                 <CardActionArea>
                   <StyledCardMedia
@@ -123,27 +123,26 @@ function Home() {
                 </CardActionArea>
               </Box>
             </Link>
-            </IfAuthenticated> 
-      </StyledCard>
+          </IfAuthenticated>
+        </StyledCard>
       </StyledContainer>
-      
 
       {/* THE TESTIMONIALS SECTION  */}
       <div className="bg-img-wrapper">
-      <div className='bg-img'>
-      <StyledTestCard id="testimonial" maxWidth="md">
-        <StyledBox>
-          <StyledTestLabel variant="h4" align="center" gutterBottom>
-            Testimonials
-          </StyledTestLabel>
-          <StyledTestContent variant="h5" align="center" gutterBottom>
-            &quot;I had the best time meeting Lucas. He really helped me feel
-            comfortable learning about Wellington and finding the best place to
-            eat. Yum!&quot; - Sarah
-          </StyledTestContent>
-        </StyledBox>
-      </StyledTestCard>
-      </div>
+        <div className="bg-img">
+          <StyledTestCard id="testimonial" maxWidth="md">
+            <StyledBox>
+              <StyledTestLabel variant="h4" align="center" gutterBottom>
+                Testimonials
+              </StyledTestLabel>
+              <StyledTestContent variant="h5" align="center" gutterBottom>
+                &quot;I had the best time meeting Lucas. He really helped me
+                feel comfortable learning about Wellington and finding the best
+                place to eat. Yum!&quot; - Sarah
+              </StyledTestContent>
+            </StyledBox>
+          </StyledTestCard>
+        </div>
       </div>
     </>
   )
