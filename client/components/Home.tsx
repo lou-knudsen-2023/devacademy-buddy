@@ -81,8 +81,9 @@ function Home() {
           </IfNotAuthenticated>
 
           <IfAuthenticated>
+          {userProfile && (
              <AuthIdMatches id={userProfile?.auth_id}>
-              <Link to="/all-profiles/local">
+              <Link to="/create-profile">
                 <Box>
                   <CardActionArea>
                     <StyledCardMedia
@@ -97,9 +98,10 @@ function Home() {
                 </Box>
               </Link>
               </AuthIdMatches>
+              )}
 
-              <AuthIdDoesNotMatch id={userProfile?.auth_id}>
-              <Link to="/create-profile">
+              {!userProfile && (
+              <Link to="/all-profiles/local">
                 <Box>
                   <CardActionArea>
                     <StyledCardMedia
@@ -113,9 +115,11 @@ function Home() {
                   </CardActionArea>
                 </Box>
               </Link> 
-              </AuthIdDoesNotMatch>
+             )}
               </IfAuthenticated> 
         </StyledCard>
+
+
 
         <StyledCard id="internationalCard">
         <IfNotAuthenticated>
@@ -136,8 +140,9 @@ function Home() {
           </IfNotAuthenticated>
 
           <IfAuthenticated>
+          {userProfile && (
              <AuthIdMatches id={userProfile?.auth_id}>
-              <Link to="/all-profiles/international">
+              <Link to="/create-profile">
                 <Box>
                   <CardActionArea>
                     <StyledCardMedia
@@ -152,9 +157,9 @@ function Home() {
                 </Box>
               </Link>
               </AuthIdMatches>
-
-              <AuthIdDoesNotMatch id={userProfile?.auth_id}>
-              <Link to="/create-profile">
+          )}
+          {!userProfile && (
+              <Link to="/all-profiles/international">
                 <Box>
                   <CardActionArea>
                     <StyledCardMedia
@@ -168,11 +173,9 @@ function Home() {
                   </CardActionArea>
                 </Box>
               </Link> 
-              </AuthIdDoesNotMatch>
+            )}
               </IfAuthenticated> 
         </StyledCard>
-
-
       </StyledContainer>
       
 
