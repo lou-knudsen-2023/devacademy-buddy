@@ -27,11 +27,13 @@ interface AuthCheckProp {
 export function AuthIdMatches(props: AuthCheckProp) {
   const { user } = useAuth0()
   const authZeroId = user?.sub
+  console.log('has auth id' + authZeroId)
   return authZeroId === props.id ? <>{props.children}</> : null
 }
 
 export function AuthIdDoesNotMatch(props: AuthCheckProp) {
   const { user } = useAuth0()
   const authZeroId = user?.sub
+  console.log('doesnt auth id' + authZeroId)
   return !(authZeroId === props.id) ? <>{props.children}</> : null
 }
