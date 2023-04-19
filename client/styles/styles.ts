@@ -46,7 +46,7 @@ export const StyledLargerCard = styled(Card)<StyledProps>(() => ({
 }))
 
 export const StyledCardMedia = styled(CardMedia)<StyledProps>(() => ({
-  height: '100%',
+  height: 350,
   width: '100%',
 }))
 

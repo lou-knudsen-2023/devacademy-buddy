@@ -61,44 +61,8 @@ function Home() {
                 <CardActionArea>
                   <StyledCardMedia
                     component="img"
-                    image="4952190_39527.jpg"
+                    image="./images/localnew.jpg"
                     alt="local image"
-                  />
-                  <StyledCardLabel variant="h6" align="center">
-                    View Locals
-                  </StyledCardLabel>
-                </CardActionArea>
-              </Box>
-            </Link>
-          </IfNotAuthenticated>
-
-          <IfAuthenticated>
-            <Link to={userProfile ? '/all-profiles/local' : '/create-profile'}>
-              <Box>
-                <CardActionArea>
-                  <StyledCardMedia
-                    component="img"
-                    image="local-icon.svg"
-                    alt="local image"
-                  />
-                  <StyledCardLabel variant="h6" align="center">
-                    View Locals
-                  </StyledCardLabel>
-                </CardActionArea>
-              </Box>
-            </Link>
-          </IfAuthenticated>
-        </StyledCard>
-
-        <StyledCard id="internationalCard">
-          <IfNotAuthenticated>
-            <Link to="/" onClick={() => loginWithRedirect()}>
-              <Box>
-                <CardActionArea>
-                  <StyledCardMedia
-                    component="img"
-                    image="international-icon.svg"
-                    alt="international image"
                   />
                   <StyledCardLabel variant="h6" align="center">
                     Connect with a local
@@ -114,7 +78,43 @@ function Home() {
                 <CardActionArea>
                   <StyledCardMedia
                     component="img"
-                    image="international-icon.svg"
+                    image="./images/localnew.jpg"
+                    alt="local image"
+                  />
+                  <StyledCardLabel variant="h6" align="center">
+                    Connect with a local
+                  </StyledCardLabel>
+                </CardActionArea>
+              </Box>
+            </Link>
+          </IfAuthenticated>
+        </StyledCard>
+
+        <StyledCard id="internationalCard">
+          <IfNotAuthenticated>
+            <Link to="/" onClick={() => loginWithRedirect()}>
+              <Box>
+                <CardActionArea>
+                  <StyledCardMedia
+                    component="img"
+                    image="./images/intnew.jpg"
+                    alt="international image"
+                  />
+                  <StyledCardLabel variant="h6" align="center">
+                    Connect with a international
+                  </StyledCardLabel>
+                </CardActionArea>
+              </Box>
+            </Link>
+          </IfNotAuthenticated>
+
+          <IfAuthenticated>
+            <Link to={userProfile ? '/all-profiles/local' : '/create-profile'}>
+              <Box>
+                <CardActionArea>
+                  <StyledCardMedia
+                    component="img"
+                    image="./images/intnew.jpg"
                     alt="international image"
                   />
                   <StyledCardLabel variant="h6" align="center">
