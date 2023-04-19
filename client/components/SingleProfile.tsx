@@ -20,6 +20,8 @@ import {
 } from '../styles/imports'
 
 // import { useStyles } from '../../utils/mui'
+import { StyledBox, StyledContentBox } from '../styles/styles'
+import { fontSize } from '@mui/system'
 
 export default function SingleProfilePage() {
   const { loginWithRedirect } = useAuth0()
@@ -62,7 +64,7 @@ export default function SingleProfilePage() {
             width: '100%',
             minHeight: 350,
             margin: 10,
-            padding: 50,
+            // padding: 20,
             position: 'relative',
           }}
         >
@@ -72,7 +74,6 @@ export default function SingleProfilePage() {
               variant="h2"
               align="center"
               color="text.primary"
-              gutterBottom
             >
               {userProfile?.first_name} {userProfile?.last_name}
             </Typography>
@@ -80,62 +81,82 @@ export default function SingleProfilePage() {
             <CardMedia
               component="img"
               sx={{
-                pt: '56.25%',
+                pt: '5.25%',
               }}
               image={`data:image/jpeg;base64,${userProfile?.profile_img}`}
               alt={userProfile?.user_name}
             />
 
-            <Typography
-              component="h5"
-              variant="body1"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              <div>
-                <ul className="about-list">
-                  <li>
-                    Name: {userProfile?.first_name} {userProfile?.last_name}
-                  </li>
-                  <li>User name: {userProfile?.user_name}</li>
-                  <li>Age: {userProfile?.age}</li>
-                  <li>
-                    Origin: {userProfile?.country_origin}, {userProfile?.city}
-                  </li>
-                  <li>Main language: {userProfile?.prim_language}</li>
-                  <li>English level: {userProfile?.english_level}</li>
-                </ul>
-              </div>
-            </Typography>
+            <StyledBox sx={{ py: 3, maxWidth: 'md', margin: 'auto' }}>
+              <StyledContentBox sx={{ py: 8, maxWidth: 'md', margin: 'auto' }}>
+                <Typography
+                  component="h5"
+                  variant="body1"
+                  align="left"
+                  color="text.primary"
+                  sx={{ py: 2 }}
+                >
+                  <Typography variant="h5" sx={{ py: 3 }}>
+                    <div>
+                      {' '}
+                      <strong>Name: </strong> {userProfile?.first_name}{' '}
+                      {userProfile?.last_name}
+                    </div>
+                    <div>
+                      {' '}
+                      <strong>User name: </strong> {userProfile?.user_name}
+                    </div>
+                    <div>
+                      {' '}
+                      <strong>Age: </strong> {userProfile?.age}
+                    </div>
+                    <div>
+                      {' '}
+                      <strong>From: </strong>
+                      {userProfile?.country_origin}, {userProfile?.city}
+                    </div>
+                    <div>
+                      <strong>Main language: </strong>{' '}
+                      {userProfile?.prim_language}
+                    </div>
+                    <div>
+                      {' '}
+                      <strong>English level: </strong>
+                      {userProfile?.english_level}
+                    </div>
+                  </Typography>
+                </Typography>
 
-            <Typography
-              component="h5"
-              variant="body1"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              About me: {userProfile?.description}
-            </Typography>
+                <Typography
+                  component="h5"
+                  variant="h6"
+                  align="left"
+                  color="text.primary"
+                >
+                  <strong>About me: </strong> {userProfile?.description}
+                </Typography>
 
-            {/* ORDERED LIST FOR SHARING */}
-            <Typography
-              component="h5"
-              variant="body1"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              <div>
-                <ul className="likes-list">
-                  <li>{userProfile?.sharing_one}</li>
-                  <li>{userProfile?.sharing_two}</li>
-                  <li>{userProfile?.sharing_three}</li>
-                </ul>
-                <p>You can contact me on: {userProfile?.email}</p>
-              </div>
-            </Typography>
+                {/* ORDERED LIST FOR SHARING */}
+                <Typography
+                  component="h5"
+                  variant="h6"
+                  align="left"
+                  color="text.primary"
+                  gutterBottom
+                >
+                  <strong></strong>
+                  <ul>
+                    <li>{userProfile?.sharing_one}</li>
+                    <li>{userProfile?.sharing_two}</li>
+                    <li>{userProfile?.sharing_three}</li>
+                  </ul>
+                </Typography>
+                <Typography>
+                  You can contact me on:
+                  <strong> {userProfile?.email}</strong>
+                </Typography>
+              </StyledContentBox>
+            </StyledBox>
           </CardContent>
 
           {/* DELETE AND EDIT BUTTON */}
