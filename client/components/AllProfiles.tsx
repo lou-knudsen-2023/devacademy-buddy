@@ -134,8 +134,3 @@ export function AllProfiles() {
 
 export default AllProfiles
 
-<<<<<<< HEAD
-//
-=======
-// LOU TEST
->>>>>>> 1c57e8880b71c929628cc78e2339b3a3357f4923
