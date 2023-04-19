@@ -22,7 +22,7 @@ import {
 } from '../styles/styles'
 
 function Home() {
-  const { logout, loginWithRedirect, user } = useAuth0()
+  const { loginWithRedirect, user } = useAuth0()
 
   return (
     <>
@@ -37,7 +37,7 @@ function Home() {
             color="text.secondary"
             gutterBottom
           >
-            &quot;Connecting people from abroad with local Wellingtonians&quot;
+            Connecting people from abroad with local Wellingtonian&apos;s
           </Typography>
         </Container>
       </StyledBox>
@@ -46,24 +46,41 @@ function Home() {
       <StyledContainer>
         <StyledCard id="localCard">
           <IfAuthenticated>
-            <Link to="/allprofiles">
-              <Box>
-                <CardActionArea>
-                  <StyledCardMedia
-                    component="img"
-                    image="local-icon.svg"
-                    alt="local image"
-                  />
-                  <StyledCardLabel variant="h6" align="center">
-                    View Locals
-                  </StyledCardLabel>
-                </CardActionArea>
-              </Box>
-            </Link>
+            {user?.sub ? (
+              <Link to="/all-profiles/local">
+                <Box>
+                  <CardActionArea>
+                    <StyledCardMedia
+                      component="img"
+                      image="local-icon.svg"
+                      alt="local image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Locals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+            ) : (
+              <Link to="/create-profile">
+                <Box>
+                  <CardActionArea>
+                    <StyledCardMedia
+                      component="img"
+                      image="local-icon.svg"
+                      alt="local image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Locals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+            )}
           </IfAuthenticated>
 
           <IfNotAuthenticated>
-            <Link to="/locals" onClick={() => loginWithRedirect()}>
+            <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
                   <StyledCardMedia
@@ -82,7 +99,41 @@ function Home() {
 
         <StyledCard id="internationalCard">
           <IfAuthenticated>
-            <Link to="/allprofiles">
+            {user?.sub ? (
+              <Link to="/all-profiles/international">
+                <Box>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      image="international-icon.svg"
+                      alt="international image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Internationals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+            ) : (
+              <Link to="/create-profile">
+                <Box>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      image="international-icon.svg"
+                      alt="international image"
+                    />
+                    <StyledCardLabel variant="h6" align="center">
+                      View Internationals
+                    </StyledCardLabel>
+                  </CardActionArea>
+                </Box>
+              </Link>
+            )}
+          </IfAuthenticated>
+
+          <IfNotAuthenticated>
+            <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
                   <CardMedia
@@ -90,18 +141,6 @@ function Home() {
                     image="international-icon.svg"
                     alt="international image"
                   />
-                  <StyledCardLabel variant="h6" align="center">
-                    View International
-                  </StyledCardLabel>
-                </CardActionArea>
-              </Box>
-            </Link>
-          </IfAuthenticated>
-
-          <IfNotAuthenticated>
-            <Link to="/internationals" onClick={() => loginWithRedirect()}>
-              <Box>
-                <CardActionArea>
                   <CardMedia image="international-icon.svg" />
                   <StyledCardLabel variant="h6" align="center">
                     View Internationals
@@ -114,18 +153,22 @@ function Home() {
       </StyledContainer>
 
       {/* THE TESTIMONIALS SECTION  */}
+      <div className="bg-img-wrapper">
+      <div className='bg-img'>
       <StyledTestCard id="testimonial" maxWidth="md">
         <StyledBox>
           <StyledTestLabel variant="h4" align="center" gutterBottom>
             Testimonials
           </StyledTestLabel>
           <StyledTestContent variant="h5" align="center" gutterBottom>
-            &quot;I had the best time meeting Reuben. He really helped me feel
+            &quot;I had the best time meeting Lucas. He really helped me feel
             comfortable learning about Wellington and finding the best place to
-            eat. Yum!&quot; - Ado
+            eat. Yum!&quot; - Sarah
           </StyledTestContent>
         </StyledBox>
       </StyledTestCard>
+      </div>
+      </div>
     </>
   )
 }

@@ -9,6 +9,7 @@ import {
 } from '../styles/imports'
 import { appTheme } from './theme'
 import { CardMedia, Theme } from '@mui/material'
+import { container } from 'webpack'
 // import interface
 
 //REUSEABLE
@@ -28,6 +29,14 @@ export const StyledCard = styled(Card)<StyledProps>(() => ({
   minHeight: 350,
   margin: 10,
   padding: 10,
+  position: 'relative',
+}))
+
+export const StyledLargerCard = styled(Card)<StyledProps>(() => ({
+  width: '80%',
+  height: 'auto',
+  margin: 10,
+  padding: 50,
   position: 'relative',
 }))
 
@@ -75,6 +84,11 @@ export const StyledTestContent = styled(Typography)<StyledProps>(() => ({
   color: appTheme.palette.secondary.main,
   padding: 10,
   fontStyle: 'italic',
+}))
+
+export const StyledFormElements = styled(Box)<StyledProps>(() => ({
+  // margin: '5px',
+  padding: '10px',
 }))
 
 // export const Styled  = styled(XXX)(() => ({}))

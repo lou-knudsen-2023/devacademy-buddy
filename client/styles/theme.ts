@@ -1,9 +1,10 @@
+import { grey } from '@mui/material/colors'
 import {
   createTheme,
   // responsiveFontSizes,
 } from '@mui/material/styles'
 
-import { Palette } from '../../models/Users'
+// import { Palette } from '../../models/Users'
 
 export const appTheme = createTheme({
   palette: {
@@ -17,16 +18,24 @@ export const appTheme = createTheme({
       dark: '#B28900',
       main: '#FFC400',
       light: '#FFCF32',
+      contrastText: grey[800],
+    },
+
+    error: {
+      dark: '#B28900',
+      main: '#FFC400',
+      light: '#FFCF32',
       contrastText: '#212121',
     },
 
-    // NEED TO SIT WITH EMILY TO SET UP THEME!!!!
-    // tertiary: {
-    //   main: '#00695F',
-    //   middle: '#009688',
-    //   light: '#33AB9F',
-    //   contrastText: '#fefefe',
-    // },
+    success: {
+      dark: '#00695F',
+      main: '#009688',
+      light: '#33AB9F',
+      contrastText: '#fefefe',
+    },
+
+    // grey has a bunch of options you can see here https://mui.com/material-ui/customization/default-theme/
 
     background: {
       default: '#FCFBF5',
