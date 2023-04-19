@@ -75,7 +75,13 @@ export default function CreateProfileForm() {
   return (
     <>
       <StyledBox id="tile-subtitle">
-        <Typography variant="h2" align="center" sx={{ my: 5 }} gutterBottom>
+        <Typography
+          variant="h2"
+          align="center"
+          sx={{ my: 5, marginTop: '180px' }}
+          className="text-hearder"
+          gutterBottom
+        >
           Create your profile
         </Typography>
 
@@ -83,7 +89,12 @@ export default function CreateProfileForm() {
           <StyledLargerCard align="center">
             <form onSubmit={handleSubmit}>
               <FormControl sx={{ textAlign: 'left' }}>
-                <FormLabel htmlFor="first_name">First Name</FormLabel>
+                <FormLabel
+                  htmlFor="first_name"
+                  sx={{ fontWeight: '600 !important' }}
+                >
+                  First Name
+                </FormLabel>
                 <TextField
                   type="text"
                   name="first_name"
@@ -93,7 +104,12 @@ export default function CreateProfileForm() {
                   sx={{ my: 2 }}
                   required
                 ></TextField>
-                <FormLabel htmlFor="last_name">Last name </FormLabel>
+                <FormLabel
+                  htmlFor="last_name"
+                  sx={{ fontWeight: '600 !important' }}
+                >
+                  Last name{' '}
+                </FormLabel>
                 <TextField
                   type="text"
                   name="last_name"
@@ -103,7 +119,12 @@ export default function CreateProfileForm() {
                   sx={{ my: 2 }}
                   required
                 ></TextField>
-                <FormLabel htmlFor="user_name">User Name</FormLabel>
+                <FormLabel
+                  htmlFor="user_name"
+                  sx={{ fontWeight: '600 !important' }}
+                >
+                  User Name
+                </FormLabel>
                 <TextField
                   type="text"
                   name="user_name"
@@ -113,7 +134,12 @@ export default function CreateProfileForm() {
                   sx={{ my: 2 }}
                   required
                 ></TextField>
-                <FormLabel htmlFor="email">Email</FormLabel>
+                <FormLabel
+                  htmlFor="email"
+                  sx={{ fontWeight: '600 !important' }}
+                >
+                  Email
+                </FormLabel>
                 <TextField
                   name="email"
                   value={userMethod.email}
@@ -124,7 +150,9 @@ export default function CreateProfileForm() {
                   sx={{ my: 2 }}
                   required
                 ></TextField>
-                <FormLabel htmlFor="age">Age</FormLabel>
+                <FormLabel htmlFor="age" sx={{ fontWeight: '600 !important' }}>
+                  Age
+                </FormLabel>
                 <TextField
                   name="age"
                   value={userMethod.age}
@@ -136,7 +164,10 @@ export default function CreateProfileForm() {
                   //   required
                 ></TextField>
 
-                <FormLabel htmlFor="country_origin">
+                <FormLabel
+                  htmlFor="country_origin"
+                  sx={{ fontWeight: '600 !important' }}
+                >
                   Country Of Origin
                 </FormLabel>
                 <TextField
@@ -149,7 +180,9 @@ export default function CreateProfileForm() {
                   placeholder="country of origin"
                   //   required
                 ></TextField>
-                <FormLabel htmlFor="city">City</FormLabel>
+                <FormLabel htmlFor="city" sx={{ fontWeight: '600 !important' }}>
+                  City
+                </FormLabel>
                 <TextField
                   name="city"
                   value={userMethod.city}
@@ -162,7 +195,10 @@ export default function CreateProfileForm() {
                 ></TextField>
 
                 {/* {LOU DROP DOWN} */}
-                <FormLabel htmlFor="userStatus">
+                <FormLabel
+                  htmlFor="userStatus"
+                  sx={{ fontWeight: '600 !important' }}
+                >
                   What best describes you?
                 </FormLabel>
                 <Select
@@ -180,7 +216,12 @@ export default function CreateProfileForm() {
                   <MenuItem value="local">Local</MenuItem>
                 </Select>
 
-                <FormLabel htmlFor="primLanguage">Primary Language</FormLabel>
+                <FormLabel
+                  htmlFor="primLanguage"
+                  sx={{ fontWeight: '600 !important' }}
+                >
+                  Primary Language
+                </FormLabel>
                 <TextField
                   name="prim_language"
                   type="text"
@@ -191,7 +232,12 @@ export default function CreateProfileForm() {
                 ></TextField>
 
                 {/* {LOU DROP DOWN */}
-                <FormLabel htmlFor="englishLevel">English Level</FormLabel>
+                <FormLabel
+                  htmlFor="englishLevel"
+                  sx={{ fontWeight: '600 !important' }}
+                >
+                  English Level
+                </FormLabel>
                 <Select
                   name="english_level"
                   id="englishLevel"
@@ -209,7 +255,12 @@ export default function CreateProfileForm() {
                   <MenuItem value="fluent_english">Fluent English</MenuItem>
                 </Select>
 
-                <FormLabel htmlFor="shareOne">Quality to Share One</FormLabel>
+                <FormLabel
+                  htmlFor="shareOne"
+                  sx={{ fontWeight: '600 !important' }}
+                >
+                  Quality to Share One
+                </FormLabel>
                 <TextField
                   name="sharing_one"
                   type="text"
@@ -219,7 +270,12 @@ export default function CreateProfileForm() {
                   sx={{ my: 2 }}
                 ></TextField>
 
-                <FormLabel htmlFor="shareTwo">Quality to Share Two</FormLabel>
+                <FormLabel
+                  htmlFor="shareTwo"
+                  sx={{ fontWeight: '600 !important' }}
+                >
+                  Quality to Share Two
+                </FormLabel>
                 <TextField
                   name="sharing_two"
                   type="text"
@@ -229,7 +285,10 @@ export default function CreateProfileForm() {
                   sx={{ my: 2 }}
                 ></TextField>
 
-                <FormLabel htmlFor="shareThree">
+                <FormLabel
+                  htmlFor="shareThree"
+                  sx={{ fontWeight: '600 !important' }}
+                >
                   Quality to Share Three
                 </FormLabel>
                 <TextField
@@ -240,7 +299,12 @@ export default function CreateProfileForm() {
                   onChange={handleChange}
                   sx={{ my: 2 }}
                 ></TextField>
-                <FormLabel htmlFor="description">Description</FormLabel>
+                <FormLabel
+                  htmlFor="description"
+                  sx={{ fontWeight: '600 !important' }}
+                >
+                  Description
+                </FormLabel>
                 <TextField
                   name="description"
                   id="description"
@@ -249,11 +313,19 @@ export default function CreateProfileForm() {
                   sx={{ my: 2 }}
                 ></TextField>
 
-                <FormLabel htmlFor="profileImage">
+                <FormLabel
+                  htmlFor="profileImage"
+                  sx={{ fontWeight: '600 !important' }}
+                >
                   Choose your profile image
                 </FormLabel>
                 <Input type="file" id="profileImage" onChange={updateFile} />
-                <Button sx={{ my: 2 }} type="submit" variant="contained">
+                <Button
+                  sx={{ my: 2, fontSize: '15px !important', marginTop: '10px' }}
+                  type="submit"
+                  variant="outlined"
+                  className="button-style"
+                >
                   Submit
                 </Button>
               </FormControl>
