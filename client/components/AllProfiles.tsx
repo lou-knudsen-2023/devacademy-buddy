@@ -1,3 +1,5 @@
+import * as React from 'react'
+
 import { useState, useEffect } from 'react'
 import { setLocalThunk } from '../actions/local'
 import { useAppDispatch, useAppSelector } from '../hooks'
@@ -75,13 +77,14 @@ export function AllProfiles() {
                       height: '100%',
                       display: 'flex',
                       flexDirection: 'column',
+                      bgcolor: '#424242',
                     }}
                   >
                     <CardMedia
                       component="img"
                       sx={{
                         // 16:9
-                        pt: '56.25%',
+                        pt: '6.25%',
                       }}
                       image={`data:image/jpeg;base64,${user?.profile_img}`}
                       alt="placeholder image"
@@ -90,23 +93,23 @@ export function AllProfiles() {
                       <Typography
                         variant="h5"
                         color="primary"
-                        align="center"
+                        align="right"
                         gutterBottom
                       >
                         {user.first_name}
                       </Typography>
                       <Typography
                         variant="body1"
-                        color="textSecondary"
-                        align="center"
+                        color="primary"
+                        align="right"
                         gutterBottom
                       >
                         Age: {user.age}
                       </Typography>
                       <Typography
                         variant="subtitle1"
-                        color="secondary"
-                        align="center"
+                        color="primary"
+                        align="right"
                         gutterBottom
                       >
                         {user.country_origin}
@@ -140,3 +143,5 @@ export function AllProfiles() {
 }
 
 export default AllProfiles
+
+//
