@@ -37,7 +37,7 @@ function Home() {
             color="text.secondary"
             gutterBottom
           >
-            &quot;Connecting people from abroad with local Wellingtonians&quot;
+            Connecting people from abroad with local Wellingtonian&apos;s
           </Typography>
         </Container>
       </StyledBox>
@@ -79,8 +79,6 @@ function Home() {
             )}
           </IfAuthenticated>
 
-          
-
           <IfNotAuthenticated>
             <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
@@ -98,11 +96,6 @@ function Home() {
             </Link>
           </IfNotAuthenticated>
         </StyledCard>
-
-
-
-
-
 
         <StyledCard id="internationalCard">
           <IfAuthenticated>
@@ -143,7 +136,7 @@ function Home() {
             <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
                 <CardActionArea>
-                <CardMedia
+                  <CardMedia
                     component="img"
                     image="international-icon.svg"
                     alt="international image"
@@ -159,23 +152,23 @@ function Home() {
         </StyledCard>
       </StyledContainer>
 
-
-
-      
-
       {/* THE TESTIMONIALS SECTION  */}
+      <div className="bg-img-wrapper">
+      <div className='bg-img'>
       <StyledTestCard id="testimonial" maxWidth="md">
         <StyledBox>
           <StyledTestLabel variant="h4" align="center" gutterBottom>
             Testimonials
           </StyledTestLabel>
           <StyledTestContent variant="h5" align="center" gutterBottom>
-            &quot;I had the best time meeting Reuben. He really helped me feel
+            &quot;I had the best time meeting Lucas. He really helped me feel
             comfortable learning about Wellington and finding the best place to
-            eat. Yum!&quot; - Ado
+            eat. Yum!&quot; - Sarah
           </StyledTestContent>
         </StyledBox>
       </StyledTestCard>
+      </div>
+      </div>
     </>
   )
 }

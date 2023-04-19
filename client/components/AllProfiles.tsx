@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
 import { setLocalThunk } from '../actions/local'
 import { useAppDispatch, useAppSelector } from '../hooks'
+import { AuthIdDoesNotMatch } from './Authenticated'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+
+import { User } from '../../models/Users'
 
 import {
   Typography,
@@ -12,11 +15,6 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-} from '../styles/imports'
-import {
-  createTheme,
-  ThemeProvider,
-  responsiveFontSizes,
 } from '../styles/imports'
 
 export function AllProfiles() {
@@ -29,7 +27,11 @@ export function AllProfiles() {
 
   const [showUsers, setShowUsers] = useState(false)
 
-  const urlPath = useLocation().pathname 
+  // const userData: User[] = useAppSelector((store) => store.localReducer)
+  // const userId = Number(useParams().id)
+  // const userProfile = userData.find((person) => person.id === userId)
+
+  const urlPath = useLocation().pathname
   const isLocal = urlPath.indexOf('local') !== -1
 
   const navigate = useNavigate()
@@ -42,33 +44,21 @@ export function AllProfiles() {
     ? users.filter((user) => user.user_status === 'local')
     : users.filter((user) => user.user_status === 'international')
 
-  let theme = createTheme({
-    typography: {
-      subtitle1: {
-        fontSize: 12,
-      },
-      body1: {
-        fontWeight: 500,
-      },
-    },
-  })
-
-  theme = responsiveFontSizes(theme)
-
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          <Button
-            onClick={() => {
-              navigate(`/all-profiles/${isLocal ? 'international' : 'local'}`)
-            }}
-          >
-            {isLocal ? 'Show International' : 'Show Local'}
-          </Button>
-          <Grid container spacing={4}>
-            {filteredUsers.map((user) => (
-              <Grid item key={user.id} xs={12} sm={6} md={4}>
+      <Container sx={{ py: 8 }} maxWidth="md">
+        <Button
+          onClick={() => {
+            navigate(`/all-profiles/${isLocal ? 'international' : 'local'}`)
+          }}
+        >
+          {isLocal ? 'Show International' : 'Show Local'}
+        </Button>
+
+        <Grid container spacing={4}>
+          {filteredUsers.map((user) => (
+            <AuthIdDoesNotMatch key={user.id} id={user?.auth_id}>
+              <Grid item xs={12} sm={6} md={4}>
                 {showUsers ? null : (
                   <Card
                     sx={{
@@ -131,12 +121,14 @@ export function AllProfiles() {
                   </Card>
                 )}
               </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </ThemeProvider>
+            </AuthIdDoesNotMatch>
+          ))}
+        </Grid>
+      </Container>
     </>
   )
 }
 
 export default AllProfiles
+
+// LOU TEST
