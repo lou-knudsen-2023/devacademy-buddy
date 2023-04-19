@@ -1,4 +1,3 @@
-import { grey } from '@mui/material/colors'
 import {
   createTheme,
   // responsiveFontSizes,
@@ -10,8 +9,8 @@ export const appTheme = createTheme({
   palette: {
     primary: {
       dark: '#1C54B2',
-      // main: '#2979FF',
-      main: '#f9bc9b',
+      main: '#2979FF',
+      // main: '#f9bc9b',
       light: '#5393FF',
       contrastText: '#585353',
     },
@@ -44,21 +43,20 @@ export const appTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Helvetica',
-    // color: 'black',
-    // align: 'center',
+    fontFamily: 'Nunito, sans-serif',
     button: {
-      fontSize: '1rem',
+      fontSize: '0.8rem',
     },
     subtitle2: {
-      fontSize: 12,
+      fontSize: 15,
       fontWeight: 'bold',
     },
     subtitle1: {
-      fontSize: 12,
+      fontSize: 14,
     },
     body1: {
-      fontWeight: 500,
+      fontSize: 15,
+      fontWeight: 300,
     },
   },
 })

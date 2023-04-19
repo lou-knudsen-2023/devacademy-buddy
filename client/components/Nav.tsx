@@ -5,7 +5,6 @@ import { useAppSelector } from '../hooks'
 import { styled } from '@mui/material/styles'
 
 import { Typography, AppBar, Toolbar, Box, Button } from '../styles/imports'
-import { CameraIcon } from '../styles/imports'
 import { appTheme } from '../styles/theme'
 
 export default function Nav() {
@@ -17,59 +16,79 @@ export default function Nav() {
   const StyledLink = styled(Link)({
     textDecoration: 'none',
     color: 'whitesmoke',
+    fontSize: '0.9em',
   })
 
   return (
-    <AppBar className={appTheme.palette.primary.main} position="relative">
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <StyledLink to="/">
-          <Typography variant="h3" sx={{ fontSize: '2rem' }}>
-            Buddy
-          </Typography>
-        </StyledLink>
+    <AppBar variant="outlined" position="relative" className="custom-appbar">
+      <Toolbar sx={{ justifyContent: 'space-between', margin: ' 0 1em' }}>
+        <Box>
+          <StyledLink to="/">
+            <Typography
+              variant="h3"
+              sx={{
+                fontSize: '1.8rem',
+                fontWeight: '900',
+                letterSpacing: '0.05em',
+              }}
+              className="logo"
+            >
+              Buddy
+            </Typography>
+          </StyledLink>
+        </Box>
         <Typography
           variant="h6"
           color="inherit"
           align="right"
-          style={{ display: 'flex' }}
+          style={{
+            display: 'flex',
+            letterSpacing: '0.01em',
+            fontWeight: '400',
+          }}
           noWrap
         >
           <IfAuthenticated>
-            <Box sx={{ mx: 1 }}>
-              <StyledLink to="/all-profiles/local">Locals</StyledLink>
+            <Box sx={{ mx: 0 }}>
+              <StyledLink to="/all-profiles/local" className="label">
+                Locals
+              </StyledLink>
             </Box>
-            <Box sx={{ mx: 2 }}>
-              <StyledLink to="/all-profiles/international">
+            <Box sx={{ mx: 3 }}>
+              <StyledLink to="/all-profiles/international" className="label">
                 Internationals
               </StyledLink>
             </Box>
             {userInBothDB ? (
-              <Box sx={{ mx: 2 }}>
+              <Box sx={{ mx: 1 }}>
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   color="secondary"
                   component={Link}
                   to={`/${userInBothDB?.id}`}
+                  className="button-style"
                 >
                   My Profile
                 </Button>
               </Box>
             ) : (
-              <Box sx={{ mx: 2 }}>
+              <Box sx={{ mx: 1 }}>
                 <Button
-                  variant="contained"
+                  variant="outlined"
                   color="secondary"
                   component={Link}
                   to="/create-profile"
+                  className="button-style"
                 >
                   Create Profile
                 </Button>
               </Box>
             )}
-            <Box sx={{ mx: 2 }}>
+            <Box sx={{ mx: 1 }}>
               <Button
-                variant="contained"
+                variant="outlined"
                 color="secondary"
+                className="button-style"
                 onClick={() => logout()}
               >
                 Logout
@@ -79,12 +98,20 @@ export default function Nav() {
 
           <IfNotAuthenticated>
             <Box sx={{ mx: 2 }}>
-              <StyledLink to="/" onClick={() => loginWithRedirect()}>
+              <StyledLink
+                to="/"
+                onClick={() => loginWithRedirect()}
+                className="label"
+              >
                 Locals
               </StyledLink>
             </Box>
             <Box sx={{ mx: 2 }}>
-              <StyledLink to="/" onClick={() => loginWithRedirect()}>
+              <StyledLink
+                to="/"
+                onClick={() => loginWithRedirect()}
+                className="label"
+              >
                 Internationals
               </StyledLink>
             </Box>
@@ -92,6 +119,7 @@ export default function Nav() {
               <Button
                 variant="contained"
                 color="secondary"
+                className="login"
                 onClick={() => loginWithRedirect()}
               >
                 Login

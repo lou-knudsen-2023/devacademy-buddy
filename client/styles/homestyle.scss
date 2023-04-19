@@ -1,0 +1,41 @@
+.text-hearder{
+  font-size: 4rem !important;
+  letter-spacing: 0.01em;
+  word-spacing: 0.01em !important;
+  font-weight: 300 !important;
+  color: #10466f ;
+}
+
+.card-container{
+  display: flex !important;
+  flex-wrap: wrap;
+  width: 100% !important;
+
+  .card{
+    box-shadow: none !important;
+  }
+}
+
+.container-img{
+  border-radius: 20px !important;
+  padding: 1em;
+  border: 2px !important;
+
+}
+
+.image-contain{
+  width: 100%;
+  display: block;
+  position: relative;
+  text-align: center;
+  margin-top: 5rem;
+
+  
+  .img-size {
+    max-width: 50%;
+  }
+}
+
+.testimonial{
+  background-color: nonen !important;
+}
