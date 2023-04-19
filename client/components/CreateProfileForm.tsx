@@ -23,6 +23,8 @@ import {
   StyledFormElements,
 } from '../styles/styles'
 
+import { SelectChangeEvent } from '@mui/material/Select'
+
 export default function CreateProfileForm() {
   const { getAccessTokenSilently } = useAuth0()
   const dispatch = useAppDispatch()
@@ -55,6 +57,7 @@ export default function CreateProfileForm() {
     e.preventDefault()
     try {
       const token = await getAccessTokenSilently()
+      console.log(userMethod)
 
       dispatch(addNewLocalThunk(userMethod, token))
       dispatch(setLocalThunk())
@@ -77,10 +80,8 @@ export default function CreateProfileForm() {
 
         <StyledContainer maxWidth="lg">
           <StyledLargerCard align="center">
-            <FormControl onSubmit={handleSubmit}>
-              <FormLabel htmlFor="first_name" align="left">
-                First Name
-              </FormLabel>
+            <FormControl onSubmit={handleSubmit} sx={{ textAlign: 'left' }}>
+              <FormLabel htmlFor="first_name">First Name</FormLabel>
               <TextField
                 type="text"
                 name="first_name"
@@ -90,9 +91,7 @@ export default function CreateProfileForm() {
                 sx={{ my: 2 }}
                 required
               ></TextField>
-              <FormLabel htmlFor="last_name" align="left">
-                Last name{' '}
-              </FormLabel>
+              <FormLabel htmlFor="last_name">Last name </FormLabel>
               <TextField
                 type="text"
                 name="last_name"
@@ -102,9 +101,7 @@ export default function CreateProfileForm() {
                 sx={{ my: 2 }}
                 required
               ></TextField>
-              <FormLabel htmlFor="user_name" align="left">
-                User Name
-              </FormLabel>
+              <FormLabel htmlFor="user_name">User Name</FormLabel>
               <TextField
                 type="text"
                 name="user_name"
@@ -114,9 +111,7 @@ export default function CreateProfileForm() {
                 sx={{ my: 2 }}
                 required
               ></TextField>
-              <FormLabel htmlFor="email" align="left">
-                Email
-              </FormLabel>
+              <FormLabel htmlFor="email">Email</FormLabel>
               <TextField
                 name="email"
                 value={userMethod.email}
@@ -127,9 +122,7 @@ export default function CreateProfileForm() {
                 sx={{ my: 2 }}
                 required
               ></TextField>
-              <FormLabel htmlFor="age" align="left">
-                Age
-              </FormLabel>
+              <FormLabel htmlFor="age">Age</FormLabel>
               <TextField
                 name="age"
                 value={userMethod.age}
@@ -141,9 +134,7 @@ export default function CreateProfileForm() {
                 //   required
               ></TextField>
 
-              <FormLabel htmlFor="country_origin" align="left">
-                Country Of Origin
-              </FormLabel>
+              <FormLabel htmlFor="country_origin">Country Of Origin</FormLabel>
               <TextField
                 name="country_origin"
                 value={userMethod.country_origin}
@@ -154,9 +145,7 @@ export default function CreateProfileForm() {
                 placeholder="country of origin"
                 //   required
               ></TextField>
-              <FormLabel htmlFor="city" align="left">
-                City
-              </FormLabel>
+              <FormLabel htmlFor="city">City</FormLabel>
               <TextField
                 name="city"
                 value={userMethod.city}
@@ -169,7 +158,7 @@ export default function CreateProfileForm() {
               ></TextField>
 
               {/* {LOU DROP DOWN} */}
-              <FormLabel htmlFor="userStatus" align="left">
+              <FormLabel htmlFor="userStatus">
                 What best describes you?
               </FormLabel>
               <Select
@@ -177,7 +166,12 @@ export default function CreateProfileForm() {
                 id="userStatus"
                 value={userMethod.user_status}
                 sx={{ my: 2 }}
-                onChange={handleChange}
+                onChange={
+                  handleChange as (
+                    event: SelectChangeEvent<string>,
+                    child: React.ReactNode
+                  ) => void
+                }
                 defaultValue={'DEFAULT'}
               >
                 <MenuItem value="DEFAULT" disabled hidden>
@@ -187,9 +181,7 @@ export default function CreateProfileForm() {
                 <MenuItem value="local">Local</MenuItem>
               </Select>
 
-              <FormLabel htmlFor="primLanguage" align="left">
-                Primary Language
-              </FormLabel>
+              <FormLabel htmlFor="primLanguage">Primary Language</FormLabel>
               <TextField
                 name="prim_language"
                 type="text"
@@ -200,14 +192,17 @@ export default function CreateProfileForm() {
               ></TextField>
 
               {/* {LOU DROP DOWN */}
-              <FormLabel htmlFor="englishLevel" align="left">
-                English Level
-              </FormLabel>
+              <FormLabel htmlFor="englishLevel">English Level</FormLabel>
               <Select
                 name="english_level"
                 id="englishLevel"
                 value={userMethod.english_level}
-                onChange={handleChange}
+                onChange={
+                  handleChange as (
+                    event: SelectChangeEvent<string>,
+                    child: React.ReactNode
+                  ) => void
+                }
                 sx={{ my: 2 }}
                 defaultValue={'DEFAULT'}
                 required
@@ -220,9 +215,7 @@ export default function CreateProfileForm() {
                 <MenuItem value="fluent_english">Fluent English</MenuItem>
               </Select>
 
-              <FormLabel htmlFor="shareOne" align="left">
-                Quality to Share One
-              </FormLabel>
+              <FormLabel htmlFor="shareOne">Quality to Share One</FormLabel>
               <TextField
                 name="sharing_one"
                 type="text"
@@ -232,9 +225,7 @@ export default function CreateProfileForm() {
                 sx={{ my: 2 }}
               ></TextField>
 
-              <FormLabel htmlFor="shareTwo" align="left">
-                Quality to Share Two
-              </FormLabel>
+              <FormLabel htmlFor="shareTwo">Quality to Share Two</FormLabel>
               <TextField
                 name="sharing_two"
                 type="text"
@@ -244,9 +235,7 @@ export default function CreateProfileForm() {
                 sx={{ my: 2 }}
               ></TextField>
 
-              <FormLabel htmlFor="shareThree" align="left">
-                Quality to Share Three
-              </FormLabel>
+              <FormLabel htmlFor="shareThree">Quality to Share Three</FormLabel>
               <TextField
                 name="sharing_three"
                 type="text"
@@ -255,9 +244,7 @@ export default function CreateProfileForm() {
                 onChange={handleChange}
                 sx={{ my: 2 }}
               ></TextField>
-              <FormLabel htmlFor="description" align="left">
-                Description
-              </FormLabel>
+              <FormLabel htmlFor="description">Description</FormLabel>
               <TextField
                 name="description"
                 id="description"
@@ -266,7 +253,7 @@ export default function CreateProfileForm() {
                 sx={{ my: 2 }}
               ></TextField>
 
-              <FormLabel htmlFor="profileImage" align="left">
+              <FormLabel htmlFor="profileImage">
                 Choose your profile image
               </FormLabel>
               <Input type="file" id="profileImage" onChange={updateFile} />
