@@ -27,17 +27,8 @@ import {
 
 function Home() {
   const { loginWithRedirect, user } = useAuth0()
-  console.log(user, 'testing the auth0 user to see what comes up')
-  const dispatch = useAppDispatch()
-  const userId = Number(useParams().id)
-
   const userData: User[] = useAppSelector((store) => store.localReducer)
-  const userProfile = userData.find((person) => person.id === userId)
-
-  useEffect(() => {
-    dispatch(getLocalThunk(userId))
-  }, [dispatch, userId])
-
+  const userProfile = userData.find((person) => person.auth_id === user?.sub)
 
   return (
     <>
@@ -61,7 +52,6 @@ function Home() {
 
       {/* THE TWO CARDS IN THE MIDDLE  */}
       <StyledContainer>
-
         <StyledCard id="localCard">
         <IfNotAuthenticated>
             <Link to="/" onClick={() => loginWithRedirect()}>
@@ -81,47 +71,26 @@ function Home() {
           </IfNotAuthenticated>
 
           <IfAuthenticated>
-          {userProfile && (
-             <AuthIdMatches id={userProfile?.auth_id}>
-              <Link to="/create-profile">
-                <Box>
-                  <CardActionArea>
-                    <StyledCardMedia
-                      component="img"
-                      image="local-icon.svg"
-                      alt="local image"
-                    />
-                    <StyledCardLabel variant="h6" align="center">
-                      View Locals
-                    </StyledCardLabel>
-                  </CardActionArea>
-                </Box>
-              </Link>
-              </AuthIdMatches>
-              )}
-
-              {!userProfile && (
-              <Link to="/all-profiles/local">
-                <Box>
-                  <CardActionArea>
-                    <StyledCardMedia
-                      component="img"
-                      image="local-icon.svg"
-                      alt="local image"
-                    />
-                    <StyledCardLabel variant="h6" align="center">
-                      View Locals
-                    </StyledCardLabel>
-                  </CardActionArea>
-                </Box>
-              </Link> 
-             )}
-              </IfAuthenticated> 
-        </StyledCard>
+              <Link to = {userProfile? "/all-profiles/local" : "/create-profile"}>              
+              <Box>
+                <CardActionArea>
+                  <StyledCardMedia
+                    component="img"
+                    image="local-icon.svg"
+                    alt="local image"
+                  />
+                  <StyledCardLabel variant="h6" align="center">
+                    View Locals
+                  </StyledCardLabel>
+                </CardActionArea>
+              </Box>
+            </Link>
+            </IfAuthenticated> 
+      </StyledCard>
 
 
 
-        <StyledCard id="internationalCard">
+      <StyledCard id="internationalCard">
         <IfNotAuthenticated>
             <Link to="/" onClick={() => loginWithRedirect()}>
               <Box>
@@ -132,7 +101,7 @@ function Home() {
                     alt="international image"
                   />
                   <StyledCardLabel variant="h6" align="center">
-                    View Locals
+                    Connect with a Local
                   </StyledCardLabel>
                 </CardActionArea>
               </Box>
@@ -140,42 +109,22 @@ function Home() {
           </IfNotAuthenticated>
 
           <IfAuthenticated>
-          {userProfile && (
-             <AuthIdMatches id={userProfile?.auth_id}>
-              <Link to="/create-profile">
-                <Box>
-                  <CardActionArea>
-                    <StyledCardMedia
-                      component="img"
-                      image="international-icon.svg"
+              <Link to = {userProfile? "/all-profiles/local" : "/create-profile"}>              
+              <Box>
+                <CardActionArea>
+                  <StyledCardMedia
+                    component="img"
+                    image="international-icon.svg"
                     alt="international image"
-                    />
-                    <StyledCardLabel variant="h6" align="center">
-                      View Locals
-                    </StyledCardLabel>
-                  </CardActionArea>
-                </Box>
-              </Link>
-              </AuthIdMatches>
-          )}
-          {!userProfile && (
-              <Link to="/all-profiles/international">
-                <Box>
-                  <CardActionArea>
-                    <StyledCardMedia
-                      component="img"
-                      image="international-icon.svg"
-                    alt="international image"
-                    />
-                    <StyledCardLabel variant="h6" align="center">
-                      View Locals
-                    </StyledCardLabel>
-                  </CardActionArea>
-                </Box>
-              </Link> 
-            )}
-              </IfAuthenticated> 
-        </StyledCard>
+                  />
+                  <StyledCardLabel variant="h6" align="center">
+                    Connect with a International
+                  </StyledCardLabel>
+                </CardActionArea>
+              </Box>
+            </Link>
+            </IfAuthenticated> 
+      </StyledCard>
       </StyledContainer>
       
 
