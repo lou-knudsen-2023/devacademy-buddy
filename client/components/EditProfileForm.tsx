@@ -80,12 +80,11 @@ export default function EditProfileForm({
 
   return (
     <StyledBox>
-      <Typography variant="h4" align="center" sx={{ my: 5 }} gutterBottom>
-        Edit your profile
-      </Typography>
-
       <StyledContainer maxWidth="lg">
         <StyledLargerCard align="center">
+          <Typography variant="h4" align="center" sx={{ my: 5 }} gutterBottom>
+            Edit your profile
+          </Typography>
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ textAlign: 'left' }}>
               <FormLabel htmlFor="first_name">User Name</FormLabel>

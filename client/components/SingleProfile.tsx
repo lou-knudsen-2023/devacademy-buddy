@@ -184,11 +184,10 @@ export default function SingleProfilePage() {
                 {editMode ? 'Close' : 'Edit'}
               </Button>
             </AuthIdMatches>
-
-            {editMode && (
-              <EditProfileForm initialData={userProfile ?? null} id={userId} />
-            )}
           </CardActions>
+          {editMode && (
+            <EditProfileForm initialData={userProfile ?? null} id={userId} />
+          )}
         </Card>
       </Container>
     </>
