@@ -151,7 +151,12 @@ export default function SingleProfilePage() {
                     <li>{userProfile?.sharing_three}</li>
                   </ul>
                 </Typography>
-                <Typography>
+                <Typography
+                  component="h5"
+                  variant="h6"
+                  align="left"
+                  color="text.primary"
+                >
                   You can contact me on:
                   <strong> {userProfile?.email}</strong>
                 </Typography>
@@ -175,7 +180,7 @@ export default function SingleProfilePage() {
                 Delete
               </Button>
 
-              <Button size="small" variant="contained" onClick={handleEdit}>
+              <Button size="medium" variant="contained" onClick={handleEdit}>
                 {editMode ? 'Close' : 'Edit'}
               </Button>
             </AuthIdMatches>
