@@ -57,38 +57,45 @@ export default function SingleProfilePage() {
 
   return (
     <>
-      <Container sx={{ py: 8 }} maxWidth="md">
+      <Container
+        sx={{
+          py: 1,
+          display: 'flex',
+          position: 'relative',
+        }}
+        maxWidth="lg"
+      >
         <Card
           // className={classes.profileCard}
           style={{
             width: '100%',
-            minHeight: 350,
             margin: 10,
             // padding: 20,
             position: 'relative',
           }}
         >
-          <CardContent>
-            <Typography
-              component="h2"
-              variant="h2"
-              align="center"
-              color="text.primary"
-            >
-              {userProfile?.first_name} {userProfile?.last_name}
-            </Typography>
-
+          <CardContent
+            sx={{ position: 'relative', display: 'flex', flexWrap: 'wrap' }}
+          >
             <CardMedia
               component="img"
               sx={{
-                pt: '5.25%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: '10px',
+                width: '500px',
+                overflow: 'hidden',
               }}
               image={`data:image/jpeg;base64,${userProfile?.profile_img}`}
               alt={userProfile?.user_name}
             />
 
-            <StyledBox sx={{ py: 3, maxWidth: 'md', margin: 'auto' }}>
-              <StyledContentBox sx={{ py: 8, maxWidth: 'md', margin: 'auto' }}>
+            <StyledBox sx={{ py: 2, maxWidth: 'md', margin: 'auto' }}>
+              <StyledContentBox sx={{ py: 3, maxWidth: 'md', margin: 'auto' }}>
+                <Typography component="h4" variant="h4" color="text.primary">
+                  {userProfile?.first_name} {userProfile?.last_name}
+                </Typography>
                 <Typography
                   component="h5"
                   variant="body1"
@@ -97,11 +104,6 @@ export default function SingleProfilePage() {
                   sx={{ py: 2 }}
                 >
                   <Typography variant="h5" sx={{ py: 3 }}>
-                    <div>
-                      {' '}
-                      <strong>Name: </strong> {userProfile?.first_name}{' '}
-                      {userProfile?.last_name}
-                    </div>
                     <div>
                       {' '}
                       <strong>User name: </strong> {userProfile?.user_name}
@@ -195,3 +197,4 @@ export default function SingleProfilePage() {
 }
 
 // DONE
+//Done

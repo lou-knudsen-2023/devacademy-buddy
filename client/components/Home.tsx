@@ -65,7 +65,7 @@ function Home() {
                     alt="local image"
                   />
                   <StyledCardLabel variant="h6" align="center">
-                    View Locals
+                    Connect with a local
                   </StyledCardLabel>
                 </CardActionArea>
               </Box>
@@ -82,7 +82,7 @@ function Home() {
                     alt="local image"
                   />
                   <StyledCardLabel variant="h6" align="center">
-                    View Locals
+                    Connect with a local
                   </StyledCardLabel>
                 </CardActionArea>
               </Box>
@@ -101,7 +101,7 @@ function Home() {
                     alt="international image"
                   />
                   <StyledCardLabel variant="h6" align="center">
-                    Connect with a Local
+                    Connect with a international
                   </StyledCardLabel>
                 </CardActionArea>
               </Box>
@@ -118,7 +118,7 @@ function Home() {
                     alt="international image"
                   />
                   <StyledCardLabel variant="h6" align="center">
-                    Connect with a International
+                    Connect with an international
                   </StyledCardLabel>
                 </CardActionArea>
               </Box>
@@ -133,7 +133,12 @@ function Home() {
           <StyledTestCard
             id="testimonial"
             maxWidth="md"
-            className="testimonial"
+            style={{
+              position: 'absolute',
+              bottom: '-75vh',
+              left: '35vh',
+              borderRadius: '20px',
+            }}
           >
             <StyledBox>
               <StyledTestLabel variant="h4" align="center" gutterBottom>
