@@ -4,6 +4,24 @@ import { updateLocalThunk, setLocalThunk } from '../actions/local'
 import { User } from '../../models/Users'
 import * as Base64 from 'base64-arraybuffer'
 
+import {
+  FormControl,
+  FormLabel,
+  TextField,
+  Typography,
+  Container,
+  MenuItem,
+  Select,
+  Button,
+  Input,
+} from '@mui/material'
+import {
+  StyledBox,
+  StyledContainer,
+  StyledLargerCard,
+  StyledFormElements,
+} from '../styles/styles'
+
 interface EditProfileFormProps {
   initialData: User | null
   id: number
@@ -61,138 +79,163 @@ export default function EditProfileForm({
   }
 
   return (
-    <div className="form-add">
-      <form onSubmit={handleSubmit}>
-        <h1>edit user</h1>
-        <label htmlFor="first_name">User Name</label>
-        <input
-          name="user_name"
-          type="text"
-          value={formData?.user_name}
-          onChange={handleChange}
-        />
-        <label htmlFor="first_name">First Name</label>
-        <input
-          name="first_name"
-          type="text"
-          value={formData?.first_name}
-          onChange={handleChange}
-        />
-        <label htmlFor="last_name">Last name </label>
-        <input
-          name="last_name"
-          type="text"
-          value={formData?.last_name}
-          onChange={handleChange}
-        />
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          value={formData?.email}
-          type="text"
-          className="text-input"
-          onChange={handleChange}
-        />
-        <label htmlFor="age">Age</label>
-        <input
-          name="age"
-          value={formData?.age}
-          type="text"
-          className="text-input"
-          onChange={handleChange}
-          placeholder="your age"
-        />
-        <label htmlFor="country_origin">Country Of Origin</label>
-        <input
-          name="country_origin"
-          value={formData?.country_origin}
-          type="text"
-          className="text-input"
-          onChange={handleChange}
-          placeholder="country of origin"
-        />
-        <label htmlFor="city">City</label>
-        <input
-          name="city"
-          value={formData?.city}
-          type="text"
-          className="text-input"
-          onChange={handleChange}
-          placeholder="city"
-        />
-        <label htmlFor="userStatus">User Status</label>
-        <select
-          id="userStatus"
-          value={formData?.user_status}
-          onChange={handleChange}
-        >
-          <option value="international">International</option>
-          <option value="local">Local</option>
-        </select>
+    <StyledBox>
+      <StyledContainer maxWidth="lg">
+        <StyledLargerCard align="center">
+          <Typography variant="h4" align="center" sx={{ my: 5 }} gutterBottom>
+            Edit your profile
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            <FormControl sx={{ textAlign: 'left' }}>
+              <FormLabel htmlFor="first_name">User Name</FormLabel>
+              <TextField
+                name="user_name"
+                type="text"
+                value={formData?.user_name}
+                onChange={handleChange}
+                sx={{ my: 2 }}
+              ></TextField>
+              <FormLabel htmlFor="first_name">First Name</FormLabel>
+              <TextField
+                name="first_name"
+                type="text"
+                value={formData?.first_name}
+                onChange={handleChange}
+                sx={{ my: 2 }}
+              ></TextField>
+              <FormLabel htmlFor="last_name">Last name </FormLabel>
+              <TextField
+                name="last_name"
+                type="text"
+                value={formData?.last_name}
+                onChange={handleChange}
+                sx={{ my: 2 }}
+              ></TextField>
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <TextField
+                name="email"
+                value={formData?.email}
+                type="text"
+                className="text-input"
+                onChange={handleChange}
+                sx={{ my: 2 }}
+              ></TextField>
+              <FormLabel htmlFor="age">Age</FormLabel>
+              <TextField
+                name="age"
+                value={formData?.age}
+                type="text"
+                className="text-input"
+                onChange={handleChange}
+                placeholder="your age"
+                sx={{ my: 2 }}
+              ></TextField>
+              <FormLabel htmlFor="country_origin">Country Of Origin</FormLabel>
+              <TextField
+                name="country_origin"
+                value={formData?.country_origin}
+                type="text"
+                className="text-input"
+                onChange={handleChange}
+                placeholder="country of origin"
+                sx={{ my: 2 }}
+              ></TextField>
+              <FormLabel htmlFor="city">City</FormLabel>
+              <TextField
+                name="city"
+                value={formData?.city}
+                type="text"
+                className="text-input"
+                onChange={handleChange}
+                sx={{ my: 2 }}
+                placeholder="city"
+              ></TextField>
+              <FormLabel htmlFor="userStatus">
+                What best describes you?
+              </FormLabel>
+              <Select
+                id="userStatus"
+                value={formData?.user_status}
+                sx={{ my: 2 }}
+                onChange={handleChange}
+              >
+                <MenuItem value="international">International</MenuItem>
+                <MenuItem value="local">Local</MenuItem>
+              </Select>
 
-        <label htmlFor="primLanguage">Primary Language</label>
-        <input
-          type="text"
-          id="primLanguage"
-          name="prim_language"
-          value={formData?.prim_language}
-          onChange={handleChange}
-        />
+              <FormLabel htmlFor="primLanguage">Primary Language</FormLabel>
+              <TextField
+                type="text"
+                id="primLanguage"
+                name="prim_language"
+                value={formData?.prim_language}
+                onChange={handleChange}
+                sx={{ my: 2 }}
+              ></TextField>
 
-        <label htmlFor="englishLevel">English Level</label>
-        <select
-          id="englishLevel"
-          value={formData?.english_level}
-          onChange={handleChange}
-        >
-          <option value="no_english">No English</option>
-          <option value="some_english">Some English</option>
-          <option value="fluent_english">Fluent English</option>
-        </select>
+              <FormLabel htmlFor="englishLevel">English Level</FormLabel>
+              <Select
+                id="englishLevel"
+                value={formData?.english_level}
+                onChange={handleChange}
+                sx={{ my: 2 }}
+              >
+                <MenuItem value="no_english">No English</MenuItem>
+                <MenuItem value="some_english">Some English</MenuItem>
+                <MenuItem value="fluent_english">Fluent English</MenuItem>
+              </Select>
 
-        <label htmlFor="shareOne">Quality to Share One</label>
-        <input
-          type="text"
-          id="shareOne"
-          name="sharing_one"
-          value={formData?.sharing_one}
-          onChange={handleChange}
-        />
+              <FormLabel htmlFor="shareOne">Quality to Share One</FormLabel>
+              <TextField
+                type="text"
+                id="shareOne"
+                name="sharing_one"
+                value={formData?.sharing_one}
+                onChange={handleChange}
+                sx={{ my: 2 }}
+              ></TextField>
 
-        <label htmlFor="shareTwo">Quality to Share Two</label>
-        <input
-          type="text"
-          id="shareTwo"
-          name="sharing_two"
-          value={formData?.sharing_two}
-          onChange={handleChange}
-        />
+              <FormLabel htmlFor="shareTwo">Quality to Share Two</FormLabel>
+              <TextField
+                type="text"
+                id="shareTwo"
+                name="sharing_two"
+                value={formData?.sharing_two}
+                onChange={handleChange}
+                sx={{ my: 2 }}
+              ></TextField>
 
-        <label htmlFor="shareThree">Quality to Share Three</label>
-        <input
-          type="text"
-          id="shareThree"
-          name="sharing_three"
-          value={formData?.sharing_three}
-          onChange={handleChange}
-        />
-        <label htmlFor="description">Description</label>
-        <textarea
-          id="description"
-          name="description"
-          value={formData?.description}
-          onChange={handleChange}
-        />
+              <FormLabel htmlFor="shareThree">Quality to Share Three</FormLabel>
+              <TextField
+                type="text"
+                id="shareThree"
+                name="sharing_three"
+                value={formData?.sharing_three}
+                onChange={handleChange}
+                sx={{ my: 2 }}
+              ></TextField>
+              <FormLabel htmlFor="description">Description</FormLabel>
+              <TextField
+                id="description"
+                name="description"
+                value={formData?.description}
+                onChange={handleChange}
+                sx={{ my: 2 }}
+              ></TextField>
 
-        <label htmlFor="profileImage">Profile Image</label>
-        <input
-          type="file"
-          id="profileImage"
-          accept="image/*"
-          onChange={updateFile}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+              <FormLabel htmlFor="profileImage">Profile Image</FormLabel>
+              <Input
+                type="file"
+                id="profileImage"
+                accept="image/*"
+                onChange={updateFile}
+                sx={{ my: 2 }}
+              />
+              <Button type="submit">Submit</Button>
+            </FormControl>
+          </form>
+        </StyledLargerCard>
+      </StyledContainer>
+    </StyledBox>
   )
 }
