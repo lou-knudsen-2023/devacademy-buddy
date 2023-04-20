@@ -113,7 +113,7 @@ exports.seed = async function (knex) {
       description:
         "I'm Estrella, I'm absolutely in love with international fashion and enjoy sharing my passion with others who have similar interests. Exploring new places and cultures through small trips is something I truly enjoy. I'm thrilled about the opportunity to meet international people and connect with them to exchange ideas and experiences about fashion and beyond. Let's create amazing memories together and dive into the world of fashion!",
       profile_img: Base64.encode(
-        await readFile(join(__dirname, '../../public/img/janet.jpg'))
+        await readFile(join(__dirname, '../../public/img/estrella.jpg'))
       ),
       auth_id: 'auth|4',
     },
@@ -134,7 +134,7 @@ exports.seed = async function (knex) {
       sharing_three: 'Surfing',
       description: 'I love to ride and to surf. Hang 10',
       profile_img: Base64.encode(
-        await readFile(join(__dirname, '../../public/img/janet.jpg'))
+        await readFile(join(__dirname, '../../public/img/matt.jpg'))
       ),
       auth_id: 'auth|4',
     },
@@ -156,7 +156,7 @@ exports.seed = async function (knex) {
       description:
         'Im a really happy person who loves good vibes and good times',
       profile_img: Base64.encode(
-        await readFile(join(__dirname, '../../public/img/janet.jpg'))
+        await readFile(join(__dirname, '../../public/img/Daz.jpg'))
       ),
       auth_id: 'auth|4',
     },
@@ -177,7 +177,7 @@ exports.seed = async function (knex) {
       sharing_three: 'Good samosas',
       description: 'Really want to meet great people and have good times. ',
       profile_img: Base64.encode(
-        await readFile(join(__dirname, '../../public/img/janet.jpg'))
+        await readFile(join(__dirname, '../../public/img/su.jpg'))
       ),
       auth_id: 'auth|4',
     },
@@ -198,7 +198,7 @@ exports.seed = async function (knex) {
       sharing_three: 'Teaching',
       description: 'I love hanging out with people',
       profile_img: Base64.encode(
-        await readFile(join(__dirname, '../../public/img/janet.jpg'))
+        await readFile(join(__dirname, '../../public/img/kelly.jpg'))
       ),
       auth_id: 'auth|4',
     },
