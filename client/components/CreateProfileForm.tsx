@@ -29,8 +29,26 @@ export default function CreateProfileForm() {
   const { getAccessTokenSilently } = useAuth0()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const fake = {
+    first_name: 'Rangga',
+    last_name: 'Raditya',
+    user_name: 'ranggagokil',
+    email: 'rangga@gmail.com',
+    country_origin: 'Singapore',
+    city: 'Woodlands',
+    age: '25',
+    user_status: 'international',
+    prim_language: 'english',
+    english_level: 'Fluent English',
+    sharing_one: ' I would love to meet locals in Wellington',
+    sharing_two: ' Keen to go traveling together',
+    sharing_three: '',
+    description:
+      'Hey there, I am Rangga Raditya, and I amm from Singapore. I currently live in Woodlands, and I am an international user on this platform. I speak English fluently, and I am really excited to learn about new cultures. In particular, I am fascinated by the culture of New Zealand and would love to explore and learn more about it.',
+    profile_img: '',
+  } as User
 
-  const [userMethod, setMethods] = useState({} as User)
+  const [userMethod, setMethods] = useState(fake)
 
   const handleChange = (
     e:
