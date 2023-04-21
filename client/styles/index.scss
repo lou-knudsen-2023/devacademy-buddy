@@ -68,14 +68,14 @@ header a{
   box-shadow: none !important;
   border-color: #397fb54f !important;
   background-color: transparent !important;
-  transition: background-color   0.8s ease !important;
+  transition: background-color  border-color  1s ease !important;
   border: 0.5px;
   
 }
 
 .custom-appbar.scroll {
   backdrop-filter: blur(6px) !important;
-  background-color: #a1d5fd29 !important;
+  background-color: #f0f0f046 !important;
 }
 
 .button-style{
