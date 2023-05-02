@@ -19,7 +19,7 @@ export const StyledBox = styled(Box)<StyledProps>(() => ({
 }))
 
 export const StyledContentBox = styled(Box)<StyledProps>(() => ({
-  maxWidth: 550,
+  maxWidth: 1200,
   position: 'relative',
 }))
 
@@ -30,10 +30,9 @@ export const StyledContainer = styled(Container)<StyledProps>(() => ({
 }))
 
 export const StyledCard = styled(Card)<StyledProps>(() => ({
-  maxWidth: 350,
-  minHeight: 350,
+  maxWidth: 800,
   margin: 10,
-  padding: 10,
+  padding: 20,
   position: 'relative',
 }))
 
@@ -46,7 +45,7 @@ export const StyledLargerCard = styled(Card)<StyledProps>(() => ({
 }))
 
 export const StyledCardMedia = styled(CardMedia)<StyledProps>(() => ({
-  height: '100%',
+  height: 350,
   width: '100%',
 }))
 
@@ -63,8 +62,7 @@ export const StyledCardContent = styled(CardContent)<StyledProps>(() => ({
 }))
 
 export const StyledCardLabel = styled(Typography)<StyledProps>(() => ({
-  color: 'black',
-  padding: 10,
+  color: '#10466f',
   // textAlign: (props) => props.align || 'left',
 }))
 
@@ -75,20 +73,23 @@ export const StyledHeroTitle = styled(Container)<StyledProps>(() => ({
 
 //TESTIMONIALS
 export const StyledTestCard = styled(Container)<StyledProps>(() => ({
-  backgroundColor: '#FFF8DC',
+  position: 'relative',
+  backgroundColor: 'none',
   // color: appTheme.palette.primary.main,
-  mx: '50px',
-  my: '50px',
 }))
 
 export const StyledTestLabel = styled(Typography)<StyledProps>(() => ({
-  color: appTheme.palette.secondary.main,
+  marginTop: '1rem',
+  color: '#10466f',
+  fontWeight: '600',
+  fontSize: 20,
 }))
 
 export const StyledTestContent = styled(Typography)<StyledProps>(() => ({
-  color: appTheme.palette.secondary.main,
+  color: '#10466f',
   padding: 10,
   fontStyle: 'italic',
+  fontWeight: '300',
 }))
 
 export const StyledFormElements = styled(Box)<StyledProps>(() => ({

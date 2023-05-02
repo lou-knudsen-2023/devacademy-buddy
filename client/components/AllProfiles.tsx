@@ -48,11 +48,14 @@ export function AllProfiles() {
 
   return (
     <>
-      <Container sx={{ py: 8 }} maxWidth="md">
+      <Container sx={{ py: 8, marginTop: '100px' }} maxWidth="md">
         <Button
+          variant="outlined"
           onClick={() => {
             navigate(`/all-profiles/${isLocal ? 'international' : 'local'}`)
           }}
+          className="button-style"
+          sx={{ marginBottom: '25px', fontSize: '12px !important' }}
         >
           {isLocal ? 'Show International' : 'Show Local'}
         </Button>
@@ -60,69 +63,80 @@ export function AllProfiles() {
         <Grid container spacing={4}>
           {filteredUsers.map((user) => (
             <AuthIdDoesNotMatch key={user.id} id={user?.auth_id}>
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={6}>
                 {showUsers ? null : (
-                  <Card
-                    sx={{
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      // bgcolor: '#424242',
-                    }}
+                  <Link
+                    to={`/${user.id}`}
+                    onClick={handleViewProfile}
+                    style={{ textDecoration: 'none' }}
                   >
-                    <CardMedia
-                      component="img"
+                    <Card
                       sx={{
                         width: '100%',
                         height: '100%',
-                        pt: '6.25%',
-                      }}
-                      image={`data:image/jpeg;base64,${user?.profile_img}`}
-                      alt="placeholder image"
-                    />
-                    <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography
-                        variant="h5"
-                        color="primary"
-                        align="right"
-                        gutterBottom
-                      >
-                        {user.first_name}
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        color="primary"
-                        align="right"
-                        gutterBottom
-                      >
-                        Age: {user.age}
-                      </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        color="primary"
-                        align="right"
-                        gutterBottom
-                      >
-                        {user.country_origin}
-                      </Typography>
-                    </CardContent>
-                    <CardActions
-                      disableSpacing
-                      sx={{
-                        alignSelf: 'stretch',
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                        alignItems: 'flex-start',
-                        p: 2,
+                        margin: 0,
+                        borderRadius: '30px !important',
+                        border: '1px solid',
+                        borderColor: '#397fb54f',
+                        boxShadow: 'none',
+                        // bgcolor: '#424242',
                       }}
                     >
-                      <Button size="small">
-                        <Link to={`/${user.id}`} onClick={handleViewProfile}>
-                          View Profile
-                        </Link>
-                      </Button>
-                    </CardActions>
-                  </Card>
+                      <CardMedia
+                        component="img"
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          padding: 2,
+                          borderRadius: '30px',
+                          width: '380px',
+                          height: '380px',
+                          objectFit: 'cover',
+                          objectPosition: 'center center',
+                          overflow: 'hidden',
+                        }}
+                        image={`data:image/jpeg;base64,${user?.profile_img}`}
+                        alt="placeholder image"
+                      />
+                      <CardContent sx={{ flexGrow: 1, padding: 3 }}>
+                        <Typography
+                          color="#10466f"
+                          align="center"
+                          sx={{
+                            fontWeight: '600',
+                            fontSize: '22px !important',
+                          }}
+                        >
+                          {user.first_name}
+                        </Typography>
+
+                        <Typography
+                          color="#10466f"
+                          align="center"
+                          sx={{
+                            fontWeight: '400',
+                            fontSize: '18px !important',
+                            marginBottom: '1.2em',
+                          }}
+                        >
+                          {user.city}, {user.country_origin}
+                        </Typography>
+
+                        <Typography
+                          color="#10466f"
+                          align="center"
+                          sx={{
+                            fontWeight: '400',
+                            fontSize: '16px !important',
+                            fontStyle: 'italic',
+                          }}
+                        >
+                          &quot;{user.sharing_one}&quot;
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 )}
               </Grid>
             </AuthIdDoesNotMatch>

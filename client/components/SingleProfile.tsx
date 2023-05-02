@@ -61,21 +61,30 @@ export default function SingleProfilePage() {
         sx={{
           py: 1,
           display: 'flex',
+          flexWrap: 'wrap',
           position: 'relative',
+          marginTop: '150px',
         }}
-        maxWidth="lg"
+        maxWidth="md"
       >
         <Card
-          // className={classes.profileCard}
           style={{
             width: '100%',
             margin: 10,
-            // padding: 20,
-            position: 'relative',
+            padding: 2,
+            border: '1px solid',
+            borderRadius: '20px',
+            borderColor: '#397fb54f',
+            boxShadow: 'none',
           }}
+          className="single-profile"
         >
           <CardContent
-            sx={{ position: 'relative', display: 'flex', flexWrap: 'wrap' }}
+            sx={{
+              position: 'relative',
+              display: 'flex',
+              flexWrap: 'wrap',
+            }}
           >
             <CardMedia
               component="img"
@@ -83,46 +92,39 @@ export default function SingleProfilePage() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                borderRadius: '10px',
-                width: '500px',
+                borderRadius: '20px',
+                width: '800px',
+                height: '500px',
+                objectFit: 'cover',
+                objectPosition: 'center center',
                 overflow: 'hidden',
               }}
               image={`data:image/jpeg;base64,${userProfile?.profile_img}`}
               alt={userProfile?.user_name}
             />
 
-            <StyledBox sx={{ py: 2, maxWidth: 'md', margin: 'auto' }}>
-              <StyledContentBox sx={{ py: 3, maxWidth: 'md', margin: 'auto' }}>
-                <Typography component="h4" variant="h4" color="text.primary">
+            <StyledBox sx={{ py: 0, maxWidth: 'xs', margin: 'auto' }}>
+              <StyledContentBox sx={{ py: 2, maxWidth: 'xs', margin: 'auto' }}>
+                <Typography variant="h2" color="#10466f">
                   {userProfile?.first_name} {userProfile?.last_name}
                 </Typography>
-                <Typography
-                  component="h5"
-                  variant="body1"
-                  align="left"
-                  color="text.primary"
-                  sx={{ py: 2 }}
-                >
-                  <Typography variant="h5" sx={{ py: 3 }}>
+                <Typography align="left" color="#10466f" sx={{ py: 2 }}>
+                  <Typography variant="h6" sx={{ py: 2 }}>
                     <div>
-                      {' '}
-                      <strong>User name: </strong> {userProfile?.user_name}
+                      <strong>Username: </strong> {userProfile?.user_name}
                     </div>
                     <div>
-                      {' '}
                       <strong>Age: </strong> {userProfile?.age}
                     </div>
                     <div>
-                      {' '}
                       <strong>From: </strong>
                       {userProfile?.country_origin}, {userProfile?.city}
                     </div>
                     <div>
-                      <strong>Main language: </strong>{' '}
+                      <strong>Main language: </strong>
                       {userProfile?.prim_language}
                     </div>
                     <div>
-                      {' '}
                       <strong>English level: </strong>
                       {userProfile?.english_level}
                     </div>
@@ -133,7 +135,7 @@ export default function SingleProfilePage() {
                   component="h5"
                   variant="h6"
                   align="left"
-                  color="text.primary"
+                  color="#10466f"
                 >
                   <strong>About me: </strong> {userProfile?.description}
                 </Typography>
@@ -143,7 +145,7 @@ export default function SingleProfilePage() {
                   component="h5"
                   variant="h6"
                   align="left"
-                  color="text.primary"
+                  color="#10466f"
                   gutterBottom
                 >
                   <strong></strong>
@@ -157,7 +159,7 @@ export default function SingleProfilePage() {
                   component="h5"
                   variant="h6"
                   align="left"
-                  color="text.primary"
+                  color="#10466f"
                 >
                   You can contact me on:
                   <strong> {userProfile?.email}</strong>
@@ -168,9 +170,7 @@ export default function SingleProfilePage() {
 
           {/* DELETE AND EDIT BUTTON */}
           <CardActions
-            disableSpacing
             sx={{
-              alignSelf: 'stretch',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-start',
@@ -178,11 +178,23 @@ export default function SingleProfilePage() {
             }}
           >
             <AuthIdMatches id={userProfile?.auth_id}>
-              <Button size="small" onClick={() => handleClick(userId)}>
+              <Button
+                size="large"
+                variant="outlined"
+                onClick={() => handleClick(userId)}
+                className="button-style"
+                sx={{ fontSize: '15px !important' }}
+              >
                 Delete
               </Button>
 
-              <Button size="medium" variant="contained" onClick={handleEdit}>
+              <Button
+                size="large"
+                variant="contained"
+                onClick={handleEdit}
+                className="login"
+                sx={{ fontSize: '15px !important' }}
+              >
                 {editMode ? 'Close' : 'Edit'}
               </Button>
             </AuthIdMatches>
@@ -197,4 +209,3 @@ export default function SingleProfilePage() {
 }
 
 // DONE
-//Done

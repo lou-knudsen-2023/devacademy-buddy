@@ -40,32 +40,42 @@ function Home() {
       <StyledBox id="tile-subtitle">
         <Container maxWidth="lg">
           <Typography
-            variant="h5"
+            variant="h3"
             align="center"
-            color="text.secondary"
-            gutterBottom
+            sx={{ marginTop: '110px', height: '20vh', p: 10 }}
+            className="text-hearder"
           >
-            <br></br>
-            <br></br>
             Connecting people from abroad with local Wellingtonian&apos;s
           </Typography>
         </Container>
       </StyledBox>
 
       {/* THE TWO CARDS IN THE MIDDLE  */}
-      <StyledContainer>
-        <StyledCard id="localCard">
+      <StyledContainer className="card-container">
+        <StyledCard id="localCard" className="card">
           <IfNotAuthenticated>
-            <Link to="/" onClick={() => loginWithRedirect()}>
+            <Link
+              to="/"
+              onClick={() => loginWithRedirect()}
+              style={{ textDecoration: 'none' }}
+            >
               <Box>
-                <CardActionArea>
+                <CardActionArea className="container-img">
                   <StyledCardMedia
                     component="img"
-                    image="4952190_39527.jpg"
+                    image="./images/localnew.jpg"
                     alt="local image"
+                    className="action-card"
                   />
-                  <StyledCardLabel variant="h6" align="center">
-                    View Locals
+                  <StyledCardLabel
+                    variant="h6"
+                    align="center"
+                    sx={{
+                      fontWeight: '400',
+                      fontSize: '1.5rem',
+                    }}
+                  >
+                    Connect with a local
                   </StyledCardLabel>
                 </CardActionArea>
               </Box>
@@ -73,16 +83,26 @@ function Home() {
           </IfNotAuthenticated>
 
           <IfAuthenticated>
-            <Link to={userProfile ? '/all-profiles/local' : '/create-profile'}>
+            <Link
+              to={userProfile ? '/all-profiles/local' : '/create-profile'}
+              style={{ textDecoration: 'none' }}
+            >
               <Box>
-                <CardActionArea>
+                <CardActionArea className="container-img">
                   <StyledCardMedia
                     component="img"
-                    image="local-icon.svg"
+                    image="./images/localnew.jpg"
                     alt="local image"
                   />
-                  <StyledCardLabel variant="h6" align="center">
-                    View Locals
+                  <StyledCardLabel
+                    variant="h6"
+                    align="center"
+                    sx={{
+                      fontWeight: '400',
+                      fontSize: '1.5rem',
+                    }}
+                  >
+                    Connect with a local
                   </StyledCardLabel>
                 </CardActionArea>
               </Box>
@@ -90,18 +110,29 @@ function Home() {
           </IfAuthenticated>
         </StyledCard>
 
-        <StyledCard id="internationalCard">
+        <StyledCard id="internationalCard" className="card">
           <IfNotAuthenticated>
-            <Link to="/" onClick={() => loginWithRedirect()}>
+            <Link
+              to="/"
+              onClick={() => loginWithRedirect()}
+              style={{ textDecoration: 'none' }}
+            >
               <Box>
-                <CardActionArea>
+                <CardActionArea className="container-img">
                   <StyledCardMedia
                     component="img"
-                    image="international-icon.svg"
+                    image="./images/intnew.jpg"
                     alt="international image"
                   />
-                  <StyledCardLabel variant="h6" align="center">
-                    Connect with a Local
+                  <StyledCardLabel
+                    variant="h6"
+                    align="center"
+                    sx={{
+                      fontWeight: '400',
+                      fontSize: '1.5rem',
+                    }}
+                  >
+                    Connect with a international
                   </StyledCardLabel>
                 </CardActionArea>
               </Box>
@@ -109,16 +140,26 @@ function Home() {
           </IfNotAuthenticated>
 
           <IfAuthenticated>
-            <Link to={userProfile ? '/all-profiles/local' : '/create-profile'}>
+            <Link
+              to={userProfile ? '/all-profiles/local' : '/create-profile'}
+              style={{ textDecoration: 'none' }}
+            >
               <Box>
-                <CardActionArea>
+                <CardActionArea className="container-img">
                   <StyledCardMedia
                     component="img"
-                    image="international-icon.svg"
+                    image="./images/intnew.jpg"
                     alt="international image"
                   />
-                  <StyledCardLabel variant="h6" align="center">
-                    Connect with a International
+                  <StyledCardLabel
+                    variant="h6"
+                    align="center"
+                    sx={{
+                      fontWeight: '400',
+                      fontSize: '1.5rem',
+                    }}
+                  >
+                    Connect with an international
                   </StyledCardLabel>
                 </CardActionArea>
               </Box>
@@ -128,21 +169,21 @@ function Home() {
       </StyledContainer>
 
       {/* THE TESTIMONIALS SECTION  */}
-      <div className="bg-img-wrapper">
-        <div className="bg-img">
-          <StyledTestCard id="testimonial" maxWidth="md">
-            <StyledBox>
-              <StyledTestLabel variant="h4" align="center" gutterBottom>
-                Testimonials
-              </StyledTestLabel>
-              <StyledTestContent variant="h5" align="center" gutterBottom>
-                &quot;I had the best time meeting Lucas. He really helped me
-                feel comfortable learning about Wellington and finding the best
-                place to eat. Yum!&quot; - Sarah
-              </StyledTestContent>
-            </StyledBox>
-          </StyledTestCard>
-        </div>
+      <div className="image-contain">
+        <img className="img-size" src="/images/asset2.png" alt="images" />
+
+        <StyledTestCard maxWidth="md" className="testimonial">
+          <StyledBox>
+            <StyledTestLabel variant="h4" align="center" gutterBottom>
+              Testimonials
+            </StyledTestLabel>
+            <StyledTestContent variant="h5" align="center" gutterBottom>
+              &quot;I had the best time meeting Lucas. He really helped me feel
+              comfortable learning about Wellington and finding the best place
+              to eat. Yum!&quot; - Sarah
+            </StyledTestContent>
+          </StyledBox>
+        </StyledTestCard>
       </div>
     </>
   )
